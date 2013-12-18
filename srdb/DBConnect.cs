@@ -47,6 +47,7 @@ namespace srdb
         {
             try
             {
+                connection.Close();
                 connection.Open();
                 return true;
             }
@@ -128,6 +129,7 @@ namespace srdb
         {
             try
             {
+                connection.Close();            
                 connection.Open();
                 return true;
             }
