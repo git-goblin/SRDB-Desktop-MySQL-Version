@@ -143,9 +143,8 @@ namespace srdb
         private void btnMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var mainMenu = new mainMenu();
-            mainMenu.Close();
-            mainMenu.Show();
+            mainMenu mm = new mainMenu();
+            mm.Show();
         }
     }
 }

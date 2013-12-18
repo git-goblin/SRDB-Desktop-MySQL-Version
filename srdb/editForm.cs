@@ -199,7 +199,9 @@ using MySql.Data.MySqlClient;
 
             private void btnMenu_Click(object sender, EventArgs e)
             {
-                this.Close();
+                this.Hide();
+                mainMenu mm = new mainMenu();
+                mm.Show();
             }
         }
     }

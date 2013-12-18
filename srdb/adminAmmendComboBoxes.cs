@@ -34,7 +34,9 @@ namespace srdb
         }
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
-            Form adminControlMenu = new Form();
+            this.Hide();
+            adminControlMenu acm = new adminControlMenu();
+            acm.Show();
         }
 
         private void btnProcess_Click(object sender, EventArgs e)

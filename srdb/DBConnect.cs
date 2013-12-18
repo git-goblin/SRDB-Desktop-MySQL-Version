@@ -46,7 +46,7 @@ namespace srdb
         public bool OpenConnection()
         {
             try
-            {
+            { 
                 connection.Close();
                 connection.Open();
                 return true;

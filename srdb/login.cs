@@ -32,7 +32,7 @@ namespace srdb
             try
             {
                 dbConnect.login_initialise();
-                dbConnect.login_Open_Connection(); 
+                dbConnect.login_Open_Connection();
                 string login_query = "SELECT * FROM auth WHERE username=@username AND pass=@pass";
                 MySqlCommand cmd = new MySqlCommand(login_query, dbConnect.connection);
                 pass = txtPassword.Text;
@@ -40,26 +40,28 @@ namespace srdb
                 cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@pass", hashed_pass);
                 using (MySqlDataReader reader = cmd.ExecuteReader()) 
-                {    
-                while (reader.Read())
-                {
-                    if (reader.HasRows == true)
-                    {
-                       MessageBox.Show("Welcome!");
-                       this.Hide(); //hides the current form, in this case login.cs
-                       mainMenu mm = new mainMenu(); //declares new mainMenu object
-                       mm.Show();   //Shows the mainMenu just like VB.NET
-                    }
-                    if (reader.HasRows == false)
-                    {
-                        MessageBox.Show("Wrong Username or Password"); 
-                    }
-                }
-                }
-            } 
+                  {    
+                  while (reader.Read())
+                  {
+                      if (reader.HasRows == true)
+                      {
+                         reader.Close();
+                         MessageBox.Show("Welcome!");
+                         this.Hide(); //hides the current form, in this case login.cs
+                         mainMenu mm = new mainMenu(); //declares new mainMenu object
+                         mm.Show();   //Shows the mainMenu just like VB.NET
+                      }
+                      if (reader.HasRows == false)
+                      {
+                          reader.Close();
+                          MessageBox.Show("Wrong Username or Password"); 
+                      }
+                  }
+                  }
+              } 
             catch (Exception ex)
             {
-                MessageBox.Show("Error while logging in" + ex); 
+                MessageBox.Show("Error while logging in" + ex);
             }
         }
     }

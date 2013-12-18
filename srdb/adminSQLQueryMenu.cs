@@ -27,14 +27,16 @@ namespace srdb
 
         private void btnSearchQuery_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form adminSearchQuery = new Form();
+            this.Hide();
+            adminSearchQuery asq = new adminSearchQuery();
+            asq.Show();
         }
 
         private void btnOtherQueries_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form adminOtherQueries = new Form();
+            this.Hide();
+            adminOtherQueries aoq = new adminOtherQueries();
+            aoq.Show();
         }
     }
 }

@@ -20,31 +20,36 @@ namespace srdb
         private void btnSearchName_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form searchByName = new Form();
+            searchByName sbn = new searchByName();
+            sbn.Show();
         }
 
         private void btnSearchInvoiceNumber_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form searchByInvoiceNumber = new Form();
+            this.Hide(); 
+            searchInvoiceNumber sinbr = new searchInvoiceNumber();
+            sinbr.Show();
         }
 
         private void btnSearchSoldyBy_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form soldBySearch = new Form();
+            soldBySearch sbs = new soldBySearch();
+            sbs.Show();
         }
 
         private void btnSearchDate_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form searchByDate = new Form();
+            searchByDate sbd = new searchByDate();
+            sbd.Show();
         }
 
         private void btnSearchSRDBID_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form searchServiceRecordID = new Form();
+            searchServiceRecordID ssrid = new searchServiceRecordID();
+            ssrid.Show();
         }
     }
 }

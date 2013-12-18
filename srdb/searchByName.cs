@@ -37,7 +37,9 @@ namespace srdb
 
         private void btnEditRecord_Click(object sender, EventArgs e)
         {
-            Form editForm = new Form();
+            this.Hide();
+            editForm ef = new editForm();
+            ef.Show();
         }
 
         private void btnDeleteRecord_Click(object sender, EventArgs e)
@@ -56,7 +58,7 @@ namespace srdb
 
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
-            Form mainMenu = new Form();
+            mainMenu mm = new mainMenu();
         }
 
         private void txtSearchByName_TextChanged(object sender, EventArgs e)

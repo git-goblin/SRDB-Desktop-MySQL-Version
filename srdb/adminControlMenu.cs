@@ -19,37 +19,43 @@ namespace srdb
 
         private void btnDeleteRecord_Click(object sender, EventArgs e)
         {
-            Form deleteRow = new Form();
+            deleteRow dr = new deleteRow();
+            dr.Show();
         }
 
         private void btnAddRemoveUser_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form adminAddRemoveUsersMenu = new Form();
+            this.Hide();
+            adminAddRemoveUsersMenu aarum = new adminAddRemoveUsersMenu();
+            aarum.Show();
         }
 
         private void btnAmmendCombox_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form adminAmmendComboBoxes = new Form();
+            this.Hide();
+            adminAmmendComboBoxes aacb = new adminAmmendComboBoxes();
+            aacb.Show();
         }
 
         private void btnSQLQuery_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form adminSQLQueryMenu = new Form();
+            this.Hide();
+            adminSQLQueryMenu asqm = new adminSQLQueryMenu();
+            asqm.Show();
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
-            this.Close(); 
-            Form mainMenu = new Form();
+            this.Hide();
+            mainMenu mm = new mainMenu();
+            mm.Show();
         }
 
         private void btnResetUserPassword_Click(object sender, EventArgs e)
         {
-          this.Close();
-          Form adminResetUserPassword = new Form();
+            this.Hide();
+            adminResetUserPassword arup = new adminResetUserPassword();
+            arup.Show();
         }
     }
 }

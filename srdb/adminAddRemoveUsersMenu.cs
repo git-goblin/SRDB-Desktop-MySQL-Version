@@ -20,24 +20,28 @@ namespace srdb
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form adminAddUser = new Form();
+            adminAddUser aau = new adminAddUser();
+            aau.Show();
         }
 
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
-            Form adminDeleteUser = new Form();
+            adminDeleteUser adu = new adminDeleteUser();
+            adu.Show();
         }
 
         private void btnViewAllUsers_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form adminViewAllUsers = new Form();
+            adminViewAllUsers avau = new adminViewAllUsers();
+            avau.Show();
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form adminControlMenu = new Form();
+            adminControlMenu acm = new adminControlMenu();
+            acm.Show();
         }
     }
 }

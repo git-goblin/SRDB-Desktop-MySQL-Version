@@ -81,8 +81,9 @@ namespace srdb
 
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
-            this.Close();
-            Form adminControlMenu = new Form();
+            this.Hide();
+            adminControlMenu acm = new adminControlMenu();
+            acm.Show();
         }
     }
 }

@@ -35,13 +35,16 @@ namespace srdb
         }
         private void btnEditRecord_Click(object sender, EventArgs e)
         {
-            Form editForm = new Form();
+            this.Hide();
+            editForm ef = new editForm();
+            ef.Show();
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form adminControlMenu = new Form();
+            adminControlMenu acm = new adminControlMenu();
+            acm.Show();
         }
 
         private void btnRunQuery_Click(object sender, EventArgs e)

@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearchSoldBy = new System.Windows.Forms.TextBox();
             this.btnEditRecord = new System.Windows.Forms.Button();
-            this.btnDeleteRecord = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -72,16 +71,6 @@
             this.btnEditRecord.UseVisualStyleBackColor = true;
             this.btnEditRecord.Click += new System.EventHandler(this.btnEditRecord_Click);
             // 
-            // btnDeleteRecord
-            // 
-            this.btnDeleteRecord.Location = new System.Drawing.Point(455, 280);
-            this.btnDeleteRecord.Name = "btnDeleteRecord";
-            this.btnDeleteRecord.Size = new System.Drawing.Size(90, 23);
-            this.btnDeleteRecord.TabIndex = 4;
-            this.btnDeleteRecord.Text = "Delete Record";
-            this.btnDeleteRecord.UseVisualStyleBackColor = true;
-            this.btnDeleteRecord.Click += new System.EventHandler(this.btnDeleteRecord_Click);
-            // 
             // btnMainMenu
             // 
             this.btnMainMenu.Location = new System.Drawing.Point(773, 280);
@@ -98,7 +87,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 315);
             this.Controls.Add(this.btnMainMenu);
-            this.Controls.Add(this.btnDeleteRecord);
             this.Controls.Add(this.btnEditRecord);
             this.Controls.Add(this.txtSearchSoldBy);
             this.Controls.Add(this.label1);
@@ -117,7 +105,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearchSoldBy;
         private System.Windows.Forms.Button btnEditRecord;
-        private System.Windows.Forms.Button btnDeleteRecord;
         private System.Windows.Forms.Button btnMainMenu;
     }
 }
