@@ -44,9 +44,12 @@ namespace srdb
                 while (reader.Read())
                 {
                     if (reader.HasRows == true)
-                        MessageBox.Show("Welcome!");
-                        this.Close();
-                        Form mainMenu = new Form(); 
+                    {
+                       MessageBox.Show("Welcome!");
+                       this.Hide(); //hides the current form, in this case login.cs
+                       mainMenu mm = new mainMenu(); //declares new mainMenu object
+                       mm.Show();   //Shows the mainMenu just like VB.NET
+                    }
                     if (reader.HasRows == false)
                     {
                         MessageBox.Show("Wrong Username or Password"); 
