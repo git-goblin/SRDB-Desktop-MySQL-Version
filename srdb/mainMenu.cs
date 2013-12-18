@@ -19,17 +19,23 @@ namespace srdb
 
         private void btnAddrecord_Click(object sender, EventArgs e)
         {
-            Form addRecord = new Form();
+            this.Hide();
+            addRecord ar = new addRecord();
+            ar.Show();
         }
 
         private void btnSearchrecords_Click(object sender, EventArgs e)
         {
-            Form searchRecordsMenu = new Form();
+            this.Hide();
+            searchRecordsMenu srm = new searchRecordsMenu();
+            srm.Show();
         }
 
         private void btnAdminpanel_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            adminControlPanelLogin acpl = new adminControlPanelLogin();
+            acpl.Show();
         }
     }
 }
