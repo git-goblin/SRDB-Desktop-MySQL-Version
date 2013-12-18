@@ -22,15 +22,5 @@ namespace srdb.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=hobgob-pc\\sqlexpress;Initial Catalog=srdb;Integrated Security=True")]
-        public string srdbConnection {
-            get {
-                return ((string)(this["srdbConnection"]));
-            }
-        }
     }
 }

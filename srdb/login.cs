@@ -34,12 +34,13 @@ namespace srdb
                 dbConnect.login_initialise();
                 dbConnect.login_Open_Connection(); 
                 string login_query = "SELECT * FROM Auth WHERE username=@username AND pass=@pass";
-                MySqlCommand cmd = new MySqlCommand();
+                MySqlCommand cmd = new MySqlCommand(login_query, dbConnect.connection);
                 pass = txtPassword.Text;
                 hashed_pass = dbConnect.hash_value(pass); //creates a hashed value for the password
                 cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@pass", hashed_pass);
-                MySqlDataReader reader = new MySqlDataReader();
+                using (MySqlDataReader reader = cmd.ExecuteReader()) 
+                {    
                 while (reader.Read())
                 {
                     if (reader.HasRows == true)
@@ -50,6 +51,7 @@ namespace srdb
                     {
                         MessageBox.Show("Wrong Username or Password"); 
                     }
+                }
                 }
             } 
             catch (Exception ex)
