@@ -33,7 +33,7 @@ namespace srdb
             {
                 dbConnect.login_initialise();
                 dbConnect.login_Open_Connection(); 
-                string login_query = "SELECT * FROM Auth WHERE username=@username AND pass=@pass";
+                string login_query = "SELECT * FROM auth WHERE username=@username AND pass=@pass";
                 MySqlCommand cmd = new MySqlCommand(login_query, dbConnect.connection);
                 pass = txtPassword.Text;
                 hashed_pass = dbConnect.hash_value(pass); //creates a hashed value for the password
