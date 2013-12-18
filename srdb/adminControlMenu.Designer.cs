@@ -33,11 +33,12 @@
             this.btnAmmendCombox = new System.Windows.Forms.Button();
             this.btnSQLQuery = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
+            this.btnResetUserPassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDeleteRecord
             // 
-            this.btnDeleteRecord.Location = new System.Drawing.Point(12, 12);
+            this.btnDeleteRecord.Location = new System.Drawing.Point(12, 10);
             this.btnDeleteRecord.Name = "btnDeleteRecord";
             this.btnDeleteRecord.Size = new System.Drawing.Size(121, 23);
             this.btnDeleteRecord.TabIndex = 0;
@@ -47,7 +48,7 @@
             // 
             // btnAddRemoveUser
             // 
-            this.btnAddRemoveUser.Location = new System.Drawing.Point(12, 56);
+            this.btnAddRemoveUser.Location = new System.Drawing.Point(12, 44);
             this.btnAddRemoveUser.Name = "btnAddRemoveUser";
             this.btnAddRemoveUser.Size = new System.Drawing.Size(121, 23);
             this.btnAddRemoveUser.TabIndex = 1;
@@ -57,7 +58,7 @@
             // 
             // btnAmmendCombox
             // 
-            this.btnAmmendCombox.Location = new System.Drawing.Point(170, 12);
+            this.btnAmmendCombox.Location = new System.Drawing.Point(170, 10);
             this.btnAmmendCombox.Name = "btnAmmendCombox";
             this.btnAmmendCombox.Size = new System.Drawing.Size(121, 23);
             this.btnAmmendCombox.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             // btnSQLQuery
             // 
-            this.btnSQLQuery.Location = new System.Drawing.Point(170, 56);
+            this.btnSQLQuery.Location = new System.Drawing.Point(170, 44);
             this.btnSQLQuery.Name = "btnSQLQuery";
             this.btnSQLQuery.Size = new System.Drawing.Size(121, 23);
             this.btnSQLQuery.TabIndex = 3;
@@ -77,19 +78,30 @@
             // 
             // btnMainMenu
             // 
-            this.btnMainMenu.Location = new System.Drawing.Point(216, 88);
+            this.btnMainMenu.Location = new System.Drawing.Point(170, 78);
             this.btnMainMenu.Name = "btnMainMenu";
-            this.btnMainMenu.Size = new System.Drawing.Size(75, 23);
+            this.btnMainMenu.Size = new System.Drawing.Size(121, 23);
             this.btnMainMenu.TabIndex = 4;
             this.btnMainMenu.Text = "Main Menu";
             this.btnMainMenu.UseVisualStyleBackColor = true;
             this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
             // 
+            // btnResetUserPassword
+            // 
+            this.btnResetUserPassword.Location = new System.Drawing.Point(12, 78);
+            this.btnResetUserPassword.Name = "btnResetUserPassword";
+            this.btnResetUserPassword.Size = new System.Drawing.Size(121, 23);
+            this.btnResetUserPassword.TabIndex = 5;
+            this.btnResetUserPassword.Text = "Reset User Password";
+            this.btnResetUserPassword.UseVisualStyleBackColor = true;
+            this.btnResetUserPassword.Click += new System.EventHandler(this.btnResetUserPassword_Click);
+            // 
             // adminControlMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 120);
+            this.ClientSize = new System.Drawing.Size(300, 114);
+            this.Controls.Add(this.btnResetUserPassword);
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.btnSQLQuery);
             this.Controls.Add(this.btnAmmendCombox);
@@ -108,5 +120,6 @@
         private System.Windows.Forms.Button btnAmmendCombox;
         private System.Windows.Forms.Button btnSQLQuery;
         private System.Windows.Forms.Button btnMainMenu;
+        private System.Windows.Forms.Button btnResetUserPassword;
     }
 }

@@ -115,7 +115,7 @@ namespace srdb
 
             login_connection = new MySqlConnection(connectionString);
         }
-
+        
         public string hash_value(string input)
         {
             var sha512 = SHA512Managed.Create();
@@ -146,7 +146,6 @@ namespace srdb
                         break;
                 }
                 return false;
-
             }
         }
       

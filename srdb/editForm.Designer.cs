@@ -469,7 +469,7 @@
             this.Controls.Add(this.txtFirstname);
             this.Controls.Add(this.label1);
             this.Name = "editForm";
-            this.Text = "editForm";
+            this.Text = "Edit Record";
             this.ResumeLayout(false);
             this.PerformLayout();
 

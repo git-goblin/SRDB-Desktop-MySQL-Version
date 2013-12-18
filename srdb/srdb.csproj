@@ -87,6 +87,12 @@
     <Compile Include="adminAddUser.Designer.cs">
       <DependentUpon>adminAddUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="adminAmmendComboBoxes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminAmmendComboBoxes.Designer.cs">
+      <DependentUpon>adminAmmendComboBoxes.cs</DependentUpon>
+    </Compile>
     <Compile Include="adminControlMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,12 @@
     </Compile>
     <Compile Include="adminOtherQueries.Designer.cs">
       <DependentUpon>adminOtherQueries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="adminResetUserPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminResetUserPassword.Designer.cs">
+      <DependentUpon>adminResetUserPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="adminSearchQuery.cs">
       <SubType>Form</SubType>
@@ -208,6 +220,9 @@
     <EmbeddedResource Include="adminAddUser.resx">
       <DependentUpon>adminAddUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="adminAmmendComboBoxes.resx">
+      <DependentUpon>adminAmmendComboBoxes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="adminControlMenu.resx">
       <DependentUpon>adminControlMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -219,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="adminOtherQueries.resx">
       <DependentUpon>adminOtherQueries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminResetUserPassword.resx">
+      <DependentUpon>adminResetUserPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="adminSearchQuery.resx">
       <DependentUpon>adminSearchQuery.cs</DependentUpon>

@@ -25,6 +25,37 @@ namespace srdb
             val = new validate();
         }
 
+        public void loadComboBoxes()
+        {
+            try
+            {
+                dbConnect.Initialize();
+                dbConnect.OpenConnection();
+
+                var query = "SELECT model, soldBy, salesBranch, type, paymentMethod FROM ComboBoxList";
+                using (var command = new MySqlCommand(query, dbConnect.connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        //Iterate through the rows and add it to the combobox's items
+                        while (reader.Read())
+                        {
+                            //CustomerIdComboBox.Items.Add(reader.GetString("Id"));
+                            carModel.Items.Add(reader.GetString("model"));
+                            soldBy.Items.Add(reader.GetString("soldBy"));
+                            salesBranch.Items.Add(reader.GetString("salesBranch"));
+                            carType.Items.Add(reader.GetString("type"));
+                            paymentMethod.Items.Add(reader.GetString("paymentMethod"));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading ComboBoxes" + ex);
+            }
+        }
+
         private void btnAddrecord_Click(object sender, EventArgs e)
         {
             int var1 = val.validate_name(txtFirstname.Text);
