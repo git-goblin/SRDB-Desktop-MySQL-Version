@@ -32,23 +32,25 @@ namespace srdb
             {
                 dbConnect.login_initialise();
                 dbConnect.login_Open_Connection();
-                string login_query = "SELECT * FROM Auth WHERE username=@username AND pass=@pass";
-                MySqlCommand cmd = new MySqlCommand();
+                string login_query = "SELECT * FROM auth WHERE username=@username AND pass=@pass";
+                MySqlCommand cmd = new MySqlCommand(login_query, dbConnect.connection);
                 pass = txtPassword.Text;
                 hashed_pass = dbConnect.hash_value(pass); //creates a hashed value for the password
                 cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@pass", hashed_pass);
-                MySqlDataReader reader = new MySqlDataReader();
-                while (reader.Read())
+                using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
-                    user_level = reader.GetString(reader.GetOrdinal("user_level"));
-                    if (reader.HasRows == true && user_level == "Admin")
-                        MessageBox.Show("Welcome!");
-                    this.Close();
-                    Form adminControlMenu = new Form();
-                    if (reader.HasRows == false)
+                    while (reader.Read())
                     {
-                        MessageBox.Show("Wrong Username or Password");
+                        user_level = reader.GetString(reader.GetOrdinal("user_level"));
+                        if (reader.HasRows == true && user_level == "Admin")
+                            MessageBox.Show("Welcome!");
+                        this.Close();
+                        Form adminControlMenu = new Form();
+                        if (reader.HasRows == false)
+                        {
+                            MessageBox.Show("Wrong Username or Password");
+                        }
                     }
                 }
             }
