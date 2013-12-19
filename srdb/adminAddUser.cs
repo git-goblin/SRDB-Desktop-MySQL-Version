@@ -55,15 +55,15 @@ namespace srdb
                 
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
-                string query = "INSERT INTO auth (username, firstName, surName, email, user_level, password) VALUES (@username, @firstName, @surName, @email, @user_level, @password)";
+                string query = "INSERT INTO auth VALUES (@username, @password, @email, @firstName, @surname, @user_level)"; //(`username`, `pass`, `email`, `firstName`, `surName`, `user_level`)
                 using (MySqlCommand cmd = new MySqlCommand(query, dbConnect.connection))
                 {
                     cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", dbConnect.hash_value(txtPassword.Text));
+                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
                     cmd.Parameters.AddWithValue("@firstName", txtFirstName.Text);
                     cmd.Parameters.AddWithValue("@surname", txtSurName.Text);
-                    cmd.Parameters.AddWithValue("@email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@user_level", user_level);
-                    cmd.Parameters.AddWithValue("@password", dbConnect.hash_value(txtPassword.Text));
+                    cmd.Parameters.AddWithValue("@user_level", user_level);   
                 }
             } 
             catch (Exception ex)
