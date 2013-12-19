@@ -25,5 +25,12 @@ namespace srdb
             dbConnect.OpenConnection();
             dbConnect.ExecuteQuery(txtSQLQuery.Text);
         }
+
+        private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            adminControlMenu acm = new adminControlMenu();
+            acm.Show();
+        }
     }
 }
