@@ -77,6 +77,7 @@ namespace srdb
             txtFirstName.Clear();
             txtSurName.Clear();
             txtEmail.Clear();
+            txtPassword.Clear();
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
