@@ -39,24 +39,6 @@ namespace srdb
                 hashed_pass = dbConnect.hash_value(pass); //creates a hashed value for the password
                 cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@pass", hashed_pass);
-             /*   using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        if (reader.HasRows) 
-                        {
-                            MessageBox.Show("Welcome!");
-                            this.Hide(); 
-                            mainMenu mm = new mainMenu(); 
-                            mm.Show(); 
-                        }
-                        else // if (reader.HasRows == false) so if no rows it shoud display this however is doesn't
-                        {
-                            MessageBox.Show("Wrong Username or Password");
-                        }
-
-                    }
-                } */
                 if (cmd.ExecuteScalar() != null)
                 {
                     MessageBox.Show("Welcome!");
@@ -64,7 +46,7 @@ namespace srdb
                     mainMenu mm = new mainMenu();
                     mm.Show();
                 }
-                else // if (reader.HasRows == false) so if no rows it shoud display this however is doesn't
+                else 
                 {
                     MessageBox.Show("Wrong Username or Password");
                 }
