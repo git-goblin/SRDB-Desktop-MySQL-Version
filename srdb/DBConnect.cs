@@ -108,7 +108,7 @@ namespace srdb
         public void login_initialise()
         {
             server = "localhost";
-            database = "auth";
+            database = "srdb";
             uid = "root";
             password = "MySQuireL321!";
             string connectionString;

@@ -28,12 +28,12 @@ namespace srdb
         {
             try
             {
-                int var1 = val.validate_name(txtFirstName.Text);
-                int var2 = val.validate_name(txtSurName.Text);
-                if (var1 != 1 && var2 != 1)
+             /*  int var1 = val.validate_name(txtFirstName.Text);
+               int var2 = val.validate_name(txtSurName.Text);
+               if (var1 != 1 && var2 !=1)
                 {
                     return;
-                } 
+                } */
                 if (txtPassword.Text == "" || txtPassword.TextLength < 7)
                 {
                     MessageBox.Show("Password Cannot be blank and must be greater than 7 characters!");
@@ -55,7 +55,7 @@ namespace srdb
                 
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
-                string query = "INSERT INTO Auth (username, firstName, surName, email, user_level, password) VALUES (@username, @firstName, @surName, @email, @user_level, @password)";
+                string query = "INSERT INTO auth (username, firstName, surName, email, user_level, password) VALUES (@username, @firstName, @surName, @email, @user_level, @password)";
                 using (MySqlCommand cmd = new MySqlCommand(query, dbConnect.connection))
                 {
                     cmd.Parameters.AddWithValue("@username", username);

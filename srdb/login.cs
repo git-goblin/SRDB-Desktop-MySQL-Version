@@ -44,7 +44,7 @@ namespace srdb
                     MessageBox.Show("Welcome!");
                     this.Hide();
                     mainMenu mm = new mainMenu();
-                    mm.Show();
+                    mm.Show(); 
                 }
                 else 
                 {
