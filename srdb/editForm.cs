@@ -95,7 +95,7 @@ using MySql.Data.MySqlClient;
                     dbConnect.Initialize();
                     dbConnect.OpenConnection();
 
-                    var query = "SELECT model, soldBy, salesBranch, type, paymentMethod FROM ComboBoxList";
+                    var query = "SELECT model, soldBy, salesBranch, type, paymentMethod FROM comboboxlist";
                     using (var command = new MySqlCommand(query, dbConnect.connection))
                     {
                         using (var reader = command.ExecuteReader())

@@ -25,7 +25,7 @@ namespace srdb
         {
             dbConnect.Initialize();
             dbConnect.OpenConnection();
-            using (MySqlDataAdapter dataAdaptor = new MySqlDataAdapter("SELECT model, soldBy, salesBranch, type, paymentMethod FROM ComboBoxList", dbConnect.connection)) //create a new DataAdaptor
+            using (MySqlDataAdapter dataAdaptor = new MySqlDataAdapter("SELECT model, soldBy, salesBranch, type, paymentMethod FROM comboboxlist", dbConnect.connection)) //create a new DataAdaptor
             {
                 dataAdaptor.Fill(table); //File the table with the values from the DataAdaptor
                 dataGridView1.DataSource = table; //Set the source, so where the DataGridView gets its value from at the table we have passed the values from the DataAdaptor into
@@ -48,7 +48,7 @@ namespace srdb
 
                     dbConnect.Initialize();
                     dbConnect.OpenConnection();
-                    string query = "INSERT INTO ComboBoxList (@value) VALUES (@input_value)";
+                    string query = "INSERT INTO comboboxlist (@value) VALUES (@input_value)";
                     using (MySqlCommand cmd = new MySqlCommand(query, dbConnect.connection))
                     {
                         cmd.Parameters.AddWithValue("@value", cbColumns.SelectedValue);
