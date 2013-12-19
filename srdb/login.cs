@@ -31,34 +31,45 @@ namespace srdb
         {
             try
             {
-                dbConnect.login_initialise();
-                dbConnect.login_Open_Connection();
-                string login_query = "SELECT * FROM auth WHERE username=@username AND pass=@pass";
+                dbConnect.login_initialise(); //creates connection string
+                dbConnect.login_Open_Connection(); //opens the connection
+                string login_query = "SELECT username FROM auth WHERE username=@username AND pass=@pass";
                 MySqlCommand cmd = new MySqlCommand(login_query, dbConnect.connection);
                 pass = txtPassword.Text;
                 hashed_pass = dbConnect.hash_value(pass); //creates a hashed value for the password
                 cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                 cmd.Parameters.AddWithValue("@pass", hashed_pass);
-                using (MySqlDataReader reader = cmd.ExecuteReader()) 
-                  {    
-                  while (reader.Read())
-                  {
-                      if (reader.HasRows == true)
-                      {
-                         reader.Close();
-                         MessageBox.Show("Welcome!");
-                         this.Hide(); //hides the current form, in this case login.cs
-                         mainMenu mm = new mainMenu(); //declares new mainMenu object
-                         mm.Show();   //Shows the mainMenu just like VB.NET
-                      }
-                      if (reader.HasRows == false)
-                      {
-                          reader.Close();
-                          MessageBox.Show("Wrong Username or Password"); 
-                      }
-                  }
-                  }
-              } 
+             /*   using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (reader.HasRows) 
+                        {
+                            MessageBox.Show("Welcome!");
+                            this.Hide(); 
+                            mainMenu mm = new mainMenu(); 
+                            mm.Show(); 
+                        }
+                        else // if (reader.HasRows == false) so if no rows it shoud display this however is doesn't
+                        {
+                            MessageBox.Show("Wrong Username or Password");
+                        }
+
+                    }
+                } */
+                if (cmd.ExecuteScalar() != null)
+                {
+                    MessageBox.Show("Welcome!");
+                    this.Hide();
+                    mainMenu mm = new mainMenu();
+                    mm.Show();
+                }
+                else // if (reader.HasRows == false) so if no rows it shoud display this however is doesn't
+                {
+                    MessageBox.Show("Wrong Username or Password");
+                }
+            }
+
             catch (Exception ex)
             {
                 MessageBox.Show("Error while logging in" + ex);
