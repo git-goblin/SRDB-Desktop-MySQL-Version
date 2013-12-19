@@ -45,5 +45,12 @@ namespace srdb
                 MessageBox.Show("Error Deleting the row!" + ex);
             }
         }
+
+        private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            adminControlMenu acm = new adminControlMenu();
+            acm.Show();
+        }
     }
 }
