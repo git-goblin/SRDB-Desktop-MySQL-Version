@@ -44,9 +44,12 @@ namespace srdb
                     {
                         user_level = reader.GetString(reader.GetOrdinal("user_level"));
                         if (reader.HasRows == true && user_level == "Admin")
+                        {
                             MessageBox.Show("Welcome!");
-                        this.Close();
-                        Form adminControlMenu = new Form();
+                            this.Hide();
+                            adminControlMenu acm = new adminControlMenu();
+                            acm.Show();
+                        }
                         if (reader.HasRows == false)
                         {
                             MessageBox.Show("Wrong Username or Password");
