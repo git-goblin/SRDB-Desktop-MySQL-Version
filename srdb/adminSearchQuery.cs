@@ -23,7 +23,12 @@ namespace srdb
 
         DataTable table = new DataTable(); //create a new DataTable, declared here as a global variable so it can be searched and used to created the DataGridView
         void fillData()
-        {
+        { 
+            if (txtSQLQuery.Text == "")
+            {
+                return;
+            }
+
             dbConnect.Initialize();
             dbConnect.OpenConnection();
             using (MySqlDataAdapter dataAdaptor = new MySqlDataAdapter(txtSQLQuery.Text, dbConnect.connection)) //create a new DataAdaptor
@@ -35,7 +40,6 @@ namespace srdb
         }
         private void btnEditRecord_Click(object sender, EventArgs e)
         {
-            this.Hide();
             editForm ef = new editForm();
             ef.Show();
         }
