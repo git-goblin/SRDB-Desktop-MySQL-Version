@@ -34,7 +34,9 @@ namespace srdb
         {
             this.Hide();
             adminAmmendComboBoxes aacb = new adminAmmendComboBoxes();
-            aacb.Show();
+            aacb.Show(); 
+           // adminComboBoxAmmend acbm = new adminComboBoxAmmend();
+           // acbm.Show();
         }
 
         private void btnSQLQuery_Click(object sender, EventArgs e)

@@ -87,22 +87,24 @@ namespace srdb
         }
         public void ExecuteQuery(string query)
         {
-            
-            //Open connection
-            if (this.OpenConnection() == true)
+            try
             {
-                //create mysql command
-                MySqlCommand cmd = new MySqlCommand();
-                //Assign the query using CommandText
-                cmd.CommandText = query;
-                //Assign the connection using Connection
-                cmd.Connection = connection;
+                //Open connection
+                if (this.OpenConnection() == true)
+                {
+                    //create mysql command
+                    MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                //Execute query
-                cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
 
-                //close connection
-                this.CloseConnection();
+                    //close connection
+                    this.CloseConnection();
+                }
+                MessageBox.Show("Command executed successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error executing command! " + ex);
             }
         }
         public void login_initialise()
