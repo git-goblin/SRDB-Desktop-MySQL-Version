@@ -450,6 +450,7 @@
             this.Controls.Add(this.label1);
             this.Name = "addRecord";
             this.Text = "Add Record";
+            this.Load += new System.EventHandler(this.addRecord_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

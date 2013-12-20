@@ -146,5 +146,10 @@ namespace srdb
             mainMenu mm = new mainMenu();
             mm.Show();
         }
+
+        private void addRecord_Load(object sender, EventArgs e)
+        {
+            loadComboBoxes();
+        }
     }
 }
