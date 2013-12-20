@@ -48,14 +48,14 @@ namespace srdb
                 {
                     user_level = "Admin";
                 } 
-                string fn = txtFirstName.Text;
-                string sn = txtSurName.Text; 
+                string fn = txtFirstName.Text.ToLower();
+                string sn = txtSurName.Text.ToLower(); 
 
                 string username = fn + sn[0];
                 
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
-                string query = "INSERT INTO auth VALUES (@username, @password, @email, @firstName, @surname, @user_level)"; //(`username`, `pass`, `email`, `firstName`, `surName`, `user_level`)
+                string query = "INSERT INTO auth (username, pass, email, firstName, surName, user_level) VALUES (@username, @password, @email, @firstName, @surname, @user_level)"; //(`username`, `pass`, `email`, `firstName`, `surName`, `user_level`)
                 using (MySqlCommand cmd = new MySqlCommand(query, dbConnect.connection))
                 {
                     cmd.Parameters.AddWithValue("@username", username);
@@ -63,8 +63,10 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@email", txtEmail.Text);
                     cmd.Parameters.AddWithValue("@firstName", txtFirstName.Text);
                     cmd.Parameters.AddWithValue("@surname", txtSurName.Text);
-                    cmd.Parameters.AddWithValue("@user_level", user_level);   
+                    cmd.Parameters.AddWithValue("@user_level", user_level);
+                    cmd.ExecuteNonQuery();
                 }
+                MessageBox.Show("User added successfully!\nTheir username is: " + username); 
             } 
             catch (Exception ex)
             {
