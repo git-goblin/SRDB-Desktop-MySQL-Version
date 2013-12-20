@@ -37,6 +37,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.btnMainMenu = new System.Windows.Forms.Button();
+            this.btnUpdateTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,11 +117,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(310, 252);
+            this.label2.Location = new System.Drawing.Point(299, 252);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 7;
-            this.label2.Text = "From:";
+            this.label2.Text = "To / From:";
             // 
             // btnMainMenu
             // 
@@ -132,11 +133,22 @@
             this.btnMainMenu.UseVisualStyleBackColor = true;
             this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
             // 
+            // btnUpdateTable
+            // 
+            this.btnUpdateTable.Location = new System.Drawing.Point(226, 321);
+            this.btnUpdateTable.Name = "btnUpdateTable";
+            this.btnUpdateTable.Size = new System.Drawing.Size(146, 23);
+            this.btnUpdateTable.TabIndex = 9;
+            this.btnUpdateTable.Text = "Update";
+            this.btnUpdateTable.UseVisualStyleBackColor = true;
+            this.btnUpdateTable.Click += new System.EventHandler(this.btnUpdateTable_Click);
+            // 
             // adminAmmendComboBoxes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(681, 356);
+            this.Controls.Add(this.btnUpdateTable);
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataGridView1);
@@ -148,6 +160,7 @@
             this.Controls.Add(this.rbAdd);
             this.Name = "adminAmmendComboBoxes";
             this.Text = "Admin Ammend ComboBoxes";
+            this.Load += new System.EventHandler(this.adminAmmendComboBoxes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -165,5 +178,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnMainMenu;
+        private System.Windows.Forms.Button btnUpdateTable;
     }
 }
