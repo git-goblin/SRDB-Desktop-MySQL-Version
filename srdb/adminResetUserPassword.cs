@@ -45,7 +45,7 @@ namespace srdb
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
 
-                string query = "UPDATE Auth SET password=@password WHERE username=@username";
+                string query = "UPDATE auth SET pass=@password WHERE username=@username";
 
                     dbConnect.Initialize();
                     dbConnect.OpenConnection();
@@ -54,11 +54,13 @@ namespace srdb
                     {
                         cmd.Parameters.AddWithValue("@password", pass);
                         cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+                        cmd.ExecuteNonQuery();
                     }
+                    MessageBox.Show("Password Successfully changed!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error changing password" + ex);
+                MessageBox.Show("Error changing password " + ex);
             }
         }
 
