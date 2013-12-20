@@ -37,7 +37,7 @@
             // 
             // btnMainMenu
             // 
-            this.btnMainMenu.Location = new System.Drawing.Point(455, 280);
+            this.btnMainMenu.Location = new System.Drawing.Point(375, 280);
             this.btnMainMenu.Name = "btnMainMenu";
             this.btnMainMenu.Size = new System.Drawing.Size(75, 23);
             this.btnMainMenu.TabIndex = 13;
@@ -67,20 +67,21 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 41);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(960, 226);
+            this.dataGridView1.Size = new System.Drawing.Size(800, 226);
             this.dataGridView1.TabIndex = 9;
             // 
             // adminViewAllUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 315);
+            this.ClientSize = new System.Drawing.Size(824, 315);
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.txtSearchByName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "adminViewAllUsers";
             this.Text = "Admin View All Users";
+            this.Load += new System.EventHandler(this.adminViewAllUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

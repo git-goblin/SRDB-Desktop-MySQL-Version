@@ -70,7 +70,7 @@ namespace srdb
             } 
             catch (Exception ex)
             {
-                MessageBox.Show("Error Adding User" + ex);
+                MessageBox.Show("Error Adding User " + ex);
             }
         }
 

@@ -38,12 +38,14 @@ namespace srdb
                 using (MySqlCommand cmd = new MySqlCommand(DELETE_ROW, dbConnect.connection))
                 {
                     cmd.Parameters.AddWithValue("@ID", txtUserID.Text);
+                    cmd.ExecuteNonQuery(); 
                     dbConnect.CloseConnection();
                 }
+                MessageBox.Show("User successuflly deleted!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Deleting the user!" + ex);
+                MessageBox.Show("Error Deleting the user! " + ex);
             }
         }
     }

@@ -46,5 +46,10 @@ namespace srdb
             dv.RowFilter = string.Format("firstName LIKE '%{0}%' OR surName LIKE '%{0}%'", txtSearchByName.Text);
             dataGridView1.DataSource = dv;
         }
+
+        private void adminViewAllUsers_Load(object sender, EventArgs e)
+        {
+            fillData();
+        }
     }
 }
