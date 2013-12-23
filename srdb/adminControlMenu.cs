@@ -33,10 +33,10 @@ namespace srdb
         private void btnAmmendCombox_Click(object sender, EventArgs e)
         {
             this.Hide();
-            adminAmmendComboBoxes aacb = new adminAmmendComboBoxes();
-            aacb.Show(); 
-           // adminComboBoxAmmend acbm = new adminComboBoxAmmend();
-           // acbm.Show();
+           // adminAmmendComboBoxes aacb = new adminAmmendComboBoxes();
+           // aacb.Show(); 
+            adminComboBoxAmmed acba = new adminComboBoxAmmed();
+            acba.Show();
         }
 
         private void btnSQLQuery_Click(object sender, EventArgs e)

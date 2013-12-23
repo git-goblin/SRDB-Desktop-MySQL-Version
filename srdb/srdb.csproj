@@ -95,11 +95,11 @@
     <Compile Include="adminAmmendComboBoxes.Designer.cs">
       <DependentUpon>adminAmmendComboBoxes.cs</DependentUpon>
     </Compile>
-    <Compile Include="adminComboBoxAmmend.cs">
+    <Compile Include="adminComboBoxAmmed.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="adminComboBoxAmmend.Designer.cs">
-      <DependentUpon>adminComboBoxAmmend.cs</DependentUpon>
+    <Compile Include="adminComboBoxAmmed.Designer.cs">
+      <DependentUpon>adminComboBoxAmmed.cs</DependentUpon>
     </Compile>
     <Compile Include="adminControlMenu.cs">
       <SubType>Form</SubType>
@@ -225,8 +225,8 @@
     <EmbeddedResource Include="adminAmmendComboBoxes.resx">
       <DependentUpon>adminAmmendComboBoxes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="adminComboBoxAmmend.resx">
-      <DependentUpon>adminComboBoxAmmend.cs</DependentUpon>
+    <EmbeddedResource Include="adminComboBoxAmmed.resx">
+      <DependentUpon>adminComboBoxAmmed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="adminControlMenu.resx">
       <DependentUpon>adminControlMenu.cs</DependentUpon>

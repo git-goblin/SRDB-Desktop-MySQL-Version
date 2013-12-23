@@ -25,7 +25,7 @@ namespace srdb
         {
             dbConnect.Initialize();
             dbConnect.OpenConnection();
-            using (MySqlDataAdapter dataAdaptor = new MySqlDataAdapter("SELECT * FROM Auth", dbConnect.connection)) //create a new DataAdaptor
+            using (MySqlDataAdapter dataAdaptor = new MySqlDataAdapter("SELECT * FROM auth", dbConnect.connection)) //create a new DataAdaptor
             {
                 dataAdaptor.Fill(table); //File the table with the values from the DataAdaptor
                 dataGridView1.DataSource = table; //Set the source, so where the DataGridView gets its value from at the table we have passed the values from the DataAdaptor into

@@ -21,6 +21,7 @@ namespace srdb
     {
         public MySqlConnection connection;
         public MySqlConnection login_connection;
+        public MySqlConnection cb_connection;
         private string server;
         private string database;
         private string uid;
@@ -166,7 +167,7 @@ namespace srdb
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
-            login_connection = new MySqlConnection(connectionString);
+            cb_connection = new MySqlConnection(connectionString);
         }
         
         
@@ -175,8 +176,8 @@ namespace srdb
         {
             try
             {
-                connection.Close();            
-                connection.Open();
+                cb_connection.Close();            
+                cb_connection.Open();
                 return true;
             }
             catch (MySqlException ex)
@@ -199,8 +200,17 @@ namespace srdb
         public DataTable table = new DataTable();
         public void fill_data(string db_table)
         {
-            MySqlDataAdapter da = new MySqlDataAdapter(db_table, connection);
-            da.Fill(table);
+            try
+            {
+                combobox_initialise();
+                combobox_Open_Connection();
+                MySqlDataAdapter da = new MySqlDataAdapter(db_table, cb_connection);
+                da.Fill(table);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex);
+            }
         }
 
     }
