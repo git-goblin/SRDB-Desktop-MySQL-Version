@@ -29,11 +29,11 @@ namespace srdb
         {
             try
             {
-                dbConnect.Initialize();
-                dbConnect.OpenConnection();
+                dbConnect.combobox_initialise();
+                dbConnect.combobox_Open_Connection();
 
-                var query = "SELECT model, soldBy, salesBranch, type, paymentMethod FROM comboboxlist";
-                using (var command = new MySqlCommand(query, dbConnect.connection))
+                var query = "SELECT model FROM model UNION SELECT soldBy FROM soldBy UNION SELECT salesBranch FROM salesBranch UNION SELECT type FROM type UNION SELECT paymentMethod FROM paymentMethod" ;    //"SELECT model, soldBy, salesBranch, type, paymentMethod FROM comboboxlist";
+                using (var command = new MySqlCommand(query, dbConnect.cb_connection))
                 {
                     using (var reader = command.ExecuteReader())
                     {
@@ -42,10 +42,10 @@ namespace srdb
                         {
                             //CustomerIdComboBox.Items.Add(reader.GetString("Id"));
                             carModel.Items.Add(reader.GetString("model"));
-                            soldBy.Items.Add(reader.GetString("soldBy"));
-                            salesBranch.Items.Add(reader.GetString("salesBranch"));
+                            soldBy.Items.Add(reader.GetString("soldby"));
+                            salesBranch.Items.Add(reader.GetString("salesbranch"));
                             carType.Items.Add(reader.GetString("type"));
-                            paymentMethod.Items.Add(reader.GetString("paymentMethod"));
+                            paymentMethod.Items.Add(reader.GetString("paymentmethod"));
                         }
                     }
                 }

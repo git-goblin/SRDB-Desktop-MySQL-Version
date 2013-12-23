@@ -34,7 +34,7 @@ namespace srdb
                 }
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
-                string DELETE_ROW = "DELETE FROM Auth WHERE ID=@ID";
+                string DELETE_ROW = "DELETE FROM auth WHERE ID=@ID";
                 using (MySqlCommand cmd = new MySqlCommand(DELETE_ROW, dbConnect.connection))
                 {
                     cmd.Parameters.AddWithValue("@ID", txtUserID.Text);

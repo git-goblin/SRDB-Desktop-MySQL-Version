@@ -40,32 +40,32 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnDeleteModel = new System.Windows.Forms.Button();
             this.btnAddValueModel = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtModel = new System.Windows.Forms.TextBox();
+            this.txtModalID = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtSoldByID = new System.Windows.Forms.TextBox();
+            this.txtSoldBy = new System.Windows.Forms.TextBox();
             this.btnAddValueSoldBy = new System.Windows.Forms.Button();
             this.btnDeleteSoldBy = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtSalesBranchID = new System.Windows.Forms.TextBox();
+            this.txtSalesBranch = new System.Windows.Forms.TextBox();
             this.btnAddValueSalesBranch = new System.Windows.Forms.Button();
             this.btnDeleteSalesBranchID = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtTypeID = new System.Windows.Forms.TextBox();
+            this.txtType = new System.Windows.Forms.TextBox();
             this.btnAddValueType = new System.Windows.Forms.Button();
             this.btnDeleteTypeID = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtPaymentMethodID = new System.Windows.Forms.TextBox();
+            this.txtPaymentMethod = new System.Windows.Forms.TextBox();
             this.btnAddValuePaymentMethod = new System.Windows.Forms.Button();
             this.btnDeletePaymentMethodID = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
@@ -197,19 +197,19 @@
             this.btnAddValueModel.UseVisualStyleBackColor = true;
             this.btnAddValueModel.Click += new System.EventHandler(this.btnAddValueModel_Click);
             // 
-            // textBox1
+            // txtModel
             // 
-            this.textBox1.Location = new System.Drawing.Point(18, 233);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 12;
+            this.txtModel.Location = new System.Drawing.Point(18, 233);
+            this.txtModel.Name = "txtModel";
+            this.txtModel.Size = new System.Drawing.Size(100, 20);
+            this.txtModel.TabIndex = 12;
             // 
-            // textBox2
+            // txtModalID
             // 
-            this.textBox2.Location = new System.Drawing.Point(18, 296);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 13;
+            this.txtModalID.Location = new System.Drawing.Point(18, 296);
+            this.txtModalID.Name = "txtModalID";
+            this.txtModalID.Size = new System.Drawing.Size(100, 20);
+            this.txtModalID.TabIndex = 13;
             // 
             // label6
             // 
@@ -247,19 +247,19 @@
             this.label9.TabIndex = 20;
             this.label9.Text = "Delete by ID";
             // 
-            // textBox3
+            // txtSoldByID
             // 
-            this.textBox3.Location = new System.Drawing.Point(204, 296);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 19;
+            this.txtSoldByID.Location = new System.Drawing.Point(204, 296);
+            this.txtSoldByID.Name = "txtSoldByID";
+            this.txtSoldByID.Size = new System.Drawing.Size(100, 20);
+            this.txtSoldByID.TabIndex = 19;
             // 
-            // textBox4
+            // txtSoldBy
             // 
-            this.textBox4.Location = new System.Drawing.Point(204, 233);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 18;
+            this.txtSoldBy.Location = new System.Drawing.Point(204, 233);
+            this.txtSoldBy.Name = "txtSoldBy";
+            this.txtSoldBy.Size = new System.Drawing.Size(100, 20);
+            this.txtSoldBy.TabIndex = 18;
             // 
             // btnAddValueSoldBy
             // 
@@ -299,19 +299,19 @@
             this.label11.TabIndex = 26;
             this.label11.Text = "Delete by ID";
             // 
-            // textBox5
+            // txtSalesBranchID
             // 
-            this.textBox5.Location = new System.Drawing.Point(396, 296);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 25;
+            this.txtSalesBranchID.Location = new System.Drawing.Point(396, 296);
+            this.txtSalesBranchID.Name = "txtSalesBranchID";
+            this.txtSalesBranchID.Size = new System.Drawing.Size(100, 20);
+            this.txtSalesBranchID.TabIndex = 25;
             // 
-            // textBox6
+            // txtSalesBranch
             // 
-            this.textBox6.Location = new System.Drawing.Point(396, 233);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 24;
+            this.txtSalesBranch.Location = new System.Drawing.Point(396, 233);
+            this.txtSalesBranch.Name = "txtSalesBranch";
+            this.txtSalesBranch.Size = new System.Drawing.Size(100, 20);
+            this.txtSalesBranch.TabIndex = 24;
             // 
             // btnAddValueSalesBranch
             // 
@@ -351,19 +351,19 @@
             this.label13.TabIndex = 32;
             this.label13.Text = "Delete by ID";
             // 
-            // textBox7
+            // txtTypeID
             // 
-            this.textBox7.Location = new System.Drawing.Point(588, 296);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 31;
+            this.txtTypeID.Location = new System.Drawing.Point(588, 296);
+            this.txtTypeID.Name = "txtTypeID";
+            this.txtTypeID.Size = new System.Drawing.Size(100, 20);
+            this.txtTypeID.TabIndex = 31;
             // 
-            // textBox8
+            // txtType
             // 
-            this.textBox8.Location = new System.Drawing.Point(588, 233);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 30;
+            this.txtType.Location = new System.Drawing.Point(588, 233);
+            this.txtType.Name = "txtType";
+            this.txtType.Size = new System.Drawing.Size(100, 20);
+            this.txtType.TabIndex = 30;
             // 
             // btnAddValueType
             // 
@@ -403,19 +403,19 @@
             this.label15.TabIndex = 38;
             this.label15.Text = "Delete by ID";
             // 
-            // textBox9
+            // txtPaymentMethodID
             // 
-            this.textBox9.Location = new System.Drawing.Point(780, 295);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 37;
+            this.txtPaymentMethodID.Location = new System.Drawing.Point(780, 295);
+            this.txtPaymentMethodID.Name = "txtPaymentMethodID";
+            this.txtPaymentMethodID.Size = new System.Drawing.Size(100, 20);
+            this.txtPaymentMethodID.TabIndex = 37;
             // 
-            // textBox10
+            // txtPaymentMethod
             // 
-            this.textBox10.Location = new System.Drawing.Point(780, 232);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 36;
+            this.txtPaymentMethod.Location = new System.Drawing.Point(780, 232);
+            this.txtPaymentMethod.Name = "txtPaymentMethod";
+            this.txtPaymentMethod.Size = new System.Drawing.Size(100, 20);
+            this.txtPaymentMethod.TabIndex = 36;
             // 
             // btnAddValuePaymentMethod
             // 
@@ -466,32 +466,32 @@
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.txtPaymentMethodID);
+            this.Controls.Add(this.txtPaymentMethod);
             this.Controls.Add(this.btnAddValuePaymentMethod);
             this.Controls.Add(this.btnDeletePaymentMethodID);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.txtTypeID);
+            this.Controls.Add(this.txtType);
             this.Controls.Add(this.btnAddValueType);
             this.Controls.Add(this.btnDeleteTypeID);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtSalesBranchID);
+            this.Controls.Add(this.txtSalesBranch);
             this.Controls.Add(this.btnAddValueSalesBranch);
             this.Controls.Add(this.btnDeleteSalesBranchID);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.txtSoldByID);
+            this.Controls.Add(this.txtSoldBy);
             this.Controls.Add(this.btnAddValueSoldBy);
             this.Controls.Add(this.btnDeleteSoldBy);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtModalID);
+            this.Controls.Add(this.txtModel);
             this.Controls.Add(this.btnAddValueModel);
             this.Controls.Add(this.btnDeleteModel);
             this.Controls.Add(this.label5);
@@ -531,32 +531,32 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnDeleteModel;
         private System.Windows.Forms.Button btnAddValueModel;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtModel;
+        private System.Windows.Forms.TextBox txtModalID;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtSoldByID;
+        private System.Windows.Forms.TextBox txtSoldBy;
         private System.Windows.Forms.Button btnAddValueSoldBy;
         private System.Windows.Forms.Button btnDeleteSoldBy;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtSalesBranchID;
+        private System.Windows.Forms.TextBox txtSalesBranch;
         private System.Windows.Forms.Button btnAddValueSalesBranch;
         private System.Windows.Forms.Button btnDeleteSalesBranchID;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtTypeID;
+        private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.Button btnAddValueType;
         private System.Windows.Forms.Button btnDeleteTypeID;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtPaymentMethodID;
+        private System.Windows.Forms.TextBox txtPaymentMethod;
         private System.Windows.Forms.Button btnAddValuePaymentMethod;
         private System.Windows.Forms.Button btnDeletePaymentMethodID;
         private System.Windows.Forms.Button btnMainMenu;

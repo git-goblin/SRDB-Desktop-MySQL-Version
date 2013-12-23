@@ -241,9 +241,6 @@
             // carType
             // 
             this.carType.FormattingEnabled = true;
-            this.carType.Items.AddRange(new object[] {
-            "New",
-            "Renewed"});
             this.carType.Location = new System.Drawing.Point(68, 307);
             this.carType.Name = "carType";
             this.carType.Size = new System.Drawing.Size(143, 21);
@@ -261,9 +258,6 @@
             // paymentMethod
             // 
             this.paymentMethod.FormattingEnabled = true;
-            this.paymentMethod.Items.AddRange(new object[] {
-            "New",
-            "Renewed"});
             this.paymentMethod.Location = new System.Drawing.Point(342, 19);
             this.paymentMethod.Name = "paymentMethod";
             this.paymentMethod.Size = new System.Drawing.Size(91, 21);
