@@ -197,15 +197,37 @@ namespace srdb
                 return false;
             }
         }
-        public DataTable table = new DataTable();
-        public void fill_data(string db_table)
+        public bool cb_CloseConnection()
+        {
+            try
+            {
+                cb_connection.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        //DataTables for the ComboBoxes
+        public DataTable m_table = new DataTable();
+        public DataTable sb_table = new DataTable();
+        public DataTable sbr_table = new DataTable();
+        public DataTable t_table = new DataTable();
+        public DataTable pm_table = new DataTable();
+
+      //ComboBox Fillers
+        public void fill_data_model() //Fill model
         {
             try
             {
                 combobox_initialise();
                 combobox_Open_Connection();
-                MySqlDataAdapter da = new MySqlDataAdapter(db_table, cb_connection);
-                da.Fill(table);
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM model", cb_connection);
+                da.Fill(m_table);
+                cb_CloseConnection();
             }
             catch (Exception ex)
             {
@@ -213,5 +235,68 @@ namespace srdb
             }
         }
 
+        public void fill_data_soldBy() //Fill soldBy
+        {
+            try
+            {
+                combobox_initialise();
+                combobox_Open_Connection();
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM soldBy", cb_connection);
+                da.Fill(sb_table);
+                cb_CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex);
+            }
+        }
+
+        public void fill_data_salesBranch() //Fill salesBranch
+        {
+            try
+            {
+                combobox_initialise();
+                combobox_Open_Connection();
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM salesBranch", cb_connection);
+                da.Fill(sbr_table);
+                cb_CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex);
+            }
+        }
+
+        public void fill_data_type() //Fill type
+        {
+            try
+            {
+                combobox_initialise();
+                combobox_Open_Connection();
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM type", cb_connection);
+                da.Fill(t_table);
+                cb_CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex);
+            }
+        }
+
+        public void fill_data_paymentMethod() //Fill paymentMethod
+        {
+            try
+            {
+                combobox_initialise();
+                combobox_Open_Connection();
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM paymentMethod", cb_connection);
+                da.Fill(pm_table);
+                cb_CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex);
+            }
+        }
     }
 }

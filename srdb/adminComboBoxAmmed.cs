@@ -24,38 +24,15 @@ namespace srdb
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
-            mainMenu mm = new mainMenu();
-            mm.Show();
+            adminControlMenu acm = new adminControlMenu();
+            acm.Show();
         }
 
         private void adminComboBoxAmmed_Load(object sender, EventArgs e)
         {
             //fill the comboboxes here!!!
-            string m_table = "SELECT * FROM model";
-            string sb_table = "SELECT * FROM soldBy";
-            string sbr_table = "SELECT * FROM salesBranch";
-            string t_table = "SELECT * FROM type";
-            string pm_table = "SELECT * FROM paymentMethod";
-
-            dbConnect.fill_data(m_table);
-            dataGridViewModel.DataSource = dbConnect.table;
-            dataGridViewModel.MultiSelect = false;
-
-            dbConnect.fill_data(sb_table);
-            dataGridViewSoldBy.DataSource = dbConnect.table;
-            dataGridViewSoldBy.MultiSelect = false;
-
-            dbConnect.fill_data(sbr_table);
-            dataGridViewSalesBranch.DataSource = dbConnect.table;
-            dataGridViewSalesBranch.MultiSelect = false;
-
-            dbConnect.fill_data(t_table);
-            dataGridViewType.DataSource = dbConnect.table;
-            dataGridViewType.MultiSelect = false;
-
-            dbConnect.fill_data(pm_table);
-            dataGridViewPaymentMethod.DataSource = dbConnect.table;
-            dataGridViewPaymentMethod.MultiSelect = false;
+            load_and_refresh_combobox_values();
+           
         }
         //model CB starts here
         private void btnAddValueModel_Click(object sender, EventArgs e)
@@ -108,6 +85,32 @@ namespace srdb
 
         }
        
+        private void load_and_refresh_combobox_values()
+        {
+            dbConnect.fill_data_model();
+            dataGridViewModel.DataSource = dbConnect.m_table;
+            dataGridViewModel.MultiSelect = false;
 
+            dbConnect.fill_data_soldBy();
+            dataGridViewSoldBy.DataSource = dbConnect.sb_table;
+            dataGridViewSoldBy.MultiSelect = false;
+
+            dbConnect.fill_data_salesBranch();
+            dataGridViewSalesBranch.DataSource = dbConnect.sbr_table;
+            dataGridViewSalesBranch.MultiSelect = false;
+
+            dbConnect.fill_data_type();
+            dataGridViewType.DataSource = dbConnect.t_table;
+            dataGridViewType.MultiSelect = false;
+
+            dbConnect.fill_data_paymentMethod();
+            dataGridViewPaymentMethod.DataSource = dbConnect.pm_table;
+            dataGridViewPaymentMethod.MultiSelect = false;
+        }
+
+        private void btnRefreshConnection_Click(object sender, EventArgs e)
+        {
+            load_and_refresh_combobox_values();
+        }
     }
 }

@@ -69,6 +69,7 @@
             this.btnAddValuePaymentMethod = new System.Windows.Forms.Button();
             this.btnDeletePaymentMethodID = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
+            this.btnRefreshConnection = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewModel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSoldBy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesBranch)).BeginInit();
@@ -438,7 +439,7 @@
             // 
             // btnMainMenu
             // 
-            this.btnMainMenu.Location = new System.Drawing.Point(451, 326);
+            this.btnMainMenu.Location = new System.Drawing.Point(891, 326);
             this.btnMainMenu.Name = "btnMainMenu";
             this.btnMainMenu.Size = new System.Drawing.Size(75, 23);
             this.btnMainMenu.TabIndex = 40;
@@ -446,11 +447,22 @@
             this.btnMainMenu.UseVisualStyleBackColor = true;
             this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
             // 
+            // btnRefreshConnection
+            // 
+            this.btnRefreshConnection.Location = new System.Drawing.Point(12, 326);
+            this.btnRefreshConnection.Name = "btnRefreshConnection";
+            this.btnRefreshConnection.Size = new System.Drawing.Size(75, 23);
+            this.btnRefreshConnection.TabIndex = 41;
+            this.btnRefreshConnection.Text = "Refresh";
+            this.btnRefreshConnection.UseVisualStyleBackColor = true;
+            this.btnRefreshConnection.Click += new System.EventHandler(this.btnRefreshConnection_Click);
+            // 
             // adminComboBoxAmmed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 353);
+            this.Controls.Add(this.btnRefreshConnection);
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
@@ -548,5 +560,6 @@
         private System.Windows.Forms.Button btnAddValuePaymentMethod;
         private System.Windows.Forms.Button btnDeletePaymentMethodID;
         private System.Windows.Forms.Button btnMainMenu;
+        private System.Windows.Forms.Button btnRefreshConnection;
     }
 }
