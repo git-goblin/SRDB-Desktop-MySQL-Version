@@ -36,7 +36,6 @@ namespace srdb
             //form on load
         }
 
-
         private void pull_from_db()
         {
             try
@@ -118,6 +117,13 @@ namespace srdb
         {
             pull_from_db();
             create_PDF();
+        }
+
+        private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            mainMenu mm = new mainMenu();
+            mm.Show();
         }
     }
 }
