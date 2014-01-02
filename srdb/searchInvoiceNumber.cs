@@ -65,7 +65,7 @@ namespace srdb
         private void txtSearchByName_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(table);
-            dv.RowFilter = string.Format("invoiceNumber LIKE '%{0}%'", txtSearchByName.Text);
+            dv.RowFilter = string.Format("invoice_number LIKE '%{0}%'", txtSearchByName.Text);
             dataGridView1.DataSource = dv;
         }
 
