@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 using MySql.Data.MySqlClient;
 
     namespace srdb
@@ -37,7 +36,6 @@ using MySql.Data.MySqlClient;
                 txtTotal.Clear();
                 txtInvoicetotal.Clear();
                 txtCommissionAmount.Clear();
-  
             }
 
             private void btnSelectID_Click(object sender, EventArgs e)
@@ -318,9 +316,3 @@ using MySql.Data.MySqlClient;
             }
         }
     }
-            
-
-
-
-
-
