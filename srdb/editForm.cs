@@ -62,21 +62,22 @@ using MySql.Data.MySqlClient;
                     {
                         while (read.Read())
                             //Gets the value by column name
-                            txtFirstname.Text = read.GetString(read.GetOrdinal("firstName"));
+                        txtFirstname.Text = read.GetString(read.GetOrdinal("firstName"));
                         txtSurname.Text = read.GetString(read.GetOrdinal("surName"));
                         txtAddress1.Text = read.GetString(read.GetOrdinal("address1"));
                         txtAddress2.Text = read.GetString(read.GetOrdinal("address2"));
+                        txtPostcode.Text = read.GetString(read.GetOrdinal("postcode"));
                         txtRegistration.Text = read.GetString(read.GetOrdinal("registration"));
-                        carModel.SelectedText = read.GetString(read.GetOrdinal("carModel"));
-                        dateSold.Text = read.GetString(read.GetOrdinal("dateSold"));
-                        txtInvoicenumber.Text = read.GetString(read.GetOrdinal("invoiceNumber"));
-                        soldBy.Text = read.GetString(read.GetOrdinal("soldBy"));
-                        salesBranch.Text = read.GetString(read.GetOrdinal("salesBranch"));
-                        carType.Text = read.GetString(read.GetOrdinal("carType"));
-                        paymentMethod.Text = read.GetString(read.GetOrdinal("paymentMethod"));
+                        carModel.SelectedText = read.GetString(read.GetOrdinal("model"));
+                        dateSold.Text = read.GetString(read.GetOrdinal("date_sold"));
+                        txtInvoicenumber.Text = read.GetString(read.GetOrdinal("invoice_number"));
+                        soldBy.Text = read.GetString(read.GetOrdinal("sold_by"));
+                        salesBranch.Text = read.GetString(read.GetOrdinal("sales_branch"));
+                        carType.Text = read.GetString(read.GetOrdinal("type"));
+                        paymentMethod.Text = read.GetString(read.GetOrdinal("payment_method"));
                         txtTotal.Text = read.GetString(read.GetOrdinal("total"));
-                        txtInvoicetotal.Text = read.GetString(read.GetOrdinal("invoiceTotal"));
-                        numberofServices.Text = read.GetString(read.GetOrdinal("numberofServices"));
+                        txtInvoicetotal.Text = read.GetString(read.GetOrdinal("invoice_total"));
+                        numberofServices.Text = read.GetString(read.GetOrdinal("number_of_services"));
                         txtCommissionAmount.Text = read.GetString(read.GetOrdinal("commission_amount"));
                    //     cmd.ExecuteNonQuery();
                      //   dbConnect.CloseConnection();
@@ -248,7 +249,7 @@ using MySql.Data.MySqlClient;
                     String surName = txtSurname.Text;
                     String address1 = txtAddress1.Text;
                     String address2 = txtAddress2.Text;
-                    String postcode = txtAddress2.Text;
+                    String postcode = txtPostcode.Text;
                     String registration = txtRegistration.Text;
                     String model = carModel.SelectedText;
                     String date_sold = dateSold.Text;
@@ -263,7 +264,7 @@ using MySql.Data.MySqlClient;
                     String commission_amount = txtCommissionAmount.Text;
                     string ID = txtSelectID.Text;
 
-                    string query = "UPDATE records SET firstName=@firstName, surnName=@surName, address1=@address1, address2=@address2, postcode=@postcode, registration=@registration, model=@model, sold_by=@sold_by, date_sold=@date_sold, invoice_number=@invoice_number, sales_branch=@sales_branch, type=@type, payment_method=@payment_method, total=@total, invoice_total=@invoice_total, number_of_services=@number_of_services, commission_amount=@commission_amount WHERE ID=@ID";
+                    string query = "UPDATE records SET firstName=@firstName, surName=@surName, address1=@address1, address2=@address2, postcode=@postcode, registration=@registration, model=@model, sold_by=@sold_by, date_sold=@date_sold, invoice_number=@invoice_number, sales_branch=@sales_branch, type=@type, payment_method=@payment_method, total=@total, invoice_total=@invoice_total, number_of_services=@number_of_services, commission_amount=@commission_amount WHERE ID=@ID";
 
                     dbConnect.Initialize();
                     dbConnect.OpenConnection();
@@ -292,10 +293,11 @@ using MySql.Data.MySqlClient;
                         cmd.ExecuteNonQuery();
                         dbConnect.CloseConnection();
                     }
+                    MessageBox.Show("Values Updated!");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error updating values" + ex);
+                    MessageBox.Show("Error updating values " + ex);
                 }
             }
 
