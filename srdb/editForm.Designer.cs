@@ -157,11 +157,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(257, 104);
+            this.label15.Location = new System.Drawing.Point(255, 104);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(72, 13);
+            this.label15.Size = new System.Drawing.Size(81, 13);
             this.label15.TabIndex = 63;
-            this.label15.Text = "Invoice Total:";
+            this.label15.Text = "Invoice Total: £";
             // 
             // txtTotal
             // 
@@ -173,11 +173,11 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(281, 78);
+            this.label14.Location = new System.Drawing.Point(273, 78);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(34, 13);
+            this.label14.Size = new System.Drawing.Size(43, 13);
             this.label14.TabIndex = 61;
-            this.label14.Text = "Total:";
+            this.label14.Text = "Total: £";
             // 
             // paymentMethod
             // 
@@ -418,11 +418,11 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(281, 157);
+            this.label17.Location = new System.Drawing.Point(273, 157);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(104, 13);
+            this.label17.Size = new System.Drawing.Size(113, 13);
             this.label17.TabIndex = 73;
-            this.label17.Text = "Commission Amount:";
+            this.label17.Text = "Commission Amount: £";
             // 
             // editForm
             // 
