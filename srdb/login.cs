@@ -41,7 +41,6 @@ namespace srdb
                 cmd.Parameters.AddWithValue("@pass", hashed_pass);
                 if (cmd.ExecuteScalar() != null)
                 {
-                    MessageBox.Show("Welcome!");
                     this.Hide();
                     mainMenu mm = new mainMenu();
                     mm.Show(); 

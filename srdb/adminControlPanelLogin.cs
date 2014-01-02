@@ -39,7 +39,6 @@ namespace srdb
                 cmd.Parameters.AddWithValue("@pass", hashed_pass);
                         if (cmd.ExecuteScalar() != null) // && user_level == "Admin")
                         {
-                            MessageBox.Show("Welcome!");
                             this.Hide();
                             adminControlMenu acm = new adminControlMenu();
                             acm.Show();
