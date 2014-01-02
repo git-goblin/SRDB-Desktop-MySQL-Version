@@ -37,6 +37,7 @@ namespace srdb
                 using (MySqlCommand cmd = new MySqlCommand(DELETE_ROW, dbConnect.connection))
                 {
                     cmd.Parameters.AddWithValue("@ID", txtDeleteRow.Text);
+                    cmd.ExecuteNonQuery();
                     dbConnect.CloseConnection();
                 }
             } 
