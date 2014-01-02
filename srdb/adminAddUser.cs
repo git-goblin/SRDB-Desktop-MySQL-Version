@@ -88,5 +88,10 @@ namespace srdb
             adminControlMenu acm = new adminControlMenu();
             acm.Show();
         }
+
+        private void adminAddUser_Load(object sender, EventArgs e)
+        {
+            rbStandardUser.Checked = true;
+        }
     }
 }

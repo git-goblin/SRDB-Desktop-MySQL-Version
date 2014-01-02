@@ -190,6 +190,7 @@
             this.Controls.Add(this.btnAddUser);
             this.Name = "adminAddUser";
             this.Text = "Admin Add User";
+            this.Load += new System.EventHandler(this.adminAddUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
