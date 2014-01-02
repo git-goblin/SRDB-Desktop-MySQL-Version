@@ -72,6 +72,7 @@
             // 
             // soldBy
             // 
+            this.soldBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.soldBy.FormattingEnabled = true;
             this.soldBy.Location = new System.Drawing.Point(79, 280);
             this.soldBy.Name = "soldBy";
@@ -110,6 +111,7 @@
             // 
             // numberofServices
             // 
+            this.numberofServices.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.numberofServices.FormattingEnabled = true;
             this.numberofServices.Items.AddRange(new object[] {
             "0",
@@ -182,6 +184,7 @@
             // 
             // paymentMethod
             // 
+            this.paymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.paymentMethod.FormattingEnabled = true;
             this.paymentMethod.Items.AddRange(new object[] {
             "New",
@@ -202,6 +205,7 @@
             // 
             // carType
             // 
+            this.carType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.carType.FormattingEnabled = true;
             this.carType.Items.AddRange(new object[] {
             "New",
@@ -222,6 +226,7 @@
             // 
             // salesBranch
             // 
+            this.salesBranch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.salesBranch.FormattingEnabled = true;
             this.salesBranch.Location = new System.Drawing.Point(79, 307);
             this.salesBranch.Name = "salesBranch";
@@ -280,6 +285,7 @@
             // 
             // carModel
             // 
+            this.carModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.carModel.FormattingEnabled = true;
             this.carModel.Location = new System.Drawing.Point(79, 202);
             this.carModel.Name = "carModel";
