@@ -212,7 +212,7 @@ namespace srdb
                 String surName = txtSurname.Text;
                 String address1 = txtAddress1.Text;
                 String address2 = txtAddress2.Text;
-                String postcode = txtAddress2.Text;
+                String postcode = txtPostcode.Text;
                 String registration = txtRegistration.Text;
                 String model = carModel.SelectedText;
                 String date_sold = dateSold.Text;
@@ -247,7 +247,11 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@invoice_total", invoice_total);
                     cmd.Parameters.AddWithValue("@number_of_services", number_of_services);
                     cmd.Parameters.AddWithValue("@commission_amount", commission_amount);
+                   
+                    cmd.ExecuteNonQuery();
+                    dbConnect.CloseConnection();
                 }
+                MessageBox.Show("Record Added!");
             }
             catch (Exception ex)
             {
@@ -265,6 +269,7 @@ namespace srdb
             txtRegistration.Clear();
             txtInvoicenumber.Clear();
             txtTotal.Clear();
+            txtPostcode.Clear();
             txtInvoicetotal.Clear();
             txtCommissionAmount.Clear();
 
