@@ -28,12 +28,12 @@ namespace srdb
         {
             try
             {
-             /*  int var1 = val.validate_name(txtFirstName.Text);
+               int var1 = val.validate_name(txtFirstName.Text);
                int var2 = val.validate_name(txtSurName.Text);
                if (var1 != 1 && var2 !=1)
                 {
                     return;
-                } */
+                } 
                 if (txtPassword.Text == "" || txtPassword.TextLength < 7)
                 {
                     MessageBox.Show("Password Cannot be blank and must be greater than 7 characters!");

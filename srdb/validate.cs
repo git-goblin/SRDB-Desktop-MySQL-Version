@@ -26,7 +26,7 @@ namespace srdb
         
         public int validate_name(string input)
         {
-            Regex regex_name = new Regex("/^[a-zA-ZàáâäãåąćęèéêëìíîïłńòóôöõøùúûüÿýżźñçčšžÀÁÂÄÃÅĄĆĘÈÉÊËÌÍÎÏŁŃÒÓÔÖÕØÙÚÛÜŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u"); //[A-Z][a-z]+( [A-Z][a-z]+) old REGEX
+            Regex regex_name = new Regex("^[A-Z][a-zA-Z]*$"); //@"/^[a-zA-ZàáâäãåąćęèéêëìíîïłńòóôöõøùúûüÿýżźñçčšžÀÁÂÄÃÅĄĆĘÈÉÊËÌÍÎÏŁŃÒÓÔÖÕØÙÚÛÜŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u"); //[A-Z][a-z]+( [A-Z][a-z]+) old REGEX
             if (regex_name.IsMatch(input) && input != "") 
             {
                 return 1;

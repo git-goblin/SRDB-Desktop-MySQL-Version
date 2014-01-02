@@ -392,11 +392,11 @@
             // 
             // btnSelectID
             // 
-            this.btnSelectID.Location = new System.Drawing.Point(147, 12);
+            this.btnSelectID.Location = new System.Drawing.Point(44, 12);
             this.btnSelectID.Name = "btnSelectID";
-            this.btnSelectID.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectID.Size = new System.Drawing.Size(178, 23);
             this.btnSelectID.TabIndex = 71;
-            this.btnSelectID.Text = "Select ID";
+            this.btnSelectID.Text = "Select Service Record ID";
             this.btnSelectID.UseVisualStyleBackColor = true;
             this.btnSelectID.Click += new System.EventHandler(this.btnSelectID_Click);
             // 
