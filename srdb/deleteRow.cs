@@ -33,13 +33,14 @@ namespace srdb
                 }
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
-                string DELETE_ROW = "INSERT INTO deleted_records SELECT * FROM records WHERE ID=@ID";
+                string DELETE_ROW = "DELETE FROM records WHERE ID=@ID";
                 using (MySqlCommand cmd = new MySqlCommand(DELETE_ROW, dbConnect.connection))
                 {
                     cmd.Parameters.AddWithValue("@ID", txtDeleteRow.Text);
                     cmd.ExecuteNonQuery();
                     dbConnect.CloseConnection();
                 }
+                MessageBox.Show("Row successfully deleted!");
             } 
             catch (Exception ex)
             {
