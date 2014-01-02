@@ -207,9 +207,6 @@
             // 
             this.carType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.carType.FormattingEnabled = true;
-            this.carType.Items.AddRange(new object[] {
-            "New",
-            "Renewed"});
             this.carType.Location = new System.Drawing.Point(79, 334);
             this.carType.Name = "carType";
             this.carType.Size = new System.Drawing.Size(143, 21);
@@ -285,6 +282,7 @@
             // 
             // carModel
             // 
+            this.carModel.DisplayMember = "(none)";
             this.carModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.carModel.FormattingEnabled = true;
             this.carModel.Location = new System.Drawing.Point(79, 202);

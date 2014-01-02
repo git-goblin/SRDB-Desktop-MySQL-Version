@@ -295,6 +295,12 @@ namespace srdb
             loadSalesBranchCB();
             loadTypeCB();
             loadPaymentMethodCB();
+            carModel.SelectedIndex = 0;
+            soldBy.SelectedIndex = 0;
+            salesBranch.SelectedIndex = 0;
+            carType.SelectedIndex = 0;
+            paymentMethod.SelectedIndex = 0;
+            numberofServices.SelectedIndex = 0;
         }
     }
 }
