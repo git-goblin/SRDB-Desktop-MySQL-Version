@@ -32,6 +32,7 @@
             this.btnAddrecord = new System.Windows.Forms.Button();
             this.btnSearchrecords = new System.Windows.Forms.Button();
             this.btnAdminpanel = new System.Windows.Forms.Button();
+            this.btnGeneratePDF = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddrecord
@@ -56,7 +57,7 @@
             // 
             // btnAdminpanel
             // 
-            this.btnAdminpanel.Location = new System.Drawing.Point(93, 103);
+            this.btnAdminpanel.Location = new System.Drawing.Point(12, 103);
             this.btnAdminpanel.Name = "btnAdminpanel";
             this.btnAdminpanel.Size = new System.Drawing.Size(110, 41);
             this.btnAdminpanel.TabIndex = 2;
@@ -64,11 +65,22 @@
             this.btnAdminpanel.UseVisualStyleBackColor = true;
             this.btnAdminpanel.Click += new System.EventHandler(this.btnAdminpanel_Click);
             // 
+            // btnGeneratePDF
+            // 
+            this.btnGeneratePDF.Location = new System.Drawing.Point(172, 103);
+            this.btnGeneratePDF.Name = "btnGeneratePDF";
+            this.btnGeneratePDF.Size = new System.Drawing.Size(110, 41);
+            this.btnGeneratePDF.TabIndex = 3;
+            this.btnGeneratePDF.Text = "Generate PDF";
+            this.btnGeneratePDF.UseVisualStyleBackColor = true;
+            this.btnGeneratePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
+            // 
             // mainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(294, 156);
+            this.Controls.Add(this.btnGeneratePDF);
             this.Controls.Add(this.btnAdminpanel);
             this.Controls.Add(this.btnSearchrecords);
             this.Controls.Add(this.btnAddrecord);
@@ -85,5 +97,6 @@
         private System.Windows.Forms.Button btnAddrecord;
         private System.Windows.Forms.Button btnSearchrecords;
         private System.Windows.Forms.Button btnAdminpanel;
+        private System.Windows.Forms.Button btnGeneratePDF;
     }
 }

@@ -37,5 +37,12 @@ namespace srdb
             adminControlPanelLogin acpl = new adminControlPanelLogin();
             acpl.Show();
         }
+
+        private void btnGeneratePDF_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            PDFGenerator pg = new PDFGenerator();
+            pg.Show();
+        }
     }
 }
