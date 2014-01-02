@@ -470,6 +470,7 @@
             this.Controls.Add(this.label1);
             this.Name = "editForm";
             this.Text = "Edit Record";
+            this.Load += new System.EventHandler(this.editForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -25,36 +25,166 @@ namespace srdb
             val = new validate();
         }
 
-        public void loadComboBoxes()
-        {
-            try
-            {
-                dbConnect.combobox_initialise();
-                dbConnect.combobox_Open_Connection();
+        /* public void loadComboBoxes()
+       {
+           try
+           {
+               dbConnect.combobox_initialise();
+               dbConnect.combobox_Open_Connection();
 
-                var query = "SELECT model FROM model; SELECT soldBy FROM soldBy; SELECT salesBranch FROM salesBranch; SELECT type FROM type; SELECT paymentMethod FROM paymentMethod;";//"SELECT model FROM model UNION SELECT soldBy FROM soldBy UNION SELECT salesBranch FROM salesBranch UNION SELECT type FROM type UNION SELECT paymentMethod FROM paymentMethod" ;    //"SELECT model, soldBy, salesBranch, type, paymentMethod FROM comboboxlist";
-                using (var command = new MySqlCommand(query, dbConnect.cb_connection))
-                {
-                    using (var reader = command.ExecuteReader())
-                    {
-                        //Iterate through the rows and add it to the combobox's items
-                        while (reader.Read())
-                        {
-                            //CustomerIdComboBox.Items.Add(reader.GetString("Id"));
-                            carModel.Items.Add(reader.GetString("model"));
-                            soldBy.Items.Add(reader.GetString("soldBy"));
-                            salesBranch.Items.Add(reader.GetString("salesBranch"));
-                            carType.Items.Add(reader.GetString("type"));
-                            paymentMethod.Items.Add(reader.GetString("paymentMethod"));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading ComboBoxes" + ex);
-            }
-        }
+               var query = "SELECT model FROM model; SELECT soldBy FROM soldBy; SELECT salesBranch FROM salesBranch; SELECT type FROM type; SELECT paymentMethod FROM paymentMethod;";//"SELECT model FROM model UNION SELECT soldBy FROM soldBy UNION SELECT salesBranch FROM salesBranch UNION SELECT type FROM type UNION SELECT paymentMethod FROM paymentMethod" ;    //"SELECT model, soldBy, salesBranch, type, paymentMethod FROM comboboxlist";
+               using (var command = new MySqlCommand(query, dbConnect.cb_connection))
+               {
+                   using (var reader = command.ExecuteReader())
+                   {
+                       //Iterate through the rows and add it to the combobox's items
+                       while (reader.Read())
+                       {
+                           //CustomerIdComboBox.Items.Add(reader.GetString("Id"));
+                           carModel.Items.Add(reader.GetString("model"));
+                           soldBy.Items.Add(reader.GetString("soldBy"));
+                           salesBranch.Items.Add(reader.GetString("salesBranch"));
+                           carType.Items.Add(reader.GetString("type"));
+                           paymentMethod.Items.Add(reader.GetString("paymentMethod"));
+                       }
+                   }
+               }
+           } 
+           catch (Exception ex)
+           {
+               MessageBox.Show("Error loading ComboBoxes" + ex);
+           }
+       }*/
+
+       public void loadCarModelCB()
+       {
+           try
+           {
+               dbConnect.combobox_initialise();
+               dbConnect.combobox_Open_Connection();
+
+               var query = "SELECT model FROM model";
+               using (var command = new MySqlCommand(query, dbConnect.cb_connection))
+               {
+                   using (var reader = command.ExecuteReader())
+                   {
+                       //Iterate through the rows and add it to the combobox's items
+                       while (reader.Read())
+                       {
+                           carModel.Items.Add(reader.GetString("model"));
+                       }
+                   }
+               }
+           } 
+           catch (Exception ex)
+           {
+               MessageBox.Show("Error loading model ComboBox " + ex);
+           }
+       }
+ 
+       public void loadSoldByCB()
+       {
+           try
+           {
+               dbConnect.combobox_initialise();
+               dbConnect.combobox_Open_Connection();
+
+               var query = "SELECT soldBy FROM soldBy";
+               using (var command = new MySqlCommand(query, dbConnect.cb_connection))
+               {
+                   using (var reader = command.ExecuteReader())
+                   {
+                       //Iterate through the rows and add it to the combobox's items
+                       while (reader.Read())
+                       {
+                           soldBy.Items.Add(reader.GetString("soldBy"));
+                       }
+                   }
+               }
+           } 
+           catch (Exception ex)
+           {
+               MessageBox.Show("Error loading soldBy ComboBox " + ex);
+           }
+       }
+
+       public void loadSalesBranchCB()
+       {
+           try
+           {
+               dbConnect.combobox_initialise();
+               dbConnect.combobox_Open_Connection();
+
+               var query = "SELECT salesBranch FROM salesBranch";
+               using (var command = new MySqlCommand(query, dbConnect.cb_connection))
+               {
+                   using (var reader = command.ExecuteReader())
+                   {
+                       //Iterate through the rows and add it to the combobox's items
+                       while (reader.Read())
+                       {
+                           salesBranch.Items.Add(reader.GetString("salesBranch"));
+                       }
+                   }
+               }
+           } 
+           catch (Exception ex)
+           {
+               MessageBox.Show("Error loading salesBranch ComboBox " + ex);
+           }
+       }
+    public void loadTypeCB()
+       {
+           try
+           {
+               dbConnect.combobox_initialise();
+               dbConnect.combobox_Open_Connection();
+
+               var query = "SELECT type FROM type";
+               using (var command = new MySqlCommand(query, dbConnect.cb_connection))
+               {
+                   using (var reader = command.ExecuteReader())
+                   {
+                       //Iterate through the rows and add it to the combobox's items
+                       while (reader.Read())
+                       {
+                           carType.Items.Add(reader.GetString("type"));
+                       }
+                   }
+               }
+           } 
+           catch (Exception ex)
+           {
+               MessageBox.Show("Error loading type ComboBox " + ex);
+           }
+       }
+
+        public void loadPaymentMethodCB()
+       {
+           try
+           {
+               dbConnect.combobox_initialise();
+               dbConnect.combobox_Open_Connection();
+
+               var query = "SELECT paymentMethod FROM paymentMethod";
+               using (var command = new MySqlCommand(query, dbConnect.cb_connection))
+               {
+                   using (var reader = command.ExecuteReader())
+                   {
+                       //Iterate through the rows and add it to the combobox's items
+                       while (reader.Read())
+                       {
+                           paymentMethod.Items.Add(reader.GetString("paymentMethod"));
+                       }
+                   }
+               }
+           } 
+           catch (Exception ex)
+           {
+               MessageBox.Show("Error loading paymentMethod ComboBox " + ex);
+           }
+       }
+      
 
         private void btnAddrecord_Click(object sender, EventArgs e)
         {
@@ -149,7 +279,11 @@ namespace srdb
 
         private void addRecord_Load(object sender, EventArgs e)
         {
-            loadComboBoxes();
+            loadCarModelCB();
+            loadSoldByCB();
+            loadSalesBranchCB();
+            loadTypeCB();
+            loadPaymentMethodCB();
         }
     }
 }
