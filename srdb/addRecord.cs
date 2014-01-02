@@ -272,7 +272,13 @@ namespace srdb
             txtPostcode.Clear();
             txtInvoicetotal.Clear();
             txtCommissionAmount.Clear();
-
+            carModel.SelectedIndex = -1;
+            soldBy.SelectedIndex = -1;
+            salesBranch.SelectedIndex = -1;
+            carType.SelectedIndex = -1;
+            paymentMethod.SelectedIndex = -1;
+            numberofServices.SelectedIndex = -1;
+            dateSold.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
