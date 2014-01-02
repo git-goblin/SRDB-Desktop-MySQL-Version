@@ -54,7 +54,7 @@ namespace srdb
          
         public int validate_id(string input)
         {
-            Regex regex_ID = new Regex("^[0-9]{1,45}$");
+            Regex regex_ID = new Regex("^[0-9]{1,999999}$");
             if (regex_ID.IsMatch(input) && input != "")
             {
                 return 1;
