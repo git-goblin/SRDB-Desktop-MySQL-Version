@@ -88,11 +88,12 @@ namespace srdb
         {
             try
             {
+                string file_name = Invoicenumber;
                 FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
                 fbd.ShowDialog();
                 string u_path = fbd.SelectedPath;
                 var document = new Document();
-                PdfWriter.GetInstance(document, new FileStream(u_path + "/Tables.pdf", FileMode.Create));
+                PdfWriter.GetInstance(document, new FileStream(u_path + "/"+file_name+".pdf", FileMode.Create));
                 document.Open();
                 document.Add(new Paragraph("My First PDF"));
                 PdfPTable table = new PdfPTable(3);
@@ -105,12 +106,13 @@ namespace srdb
                 table.AddCell("Value 3");
                 document.Add(table);
                 document.Close();
+                MessageBox.Show("PDF Successfully created!");
             } 
             catch (Exception ex)
             {
                 MessageBox.Show("Error creating PDF! " + ex);
             }
-            MessageBox.Show("PDF Successfully created!");
+            
         }
 
         private void btnCreatePDF_Click(object sender, EventArgs e)
