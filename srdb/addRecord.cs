@@ -214,7 +214,7 @@ namespace srdb
                 String address2 = txtAddress2.Text;
                 String postcode = txtPostcode.Text;
                 String registration = txtRegistration.Text;
-                String model = carModel.SelectedText;
+                String model = carModel.Text;
                 String date_sold = dateSold.Text;
                 String invoiceNumber = txtInvoicenumber.Text;
                 String sold_by = soldBy.Text;
