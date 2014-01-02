@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminComboBoxAmmed));
             this.dataGridViewModel = new System.Windows.Forms.DataGridView();
             this.dataGridViewSoldBy = new System.Windows.Forms.DataGridView();
             this.dataGridViewSalesBranch = new System.Windows.Forms.DataGridView();
@@ -504,7 +505,9 @@
             this.Controls.Add(this.dataGridViewSalesBranch);
             this.Controls.Add(this.dataGridViewSoldBy);
             this.Controls.Add(this.dataGridViewModel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "adminComboBoxAmmed";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin ComboBox Ammed";
             this.Load += new System.EventHandler(this.adminComboBoxAmmed_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewModel)).EndInit();

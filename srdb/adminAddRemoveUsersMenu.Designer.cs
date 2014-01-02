@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminAddRemoveUsersMenu));
             this.btnAddNewUser = new System.Windows.Forms.Button();
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.btnViewAllUsers = new System.Windows.Forms.Button();
@@ -83,7 +84,9 @@
             this.Controls.Add(this.btnViewAllUsers);
             this.Controls.Add(this.btnDeleteUser);
             this.Controls.Add(this.btnAddNewUser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "adminAddRemoveUsersMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Add/Remove Users Menu";
             this.ResumeLayout(false);
 

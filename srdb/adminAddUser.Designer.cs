@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminAddUser));
             this.btnAddUser = new System.Windows.Forms.Button();
             this.btnClearForm = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
@@ -188,7 +189,9 @@
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.btnClearForm);
             this.Controls.Add(this.btnAddUser);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "adminAddUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Add User";
             this.Load += new System.EventHandler(this.adminAddUser_Load);
             this.ResumeLayout(false);

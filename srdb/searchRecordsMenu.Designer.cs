@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(searchRecordsMenu));
             this.btnSearchDate = new System.Windows.Forms.Button();
             this.btnSearchName = new System.Windows.Forms.Button();
             this.btnSearchInvoiceNumber = new System.Windows.Forms.Button();
@@ -95,7 +96,9 @@
             this.Controls.Add(this.btnSearchSoldyBy);
             this.Controls.Add(this.btnSearchName);
             this.Controls.Add(this.btnSearchDate);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "searchRecordsMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search Options";
             this.ResumeLayout(false);
 

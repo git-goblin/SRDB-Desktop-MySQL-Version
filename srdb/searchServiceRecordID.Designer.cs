@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(searchServiceRecordID));
             this.txtSearchBySRDBID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnMainMenu = new System.Windows.Forms.Button();
@@ -91,7 +92,9 @@
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.btnEditRecord);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "searchServiceRecordID";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search By Service Record ID";
             this.Load += new System.EventHandler(this.searchServiceRecordID_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

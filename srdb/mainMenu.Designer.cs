@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainMenu));
             this.btnAddrecord = new System.Windows.Forms.Button();
             this.btnSearchrecords = new System.Windows.Forms.Button();
             this.btnAdminpanel = new System.Windows.Forms.Button();
@@ -71,7 +72,9 @@
             this.Controls.Add(this.btnAdminpanel);
             this.Controls.Add(this.btnSearchrecords);
             this.Controls.Add(this.btnAddrecord);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "mainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main Menu";
             this.ResumeLayout(false);
 

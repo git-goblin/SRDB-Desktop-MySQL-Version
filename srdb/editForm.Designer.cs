@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(editForm));
             this.soldBy = new System.Windows.Forms.ComboBox();
             this.btnMenu = new System.Windows.Forms.Button();
             this.btnSaveChanges = new System.Windows.Forms.Button();
@@ -468,7 +469,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFirstname);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "editForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Record";
             this.Load += new System.EventHandler(this.editForm_Load);
             this.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminOtherQueries));
             this.btnExecuteQuery = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSQLQuery = new System.Windows.Forms.TextBox();
@@ -79,7 +80,9 @@
             this.Controls.Add(this.txtSQLQuery);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnExecuteQuery);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "adminOtherQueries";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Other Queries";
             this.ResumeLayout(false);
             this.PerformLayout();

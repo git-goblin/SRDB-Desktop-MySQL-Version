@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminSQLQueryMenu));
             this.btnSearchQuery = new System.Windows.Forms.Button();
             this.btnOtherQueries = new System.Windows.Forms.Button();
             this.linkLabelSQL = new System.Windows.Forms.LinkLabel();
@@ -74,7 +75,9 @@
             this.Controls.Add(this.linkLabelSQL);
             this.Controls.Add(this.btnOtherQueries);
             this.Controls.Add(this.btnSearchQuery);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "adminSQLQueryMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin SQL Query Menu";
             this.ResumeLayout(false);
             this.PerformLayout();
