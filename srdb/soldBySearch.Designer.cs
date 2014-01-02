@@ -93,6 +93,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "soldBySearch";
             this.Text = "Search Sold By";
+            this.Load += new System.EventHandler(this.soldBySearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

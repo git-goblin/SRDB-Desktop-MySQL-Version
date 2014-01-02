@@ -65,8 +65,13 @@ namespace srdb
         private void txtSearchByName_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(table);
-            dv.RowFilter = string.Format("dateSold LIKE '%{0}%'", txtSearchByDate.Text);
+            dv.RowFilter = string.Format("date_sold LIKE '%{0}%'", txtSearchByDate.Text);
             dataGridView1.DataSource = dv;
+        }
+
+        private void searchByDate_Load(object sender, EventArgs e)
+        {
+            fillData();
         }
     }
 }

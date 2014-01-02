@@ -70,5 +70,10 @@ namespace srdb
             dataGridView1.DataSource = dv;
         }
 
+        private void searchByName_Load(object sender, EventArgs e)
+        {
+            fillData();
+        }
+
     }
 }

@@ -93,6 +93,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "searchInvoiceNumber";
             this.Text = "Search By Invoice Number";
+            this.Load += new System.EventHandler(this.searchInvoiceNumber_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

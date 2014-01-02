@@ -93,6 +93,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "searchServiceRecordID";
             this.Text = "Search By Service Record ID";
+            this.Load += new System.EventHandler(this.searchServiceRecordID_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

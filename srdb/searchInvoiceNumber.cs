@@ -68,5 +68,10 @@ namespace srdb
             dv.RowFilter = string.Format("invoiceNumber LIKE '%{0}%'", txtSearchByName.Text);
             dataGridView1.DataSource = dv;
         }
+
+        private void searchInvoiceNumber_Load(object sender, EventArgs e)
+        {
+            fillData();
+        }
     }
 }

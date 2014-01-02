@@ -52,5 +52,10 @@ namespace srdb
             dv.RowFilter = string.Format("ID LIKE '%{0}%'", txtSearchBySRDBID.Text);
             dataGridView1.DataSource = dv;
         }
+
+        private void searchServiceRecordID_Load(object sender, EventArgs e)
+        {
+            fillData();
+        }
     }
 }

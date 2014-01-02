@@ -78,6 +78,8 @@ using MySql.Data.MySqlClient;
                         txtInvoicetotal.Text = read.GetString(read.GetOrdinal("invoiceTotal"));
                         numberofServices.Text = read.GetString(read.GetOrdinal("numberofServices"));
                         txtCommissionAmount.Text = read.GetString(read.GetOrdinal("commission_amount"));
+                   //     cmd.ExecuteNonQuery();
+                     //   dbConnect.CloseConnection();
                     }
                 } 
                    
@@ -287,6 +289,8 @@ using MySql.Data.MySqlClient;
                         cmd.Parameters.AddWithValue("@invoice_total", invoice_total);
                         cmd.Parameters.AddWithValue("@number_of_services", number_of_services);
                         cmd.Parameters.AddWithValue("@commission_amount", commission_amount);
+                        cmd.ExecuteNonQuery();
+                        dbConnect.CloseConnection();
                     }
                 }
                 catch (Exception ex)
