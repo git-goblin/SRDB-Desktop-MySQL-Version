@@ -318,7 +318,9 @@ namespace srdb
 
         private void btnRefreshConnection_Click(object sender, EventArgs e)
         {
-            load_and_refresh_combobox_values();
+            this.Hide();
+            adminComboBoxAmmed acbm = new adminComboBoxAmmed();
+            acbm.Show();
         }
     }
 }
