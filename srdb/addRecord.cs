@@ -78,7 +78,7 @@ namespace srdb
            } 
            catch (Exception ex)
            {
-               MessageBox.Show("Error loading model ComboBox " + ex);
+               MessageBox.Show("Error loading model ComboBox " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
            }
        }
  
@@ -104,7 +104,7 @@ namespace srdb
            } 
            catch (Exception ex)
            {
-               MessageBox.Show("Error loading soldBy ComboBox " + ex);
+               MessageBox.Show("Error loading soldBy ComboBox " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
            }
        }
 
@@ -130,7 +130,7 @@ namespace srdb
            } 
            catch (Exception ex)
            {
-               MessageBox.Show("Error loading salesBranch ComboBox " + ex);
+               MessageBox.Show("Error loading salesBranch ComboBox " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
            }
        }
     public void loadTypeCB()
@@ -155,7 +155,7 @@ namespace srdb
            } 
            catch (Exception ex)
            {
-               MessageBox.Show("Error loading type ComboBox " + ex);
+               MessageBox.Show("Error loading type ComboBox " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
            }
        }
 
@@ -181,7 +181,7 @@ namespace srdb
            } 
            catch (Exception ex)
            {
-               MessageBox.Show("Error loading paymentMethod ComboBox " + ex);
+               MessageBox.Show("Error loading paymentMethod ComboBox " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
            }
        }
       
@@ -255,7 +255,7 @@ namespace srdb
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error adding this record!" + ex);
+                MessageBox.Show("Error adding this record!" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -313,7 +313,7 @@ namespace srdb
             }
             catch (Exception)
             {
-                MessageBox.Show("Error auto-calculating VAT");
+                MessageBox.Show("Error auto-calculating VAT", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -43,7 +43,7 @@ namespace srdb
               { 
                     if (txtModel.Text == "")
                     {
-                        MessageBox.Show("Input Required!");
+                        MessageBox.Show("Input Required!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     dbConnect.combobox_initialise();
@@ -54,11 +54,11 @@ namespace srdb
                         cmd.Parameters.AddWithValue("@input_value", txtModel.Text);
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Value added!");
+                    MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error adding value" + ex);
+                    MessageBox.Show("Error adding value" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
         }
 
@@ -80,11 +80,11 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
-                MessageBox.Show("Value Deleted!");
+                MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Deleting the row!" + ex);
+                MessageBox.Show("Error Deleting the row!" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //soldBy CB starts here
@@ -94,7 +94,7 @@ namespace srdb
             {
                 if (txtSoldBy.Text == "")
                 {
-                    MessageBox.Show("Input Required!");
+                    MessageBox.Show("Input Required!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 dbConnect.combobox_initialise();
@@ -106,11 +106,11 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
-                MessageBox.Show("Value Deleted!");
+                MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error adding value" + ex);
+                MessageBox.Show("Error adding value" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -132,11 +132,11 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
-                MessageBox.Show("Value Deleted!");
+                MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Deleting the row!" + ex);
+                MessageBox.Show("Error Deleting the row!" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //salesBranch CB starts here
@@ -146,7 +146,7 @@ namespace srdb
             {
                 if (txtSalesBranch.Text == "")
                 {
-                    MessageBox.Show("Input Required!");
+                    MessageBox.Show("Input Required!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 dbConnect.combobox_initialise();
@@ -157,11 +157,11 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@input_value", txtSalesBranch.Text);
                     cmd.ExecuteNonQuery();
                 }
-                MessageBox.Show("Value added!");
+                MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error adding value" + ex);
+                MessageBox.Show("Error adding value" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -183,11 +183,11 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
-                MessageBox.Show("Value Deleted!");
+                MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Deleting the row!" + ex);
+                MessageBox.Show("Error Deleting the row!" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //type CB starts here
@@ -197,7 +197,7 @@ namespace srdb
             {
                 if (txtType.Text == "")
                 {
-                    MessageBox.Show("Input Required!");
+                    MessageBox.Show("Input Required!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 dbConnect.combobox_initialise();
@@ -208,11 +208,11 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@input_value", txtType.Text);
                     cmd.ExecuteNonQuery();
                 }
-                MessageBox.Show("Value added!");
+                MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error adding value" + ex);
+                MessageBox.Show("Error adding value" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -234,11 +234,11 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
-                MessageBox.Show("Value Deleted!");
+                MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Deleting the row!" + ex);
+                MessageBox.Show("Error Deleting the row!" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //paymentMethod CB starts here
@@ -248,7 +248,7 @@ namespace srdb
             {
                 if (txtPaymentMethod.Text == "")
                 {
-                    MessageBox.Show("Input Required!");
+                    MessageBox.Show("Input Required!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 dbConnect.combobox_initialise();
@@ -259,11 +259,11 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@input_value", txtPaymentMethod.Text);
                     cmd.ExecuteNonQuery();
                 }
-                MessageBox.Show("Value added!");
+                MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error adding value" + ex);
+                MessageBox.Show("Error adding value" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -285,11 +285,11 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
-                MessageBox.Show("Value Deleted!");
+                MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Deleting the row!" + ex);
+                MessageBox.Show("Error Deleting the row!" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
        

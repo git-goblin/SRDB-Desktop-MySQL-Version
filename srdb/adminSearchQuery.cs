@@ -26,6 +26,7 @@ namespace srdb
         { 
             if (txtSQLQuery.Text == "")
             {
+                MessageBox.Show("Input Required!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 return;
             }
 

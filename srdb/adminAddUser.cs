@@ -36,7 +36,7 @@ namespace srdb
                 } 
                 if (txtPassword.Text == "" || txtPassword.TextLength < 7)
                 {
-                    MessageBox.Show("Password Cannot be blank and must be greater than 7 characters!");
+                    MessageBox.Show("Password Cannot be blank and must be greater than 7 characters!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                     return;
                 } 
                 
@@ -66,11 +66,11 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@user_level", user_level);
                     cmd.ExecuteNonQuery();
                 }
-                MessageBox.Show("User added successfully!\nTheir username is: " + username); 
+                MessageBox.Show("User added successfully!\nTheir username is: " + username, "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information); 
             } 
             catch (Exception ex)
             {
-                MessageBox.Show("Error Adding User " + ex);
+                MessageBox.Show("Error Adding User " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

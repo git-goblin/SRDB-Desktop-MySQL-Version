@@ -19,7 +19,7 @@ namespace srdb
             } 
             else 
             {
-                MessageBox.Show("Invalid details or missing fields on the form! Review before sending again"); 
+                MessageBox.Show("Invalid details or missing fields on the form! Review before sending again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error); 
                 return 0;
             }
         }
@@ -33,7 +33,7 @@ namespace srdb
             } 
             else
             {
-                MessageBox.Show("Invalid input for name!");
+                MessageBox.Show("Invalid input for name!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -47,7 +47,7 @@ namespace srdb
             } 
             else
             {
-                MessageBox.Show("Invalid input for postcode!");
+                MessageBox.Show("Invalid input for postcode!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         } 
@@ -61,7 +61,7 @@ namespace srdb
             } 
             else
             {
-                MessageBox.Show("Invalid input for ID!");
+                MessageBox.Show("Invalid input for ID!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -75,7 +75,7 @@ namespace srdb
             } 
             else
             {
-                MessageBox.Show("Invalid input for this value!");
+                MessageBox.Show("Invalid input for this value!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -88,7 +88,7 @@ namespace srdb
             }
             else
             {
-                MessageBox.Show("Invalid input for registration!");
+                MessageBox.Show("Invalid input for registration!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }

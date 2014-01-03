@@ -63,11 +63,11 @@ namespace srdb
                 switch (ex.Number)
                 {
                     case 0:
-                        MessageBox.Show("Cannot connect to server.  Contact administrator");
+                        MessageBox.Show("Cannot connect to server.  Contact administrator", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
 
                     case 1045:
-                        MessageBox.Show("Invalid username/password, please try again");
+                        MessageBox.Show("Invalid username/password, please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                 }
                         return false;
@@ -105,11 +105,11 @@ namespace srdb
                     //close connection
                     this.CloseConnection();
                 }
-                MessageBox.Show("Command executed successfully!");
+                MessageBox.Show("Command executed successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error executing command! " + ex);
+                MessageBox.Show("Error executing command! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void login_initialise()
@@ -147,11 +147,11 @@ namespace srdb
                 switch (ex.Number)
                 {
                     case 0:
-                        MessageBox.Show("Cannot connect to server.  Contact administrator");
+                        MessageBox.Show("Cannot connect to server.  Contact administrator", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
 
                     case 1045:
-                        MessageBox.Show("Invalid username/password, please try again");
+                        MessageBox.Show("Invalid username/password, please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                 }
                 return false;
@@ -187,11 +187,11 @@ namespace srdb
                 switch (ex.Number)
                 {
                     case 0:
-                        MessageBox.Show("Cannot connect to server.  Contact administrator");
+                        MessageBox.Show("Cannot connect to server.  Contact administrator", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
 
                     case 1045:
-                        MessageBox.Show("Invalid username/password, please try again");
+                        MessageBox.Show("Invalid username/password, please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                 }
                 return false;
@@ -231,7 +231,7 @@ namespace srdb
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex);
+                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -247,7 +247,7 @@ namespace srdb
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex);
+                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -263,7 +263,7 @@ namespace srdb
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex);
+                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -279,7 +279,7 @@ namespace srdb
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex);
+                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -295,7 +295,7 @@ namespace srdb
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex);
+                MessageBox.Show("Error filling DataTable with MySQLDataAdaptor " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

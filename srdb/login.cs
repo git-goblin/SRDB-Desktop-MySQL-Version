@@ -47,13 +47,13 @@ namespace srdb
                 }
                 else 
                 {
-                    MessageBox.Show("Wrong Username or Password");
+                    MessageBox.Show("Wrong Username or Password","Error!", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
             }
 
             catch (Exception ex)
             {
-                MessageBox.Show("Error while logging in" + ex);
+                MessageBox.Show("Error while logging in " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

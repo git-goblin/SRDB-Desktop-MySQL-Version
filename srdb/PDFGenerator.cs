@@ -80,7 +80,7 @@ namespace srdb
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error with pulling values from the DB " + ex);
+                MessageBox.Show("Error with pulling values from the DB " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -106,11 +106,11 @@ namespace srdb
                 table.AddCell("Value 3");
                 document.Add(table);
                 document.Close();
-                MessageBox.Show("PDF Successfully created!");
+                MessageBox.Show("PDF Successfully created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } 
             catch (Exception ex)
             {
-                MessageBox.Show("Error creating PDF! " + ex);
+                MessageBox.Show("Error creating PDF! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }

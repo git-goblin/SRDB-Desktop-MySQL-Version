@@ -27,17 +27,17 @@ namespace srdb
             {
                 if (txtPassword.Text != txtRePassword.Text)
                 {
-                    MessageBox.Show("Passwords do not match!");
+                    MessageBox.Show("Passwords do not match!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (txtUsername.Text == "")
                 {
-                    MessageBox.Show("Enter a Username!");
+                    MessageBox.Show("Enter a Username!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 if (txtPassword.Text == "" || txtPassword.TextLength < 7)
                 {
-                    MessageBox.Show("Password Cannot be blank and must be greater than 7 characters!");
+                    MessageBox.Show("Password Cannot be blank and must be greater than 7 characters!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 string pass = dbConnect.hash_value(txtRePassword.Text);
@@ -56,11 +56,11 @@ namespace srdb
                         cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                         cmd.ExecuteNonQuery();
                     }
-                    MessageBox.Show("Password Successfully changed!");
+                    MessageBox.Show("Password Successfully changed!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error changing password " + ex);
+                MessageBox.Show("Error changing password " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

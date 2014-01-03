@@ -40,11 +40,11 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.CloseConnection();
                 }
-                MessageBox.Show("Row successfully deleted!");
+                MessageBox.Show("Row successfully deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } 
             catch (Exception ex)
             {
-                MessageBox.Show("Error Deleting the row!" + ex);
+                MessageBox.Show("Error Deleting the row! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

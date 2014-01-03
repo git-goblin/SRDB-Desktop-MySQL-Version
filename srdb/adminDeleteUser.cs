@@ -41,11 +41,11 @@ namespace srdb
                     cmd.ExecuteNonQuery(); 
                     dbConnect.CloseConnection();
                 }
-                MessageBox.Show("User successuflly deleted!");
+                MessageBox.Show("User successuflly deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Deleting the user! " + ex);
+                MessageBox.Show("Error Deleting the user! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
