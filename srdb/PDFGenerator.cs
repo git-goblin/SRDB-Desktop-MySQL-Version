@@ -35,14 +35,13 @@ namespace srdb
         {
             //form on load
         }
-
         private void pull_from_db()
         {
             try
             {
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
-                string ID = txtSRID.Text;
+                String ID = txtSRID.Text;
                 if (val.validate_id(ID) != 1)
                 {
                     return;
@@ -88,7 +87,7 @@ namespace srdb
         {
             try
             {
-                string file_name = Invoicenumber;
+                string file_name = "Invoice - " + Invoicenumber + " From Service Record ID - " + ID;
                 FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
                 fbd.ShowDialog();
                 string u_path = fbd.SelectedPath;
