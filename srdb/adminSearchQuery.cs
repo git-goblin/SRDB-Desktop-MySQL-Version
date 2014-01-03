@@ -34,9 +34,16 @@ namespace srdb
             dbConnect.OpenConnection();
             using (MySqlDataAdapter dataAdaptor = new MySqlDataAdapter(txtSQLQuery.Text, dbConnect.connection)) //create a new DataAdaptor
             {
-                dataAdaptor.Fill(table); //File the table with the values from the DataAdaptor
-                dataGridView1.DataSource = table; //Set the source, so where the DataGridView gets its value from at the table we have passed the values from the DataAdaptor into
-                dataGridView1.MultiSelect = false; //stop users from selecting more than one row
+                try
+                {
+                    dataAdaptor.Fill(table); //File the table with the values from the DataAdaptor
+                    dataGridView1.DataSource = table; //Set the source, so where the DataGridView gets its value from at the table we have passed the values from the DataAdaptor into
+                    dataGridView1.MultiSelect = false; //stop users from selecting more than one row
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Error while filling the table with the query results!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         private void btnEditRecord_Click(object sender, EventArgs e)

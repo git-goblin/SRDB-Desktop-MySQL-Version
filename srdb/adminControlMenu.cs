@@ -19,6 +19,7 @@ namespace srdb
 
         private void btnDeleteRecord_Click(object sender, EventArgs e)
         {
+            this.Hide();
             deleteRow dr = new deleteRow();
             dr.Show();
         }

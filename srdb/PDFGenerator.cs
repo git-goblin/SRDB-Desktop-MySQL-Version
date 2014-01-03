@@ -87,6 +87,7 @@ namespace srdb
         {
             try
             {
+                String ID = txtSRID.Text;
                 string file_name = "Invoice - " + Invoicenumber + " From Service Record ID - " + ID;
                 FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
                 fbd.ShowDialog();
