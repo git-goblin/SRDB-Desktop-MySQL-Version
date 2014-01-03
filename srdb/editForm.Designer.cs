@@ -172,6 +172,7 @@
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(130, 20);
             this.txtTotal.TabIndex = 62;
+            this.txtTotal.TextChanged += new System.EventHandler(this.txtTotal_TextChanged);
             // 
             // label14
             // 
@@ -186,9 +187,6 @@
             // 
             this.paymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.paymentMethod.FormattingEnabled = true;
-            this.paymentMethod.Items.AddRange(new object[] {
-            "New",
-            "Renewed"});
             this.paymentMethod.Location = new System.Drawing.Point(353, 46);
             this.paymentMethod.Name = "paymentMethod";
             this.paymentMethod.Size = new System.Drawing.Size(91, 21);

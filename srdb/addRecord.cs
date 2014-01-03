@@ -302,5 +302,19 @@ namespace srdb
             paymentMethod.SelectedIndex = 0;
             numberofServices.SelectedIndex = 0;
         }
+
+        private void txtTotal_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                double total = double.Parse(txtTotal.Text);
+                total = total + (total * 0.20);
+                txtInvoicetotal.Text = total.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error auto-calculating VAT");
+            }
+        }
     }
 }
