@@ -117,30 +117,38 @@ namespace srdb
 
         private void invoice_PDF()
         {
-            String ID = txtSRID.Text;
-            string file_name = "Invoice - " + Invoicenumber + " From Service Record ID - " + ID;
-            FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
-            fbd.ShowDialog();
-            Font arial = FontFactory.GetFont("Arial", 12, BaseColor.GRAY);
-            string u_path = fbd.SelectedPath;
-            var document = new Document();
-            PdfWriter.GetInstance(document, new FileStream(u_path + "/" + file_name + ".pdf", FileMode.Create));
-            document.Open();
-            PdfPTable inv_table = new PdfPTable(2);
-            inv_table.HorizontalAlignment = 0;
-            inv_table.SpacingBefore = 10;
-            inv_table.SpacingAfter = 10;
-            inv_table.DefaultCell.Border = 0;
-            inv_table.SetWidths(new int[] { 1, 4 });
+            try
+            {
+                String ID = txtSRID.Text;
+                string file_name = "Invoice - " + Invoicenumber + " From Service Record ID - " + ID;
+                FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
+                fbd.ShowDialog();
+                Font arial = FontFactory.GetFont("Arial", 12, BaseColor.GRAY);
+                string u_path = fbd.SelectedPath;
+                var document = new Document();
+                PdfWriter.GetInstance(document, new FileStream(u_path + "/" + file_name + ".pdf", FileMode.Create)); //File path
+                document.Open();
+                PdfPTable inv_table = new PdfPTable(2);
+                inv_table.HorizontalAlignment = 0;
+                inv_table.SpacingBefore = 10;
+                inv_table.SpacingAfter = 10;
+                inv_table.DefaultCell.Border = 0;
+                inv_table.SetWidths(new int[] { 1, 4 }); // Creates a 2x2 table, filled from top left to bottom right
 
-            inv_table.AddCell(new Phrase("Invoice Number: ", arial));
-            inv_table.AddCell(new Phrase(Invoicenumber, arial));
-            inv_table.AddCell(new Phrase("Name: ", arial));
-            inv_table.AddCell(new Phrase(Firstname + " " + Surname, arial));
+                inv_table.AddCell(new Phrase("Invoice Number: ", arial));
+                inv_table.AddCell(new Phrase(Invoicenumber, arial));
+                inv_table.AddCell(new Phrase("Name: ", arial));
+                inv_table.AddCell(new Phrase(Firstname + " " + Surname, arial));
 
-            document.Add(inv_table);
+                document.Add(inv_table);
 
-            document.Close();
+                document.Close();
+                MessageBox.Show("PDF Successfully created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error creating PDF! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnCreatePDF_Click(object sender, EventArgs e)
