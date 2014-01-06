@@ -218,6 +218,15 @@ namespace srdb
         public DataTable t_table = new DataTable();
         public DataTable pm_table = new DataTable();
 
+        public void refresh_cb_tables()
+        {
+            m_table.Clear();
+            sb_table.Clear();
+            sbr_table.Clear();
+            t_table.Clear();
+            pm_table.Clear();
+        }
+
       //ComboBox Fillers
         public void fill_data_model() //Fill model
         {

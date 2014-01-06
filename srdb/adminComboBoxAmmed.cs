@@ -55,6 +55,8 @@ namespace srdb
                         cmd.ExecuteNonQuery();
                     }
                     MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtModel.Clear();
+                    refresh_values();
                 }
                 catch (Exception ex)
                 {
@@ -81,6 +83,8 @@ namespace srdb
                     dbConnect.cb_CloseConnection();
                 }
                 MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtModalID.Clear();
+                refresh_values();
             }
             catch (Exception ex)
             {
@@ -106,7 +110,9 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
-                MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtSoldBy.Clear();
+                refresh_values();
             }
             catch (Exception ex)
             {
@@ -133,6 +139,8 @@ namespace srdb
                     dbConnect.cb_CloseConnection();
                 }
                 MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtSoldByID.Clear();
+                refresh_values();
             }
             catch (Exception ex)
             {
@@ -158,6 +166,8 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtSalesBranch.Clear();
+                refresh_values();
             }
             catch (Exception ex)
             {
@@ -184,6 +194,8 @@ namespace srdb
                     dbConnect.cb_CloseConnection();
                 }
                 MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtSalesBranchID.Clear();
+                refresh_values();
             }
             catch (Exception ex)
             {
@@ -209,6 +221,8 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtType.Clear();
+                refresh_values();
             }
             catch (Exception ex)
             {
@@ -235,6 +249,8 @@ namespace srdb
                     dbConnect.cb_CloseConnection();
                 }
                 MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTypeID.Clear();
+                refresh_values();
             }
             catch (Exception ex)
             {
@@ -260,6 +276,8 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                 }
                 MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtPaymentMethod.Clear();
+                refresh_values();
             }
             catch (Exception ex)
             {
@@ -286,6 +304,8 @@ namespace srdb
                     dbConnect.cb_CloseConnection();
                 }
                 MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtPaymentMethodID.Clear();
+                refresh_values();
             }
             catch (Exception ex)
             {
@@ -318,9 +338,12 @@ namespace srdb
 
         private void btnRefreshConnection_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            adminComboBoxAmmed acbm = new adminComboBoxAmmed();
-            acbm.Show();
+           // dbConnect.refresh_cb_tables();
+        }
+        private void refresh_values()
+        {
+            dbConnect.refresh_cb_tables();
+            load_and_refresh_combobox_values();
         }
     }
 }
