@@ -34,6 +34,7 @@
             this.txtSearchSoldBy = new System.Windows.Forms.TextBox();
             this.btnEditRecord = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,11 +83,22 @@
             this.btnMainMenu.UseVisualStyleBackColor = true;
             this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(455, 280);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // soldBySearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 315);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.btnEditRecord);
             this.Controls.Add(this.txtSearchSoldBy);
@@ -110,5 +122,6 @@
         private System.Windows.Forms.TextBox txtSearchSoldBy;
         private System.Windows.Forms.Button btnEditRecord;
         private System.Windows.Forms.Button btnMainMenu;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

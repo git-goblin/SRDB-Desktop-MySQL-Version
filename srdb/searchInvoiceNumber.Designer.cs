@@ -34,6 +34,7 @@
             this.btnEditRecord = new System.Windows.Forms.Button();
             this.txtSearchByName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,11 +83,22 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "Search By Invoice Number:";
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(455, 284);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 14;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // searchInvoiceNumber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 315);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.txtSearchByName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnMainMenu);
@@ -110,5 +122,6 @@
         private System.Windows.Forms.Button btnEditRecord;
         private System.Windows.Forms.TextBox txtSearchByName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
