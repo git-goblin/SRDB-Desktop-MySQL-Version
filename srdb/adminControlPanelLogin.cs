@@ -39,6 +39,7 @@ namespace srdb
                 cmd.Parameters.AddWithValue("@pass", hashed_pass);
                         if (cmd.ExecuteScalar() != null) // && user_level == "Admin")
                         {
+                            dbConnect.login_CloseConnection();
                             this.Hide();
                             adminControlMenu acm = new adminControlMenu();
                             acm.Show();

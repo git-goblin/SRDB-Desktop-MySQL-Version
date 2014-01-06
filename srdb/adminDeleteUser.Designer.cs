@@ -32,6 +32,7 @@
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUserID = new System.Windows.Forms.TextBox();
+            this.btnMainMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDeleteUser
@@ -60,11 +61,22 @@
             this.txtUserID.Size = new System.Drawing.Size(187, 20);
             this.txtUserID.TabIndex = 2;
             // 
+            // btnMainMenu
+            // 
+            this.btnMainMenu.Location = new System.Drawing.Point(262, 38);
+            this.btnMainMenu.Name = "btnMainMenu";
+            this.btnMainMenu.Size = new System.Drawing.Size(75, 23);
+            this.btnMainMenu.TabIndex = 3;
+            this.btnMainMenu.Text = "Main Menu";
+            this.btnMainMenu.UseVisualStyleBackColor = true;
+            this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
+            // 
             // adminDeleteUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 44);
+            this.ClientSize = new System.Drawing.Size(349, 66);
+            this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.txtUserID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDeleteUser);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.Button btnDeleteUser;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUserID;
+        private System.Windows.Forms.Button btnMainMenu;
     }
 }

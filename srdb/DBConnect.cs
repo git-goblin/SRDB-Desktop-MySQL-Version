@@ -94,6 +94,11 @@ namespace srdb
         {
             try
             {
+                if (query == "")
+                {
+                    MessageBox.Show("Error executing command! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 //Open connection
                 if (this.OpenConnection() == true)
                 {
@@ -157,7 +162,19 @@ namespace srdb
                 return false;
             }
         }
-        
+        public bool login_CloseConnection()
+        {
+            try
+            {
+                connection.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
            public void combobox_initialise()
         {
             server = "localhost";

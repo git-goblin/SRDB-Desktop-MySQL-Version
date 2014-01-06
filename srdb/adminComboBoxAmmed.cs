@@ -54,6 +54,7 @@ namespace srdb
                         cmd.Parameters.AddWithValue("@input_value", txtModel.Text);
                         cmd.ExecuteNonQuery();
                     }
+                    dbConnect.cb_CloseConnection();
                     MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtModel.Clear();
                     refresh_values();
@@ -82,6 +83,7 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
+                dbConnect.cb_CloseConnection();
                 MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtModalID.Clear();
                 refresh_values();
@@ -110,6 +112,7 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
+                dbConnect.cb_CloseConnection();
                 MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtSoldBy.Clear();
                 refresh_values();
@@ -138,6 +141,7 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
+                dbConnect.cb_CloseConnection();
                 MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtSoldByID.Clear();
                 refresh_values();
@@ -165,6 +169,7 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@input_value", txtSalesBranch.Text);
                     cmd.ExecuteNonQuery();
                 }
+                dbConnect.cb_CloseConnection();
                 MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtSalesBranch.Clear();
                 refresh_values();
@@ -193,6 +198,7 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
+                dbConnect.cb_CloseConnection();
                 MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtSalesBranchID.Clear();
                 refresh_values();
@@ -220,6 +226,7 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@input_value", txtType.Text);
                     cmd.ExecuteNonQuery();
                 }
+                dbConnect.cb_CloseConnection();
                 MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtType.Clear();
                 refresh_values();
@@ -248,6 +255,7 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
+                dbConnect.cb_CloseConnection();
                 MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtTypeID.Clear();
                 refresh_values();
@@ -275,6 +283,7 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@input_value", txtPaymentMethod.Text);
                     cmd.ExecuteNonQuery();
                 }
+                dbConnect.cb_CloseConnection();
                 MessageBox.Show("Value added!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtPaymentMethod.Clear();
                 refresh_values();
@@ -303,6 +312,7 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                     dbConnect.cb_CloseConnection();
                 }
+                dbConnect.cb_CloseConnection();
                 MessageBox.Show("Value Deleted!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtPaymentMethodID.Clear();
                 refresh_values();

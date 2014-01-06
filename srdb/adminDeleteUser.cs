@@ -48,5 +48,12 @@ namespace srdb
                 MessageBox.Show("Error Deleting the user! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            adminControlMenu acm = new adminControlMenu();
+            acm.Show();
+        }
     }
 }

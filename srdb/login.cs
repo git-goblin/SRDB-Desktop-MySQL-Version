@@ -41,6 +41,7 @@ namespace srdb
                 cmd.Parameters.AddWithValue("@pass", hashed_pass);
                 if (cmd.ExecuteScalar() != null)
                 {
+                    dbConnect.CloseConnection();
                     this.Hide();
                     mainMenu mm = new mainMenu();
                     mm.Show(); 

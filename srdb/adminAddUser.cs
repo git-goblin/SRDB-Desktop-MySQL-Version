@@ -66,6 +66,7 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@user_level", user_level);
                     cmd.ExecuteNonQuery();
                 }
+                dbConnect.CloseConnection();
                 MessageBox.Show("User added successfully!\nTheir username is: " + username, "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information); 
             } 
             catch (Exception ex)

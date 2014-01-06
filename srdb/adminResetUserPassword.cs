@@ -56,6 +56,7 @@ namespace srdb
                         cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                         cmd.ExecuteNonQuery();
                     }
+                    dbConnect.CloseConnection();
                     MessageBox.Show("Password Successfully changed!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
