@@ -37,12 +37,12 @@ using MySql.Data.MySqlClient;
                 txtPostcode.Clear();
                 txtInvoicetotal.Clear();
                 txtCommissionAmount.Clear();
-                carModel.SelectedIndex = -1;
-                soldBy.SelectedIndex = -1;
-                salesBranch.SelectedIndex = -1;
-                carType.SelectedIndex = -1;
-                paymentMethod.SelectedIndex = -1;
-                numberofServices.SelectedIndex = -1;
+                carModel.SelectedIndex = 0;
+                soldBy.SelectedIndex = 0;
+                salesBranch.SelectedIndex = 0;
+                carType.SelectedIndex = 0;
+                paymentMethod.SelectedIndex = 0;
+                numberofServices.SelectedIndex = 0;
                 dateSold.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             }
 
