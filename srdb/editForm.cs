@@ -239,7 +239,7 @@ using MySql.Data.MySqlClient;
                     int var7 = val.validate_currency(txtCommissionAmount.Text);
    
                   int varID = val.validate_id(txtSelectID.Text); 
-                     if (var1 != 1)
+                     if (varID != 1)
                   {
                     return;
                   }
