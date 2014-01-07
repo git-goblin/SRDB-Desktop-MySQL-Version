@@ -2097,7 +2097,7 @@ CREATE TABLE `auth` (
 
 LOCK TABLES `auth` WRITE;
 /*!40000 ALTER TABLE `auth` DISABLE KEYS */;
-INSERT INTO `auth` (`username`, `pass`, `email`, `firstName`, `surName`, `user_level`, `ID`) VALUES ('admin','c70b5dd9ebfb6f51d09d4132b7170c9d20750a7852f00680f65658f0310e810056e6763c34c9a00b0e940076f54495c169fc2302cceb312039271c43469507dc','dba@curriemotors.co.uk','Toby','Addams','Admin',1),('billyb','4f1adee75727d83439509de2b028b18d14866b37a5669b1149e50aa7cfa6d0e8e3847aed5b9dfa3564ce4e5e2683f4a707ece1693101c4da4ad6f550c5f676db','billybob@bobmail.com','billy','bob','user',2),('janej','7b6ad79b346fb6951275343948e13c1b4ebca82a5452a6c5d15684377f096ca927506a23a847e6e046061399631b16fc2820c8b0e02d0ea87aa5a203a77c2a7e','jane@janemail.com','Jane','Janey','user',3),('TobyA','4f1adee75727d83439509de2b028b18d14866b37a5669b1149e50aa7cfa6d0e8e3847aed5b9dfa3564ce4e5e2683f4a707ece1693101c4da4ad6f550c5f676db','toby.addams@curriemotors.co.uk','Toby','Addams','user',4),('bobbys','0c2fd1c6ebb01d1a480f954ea3c359b5cea447e038485aff054708e6eea226877f02d99efa098ec7a46f6cb3241abfcdbaf92db432f1a2ede1a252ec6e3959cd','bobby@bobmail.com','bobby','singer','Admin',7),('deanw','2fb882ab2106dd703e77d825055390977d1eb6e0336543f8148b75678ed2bcc443773663c44abcf4cc21f560ce5cc4b4c52800a1afc0ccf9b7b020bb68aec21b','dean@supernatural.com','Dean','Winchester','user',9),('someu','b40d03386fb8fd7dc6ca9c6f8d680dfc58d60fd6ea72c63f573cc5bfbb09695746a849c91517c235cdfeaca4e734208f184bc08aae06797748988e95928f80b1','someuser@legitmail.com','Some','User','user',10);
+INSERT INTO `auth` (`username`, `pass`, `email`, `firstName`, `surName`, `user_level`, `ID`) VALUES ('admin','c70b5dd9ebfb6f51d09d4132b7170c9d20750a7852f00680f65658f0310e810056e6763c34c9a00b0e940076f54495c169fc2302cceb312039271c43469507dc','dba@bobmail.co.uk','Billy','Bob','Admin',1);
 /*!40000 ALTER TABLE `auth` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2176,12 +2176,6 @@ CREATE TABLE `records` (
 --
 -- Dumping data for table `records`
 --
-
-LOCK TABLES `records` WRITE;
-/*!40000 ALTER TABLE `records` DISABLE KEYS */;
-INSERT INTO `records` (`ID`, `firstName`, `surName`, `address1`, `address2`, `postcode`, `registration`, `model`, `sold_by`, `date_sold`, `invoice_number`, `sales_branch`, `type`, `payment_method`, `total`, `invoice_total`, `number_of_services`, `commission_amount`) VALUES ('1','Chuck','Norris','1234 Road','Summerset','TW1 1ER','AB01 XYZ','Lexus','Jane','02 October 2014','1','Twickenham','New','Cash',1344441.99,1613330.39,0,5.00),('3','Some','User','ABC Street','','','AB01 XYZ','','Bob','02 September 2014','1','Twickenham','New','Cash',1301.00,1301.00,0,5.00),('4','Random','User','1234 Avennue','','TW13 3AP','AB01 XYZ','Toyota','Bob','02 January 2014','3','GWR','New','Cheque',1400.98,15344.54,1,5.00),('5','Obi','Wan','431 Tatooine','The bar','SE13 3AP','AB01 XYZ','','Bob','14 September 2009','312','Barnet','New','Debit Card',123.12,132123.12,2,5.00);
-/*!40000 ALTER TABLE `records` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
