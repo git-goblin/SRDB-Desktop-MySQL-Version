@@ -33,6 +33,7 @@
             this.btnSearchrecords = new System.Windows.Forms.Button();
             this.btnAdminpanel = new System.Windows.Forms.Button();
             this.btnGeneratePDF = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddrecord
@@ -75,11 +76,22 @@
             this.btnGeneratePDF.UseVisualStyleBackColor = true;
             this.btnGeneratePDF.Click += new System.EventHandler(this.btnGeneratePDF_Click);
             // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(207, 150);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 4;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // mainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(294, 156);
+            this.ClientSize = new System.Drawing.Size(294, 181);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnGeneratePDF);
             this.Controls.Add(this.btnAdminpanel);
             this.Controls.Add(this.btnSearchrecords);
@@ -98,5 +110,6 @@
         private System.Windows.Forms.Button btnSearchrecords;
         private System.Windows.Forms.Button btnAdminpanel;
         private System.Windows.Forms.Button btnGeneratePDF;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

@@ -44,5 +44,10 @@ namespace srdb
             PDFGenerator pg = new PDFGenerator();
             pg.Show();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
