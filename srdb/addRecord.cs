@@ -309,8 +309,7 @@ namespace srdb
             {
                 double total = double.Parse(txtTotal.Text);
                 total = total + (total * 0.20);
-                Math.Round(total, 2);
-                txtInvoicetotal.Text = total.ToString();
+                txtInvoicetotal.Text = Math.Round(total, 2).ToString();
             }
             catch (Exception)
             {

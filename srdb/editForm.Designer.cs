@@ -68,6 +68,7 @@
             this.txtSelectID = new System.Windows.Forms.TextBox();
             this.txtCommissionAmount = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.checkBoxVAT = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // soldBy
@@ -136,7 +137,7 @@
             "19",
             "20",
             ""});
-            this.numberofServices.Location = new System.Drawing.Point(370, 127);
+            this.numberofServices.Location = new System.Drawing.Point(370, 144);
             this.numberofServices.Name = "numberofServices";
             this.numberofServices.Size = new System.Drawing.Size(74, 21);
             this.numberofServices.TabIndex = 66;
@@ -144,7 +145,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(261, 130);
+            this.label16.Location = new System.Drawing.Point(261, 147);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(103, 13);
             this.label16.TabIndex = 65;
@@ -152,7 +153,7 @@
             // 
             // txtInvoicetotal
             // 
-            this.txtInvoicetotal.Location = new System.Drawing.Point(335, 101);
+            this.txtInvoicetotal.Location = new System.Drawing.Point(335, 118);
             this.txtInvoicetotal.Name = "txtInvoicetotal";
             this.txtInvoicetotal.Size = new System.Drawing.Size(109, 20);
             this.txtInvoicetotal.TabIndex = 64;
@@ -160,7 +161,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(255, 104);
+            this.label15.Location = new System.Drawing.Point(255, 121);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(81, 13);
             this.label15.TabIndex = 63;
@@ -413,7 +414,7 @@
             // txtCommissionAmount
             // 
             this.txtCommissionAmount.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCommissionAmount.Location = new System.Drawing.Point(385, 154);
+            this.txtCommissionAmount.Location = new System.Drawing.Point(385, 171);
             this.txtCommissionAmount.Name = "txtCommissionAmount";
             this.txtCommissionAmount.Size = new System.Drawing.Size(59, 20);
             this.txtCommissionAmount.TabIndex = 74;
@@ -421,17 +422,28 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(273, 157);
+            this.label17.Location = new System.Drawing.Point(273, 174);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(113, 13);
             this.label17.TabIndex = 73;
             this.label17.Text = "Commission Amount: £";
+            // 
+            // checkBoxVAT
+            // 
+            this.checkBoxVAT.AutoSize = true;
+            this.checkBoxVAT.Location = new System.Drawing.Point(329, 99);
+            this.checkBoxVAT.Name = "checkBoxVAT";
+            this.checkBoxVAT.Size = new System.Drawing.Size(119, 17);
+            this.checkBoxVAT.TabIndex = 76;
+            this.checkBoxVAT.Text = "Auto Calculate VAT";
+            this.checkBoxVAT.UseVisualStyleBackColor = true;
             // 
             // editForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(471, 382);
+            this.Controls.Add(this.checkBoxVAT);
             this.Controls.Add(this.txtCommissionAmount);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtSelectID);
@@ -522,5 +534,6 @@
         private System.Windows.Forms.TextBox txtSelectID;
         private System.Windows.Forms.TextBox txtCommissionAmount;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox checkBoxVAT;
     }
 }

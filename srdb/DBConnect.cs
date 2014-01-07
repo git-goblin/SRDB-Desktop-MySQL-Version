@@ -96,7 +96,7 @@ namespace srdb
             {
                 if (query == "")
                 {
-                    MessageBox.Show("Error executing command! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error executing command! ", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 //Open connection
