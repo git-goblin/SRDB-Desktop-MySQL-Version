@@ -25,37 +25,6 @@ namespace srdb
             val = new validate();
         }
 
-        /* public void loadComboBoxes()
-       {
-           try
-           {
-               dbConnect.combobox_initialise();
-               dbConnect.combobox_Open_Connection();
-
-               var query = "SELECT model FROM model; SELECT soldBy FROM soldBy; SELECT salesBranch FROM salesBranch; SELECT type FROM type; SELECT paymentMethod FROM paymentMethod;";//"SELECT model FROM model UNION SELECT soldBy FROM soldBy UNION SELECT salesBranch FROM salesBranch UNION SELECT type FROM type UNION SELECT paymentMethod FROM paymentMethod" ;    //"SELECT model, soldBy, salesBranch, type, paymentMethod FROM comboboxlist";
-               using (var command = new MySqlCommand(query, dbConnect.cb_connection))
-               {
-                   using (var reader = command.ExecuteReader())
-                   {
-                       //Iterate through the rows and add it to the combobox's items
-                       while (reader.Read())
-                       {
-                           //CustomerIdComboBox.Items.Add(reader.GetString("Id"));
-                           carModel.Items.Add(reader.GetString("model"));
-                           soldBy.Items.Add(reader.GetString("soldBy"));
-                           salesBranch.Items.Add(reader.GetString("salesBranch"));
-                           carType.Items.Add(reader.GetString("type"));
-                           paymentMethod.Items.Add(reader.GetString("paymentMethod"));
-                       }
-                   }
-               }
-           } 
-           catch (Exception ex)
-           {
-               MessageBox.Show("Error loading ComboBoxes" + ex);
-           }
-       }*/
-
        public void loadCarModelCB()
        {
            try
