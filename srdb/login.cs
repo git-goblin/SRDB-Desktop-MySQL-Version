@@ -76,7 +76,7 @@ namespace srdb
                 }
                 else if (stat != 1)
                 {
-                    lblServerStatus.Text = "Down";
+                    lblServerStatus.Text = "Unreachable";
                     lblServerStatus.ForeColor = Color.Red;
                 }
 
@@ -99,6 +99,11 @@ namespace srdb
                 else if (lat > 500)
                 {
                     lblLatency.Text = lat + "ms";
+                    lblLatency.ForeColor = Color.Red;
+                }
+                else if (lat >= 9999)
+                {
+                    lblLatency.Text = "Unreachable";
                     lblLatency.ForeColor = Color.Red;
                 }
             }

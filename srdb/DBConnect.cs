@@ -62,7 +62,7 @@ namespace srdb
                 else
                 {
                     con_stat = 0;
-                    latency = 1000;
+                    latency = 10000;
                 }
             }
             catch (Exception ex)
