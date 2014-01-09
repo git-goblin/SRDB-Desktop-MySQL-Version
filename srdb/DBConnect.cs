@@ -12,6 +12,7 @@ using System.Data;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient; //required for MySQL Connections
 using System.Security.Cryptography; //required for generating SHA1 values
+using System.Net.NetworkInformation; //Ping;
 
 
 
@@ -32,7 +33,6 @@ namespace srdb
         {
             Initialize();
         }
-
         //Initialize values
         public void Initialize()
         {
@@ -46,7 +46,30 @@ namespace srdb
             connection = new MySqlConnection(connectionString);
         }
 
-
+        public void ping_test(out int con_stat, out long latency) //Will output multiple values
+        {
+            con_stat = 0; //Must be assigned a value before being 'output'
+            latency = 0; //Declare at top of class as private values
+            try
+            {
+                Ping ping = new Ping();
+                PingReply pingreply = ping.Send(server);
+                if (pingreply.Status == IPStatus.Success)
+                {
+                    con_stat = 1;
+                    latency = pingreply.RoundtripTime;
+                }
+                else
+                {
+                    con_stat = 0;
+                    latency = 1000;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
         //open connection to database
         public bool OpenConnection()
         {

@@ -55,5 +55,56 @@ namespace srdb
                 MessageBox.Show("Error Logging in" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void adminControlPanelLogin_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                int stat;
+                long lat;
+                dbConnect.ping_test(out stat, out lat);
+                lblLatenc.Text = string.Empty;
+                lblServerStat.Text = string.Empty;
+
+                //Display the server status
+                if (stat == 1)
+                {
+                    lblServerStat.Text = "Up";
+                    lblServerStat.ForeColor = Color.Green;
+                }
+                else if (stat != 1)
+                {
+                    lblServerStat.Text = "Down";
+                    lblServerStat.ForeColor = Color.Red;
+                }
+
+                //Display the latency
+                if (lat <= 200)
+                {
+                    lblLatenc.Text = lat + "ms";
+                    lblLatenc.ForeColor = Color.Green;
+                }
+                else if (lat > 200 && lat <= 350)
+                {
+                    lblLatenc.Text = lat + "ms";
+                    lblLatenc.ForeColor = Color.Yellow;
+                }
+                else if (lat > 350 && lat <= 500)
+                {
+                    lblLatenc.Text = lat + "ms";
+                    lblLatenc.ForeColor = Color.Orange;
+                }
+                else if (lat > 500)
+                {
+                    lblLatenc.Text = lat + "ms";
+                    lblLatenc.ForeColor = Color.Red;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getting server status " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        }
     }
-}

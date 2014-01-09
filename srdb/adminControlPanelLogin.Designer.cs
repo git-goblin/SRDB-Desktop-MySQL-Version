@@ -34,6 +34,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.lblLatency = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblServerStatus = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblServerStat = new System.Windows.Forms.Label();
+            this.lblLatenc = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtPassword
@@ -79,11 +85,67 @@
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
+            // lblLatency
+            // 
+            this.lblLatency.AutoSize = true;
+            this.lblLatency.Location = new System.Drawing.Point(55, 87);
+            this.lblLatency.Name = "lblLatency";
+            this.lblLatency.Size = new System.Drawing.Size(0, 13);
+            this.lblLatency.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 87);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Delay:";
+            // 
+            // lblServerStatus
+            // 
+            this.lblServerStatus.AutoSize = true;
+            this.lblServerStatus.Location = new System.Drawing.Point(83, 74);
+            this.lblServerStatus.Name = "lblServerStatus";
+            this.lblServerStatus.Size = new System.Drawing.Size(0, 13);
+            this.lblServerStatus.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Server Status:";
+            // 
+            // lblServerStat
+            // 
+            this.lblServerStat.AutoSize = true;
+            this.lblServerStat.Location = new System.Drawing.Point(92, 74);
+            this.lblServerStat.Name = "lblServerStat";
+            this.lblServerStat.Size = new System.Drawing.Size(0, 13);
+            this.lblServerStat.TabIndex = 14;
+            // 
+            // lblLatenc
+            // 
+            this.lblLatenc.AutoSize = true;
+            this.lblLatenc.Location = new System.Drawing.Point(55, 90);
+            this.lblLatenc.Name = "lblLatenc";
+            this.lblLatenc.Size = new System.Drawing.Size(0, 13);
+            this.lblLatenc.TabIndex = 15;
+            // 
             // adminControlPanelLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 112);
+            this.Controls.Add(this.lblLatenc);
+            this.Controls.Add(this.lblServerStat);
+            this.Controls.Add(this.lblLatency);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblServerStatus);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label2);
@@ -94,6 +156,7 @@
             this.Name = "adminControlPanelLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Control Panel Login";
+            this.Load += new System.EventHandler(this.adminControlPanelLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,5 +169,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Label lblLatency;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblServerStatus;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblServerStat;
+        private System.Windows.Forms.Label lblLatenc;
     }
 }
