@@ -96,15 +96,18 @@ namespace srdb
                 PdfWriter.GetInstance(document, new FileStream(u_path + "/"+file_name+".pdf", FileMode.Create));
                 document.Open();
                 document.Add(new Paragraph("My First PDF"));
-                PdfPTable table = new PdfPTable(3);
-                PdfPCell cell = new PdfPCell(new Phrase("Curriemotors Invoice"));
-                cell.Colspan = 3;
-                cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
-                table.AddCell(cell);
-                table.AddCell("Value 1");
-                table.AddCell("Value 2");
-                table.AddCell("Value 3");
-                document.Add(table);
+                document.Add(new Paragraph());
+                document.Add(new Paragraph());
+                document.Add(new Paragraph("Dear " + Firstname + " " + Surname));
+                document.Add(new Paragraph());
+                document.Add(new Paragraph());
+                document.Add(new Paragraph("Main Body text goes here --> --> --> values can be added using concatination"));
+                document.Add(new Paragraph());
+                document.Add(new Paragraph());
+                document.Add(new Paragraph("Ending to the letter goes here --> --> -->"));
+                document.Add(new Paragraph());
+                document.Add(new Paragraph());
+
                 document.Close();
                 MessageBox.Show("PDF Successfully created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } 
