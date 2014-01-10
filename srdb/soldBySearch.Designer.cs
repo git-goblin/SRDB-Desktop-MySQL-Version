@@ -32,7 +32,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearchSoldBy = new System.Windows.Forms.TextBox();
-            this.btnEditRecord = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -66,19 +65,9 @@
             this.txtSearchSoldBy.TabIndex = 2;
             this.txtSearchSoldBy.TextChanged += new System.EventHandler(this.txtSearchSoldBy_TextChanged);
             // 
-            // btnEditRecord
-            // 
-            this.btnEditRecord.Location = new System.Drawing.Point(137, 280);
-            this.btnEditRecord.Name = "btnEditRecord";
-            this.btnEditRecord.Size = new System.Drawing.Size(75, 23);
-            this.btnEditRecord.TabIndex = 3;
-            this.btnEditRecord.Text = "Edit Record";
-            this.btnEditRecord.UseVisualStyleBackColor = true;
-            this.btnEditRecord.Click += new System.EventHandler(this.btnEditRecord_Click);
-            // 
             // btnMainMenu
             // 
-            this.btnMainMenu.Location = new System.Drawing.Point(773, 280);
+            this.btnMainMenu.Location = new System.Drawing.Point(897, 280);
             this.btnMainMenu.Name = "btnMainMenu";
             this.btnMainMenu.Size = new System.Drawing.Size(75, 23);
             this.btnMainMenu.TabIndex = 5;
@@ -88,7 +77,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(455, 280);
+            this.btnRefresh.Location = new System.Drawing.Point(12, 280);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 6;
@@ -103,7 +92,6 @@
             this.ClientSize = new System.Drawing.Size(984, 315);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnMainMenu);
-            this.Controls.Add(this.btnEditRecord);
             this.Controls.Add(this.txtSearchSoldBy);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
@@ -123,7 +111,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearchSoldBy;
-        private System.Windows.Forms.Button btnEditRecord;
         private System.Windows.Forms.Button btnMainMenu;
         private System.Windows.Forms.Button btnRefresh;
     }

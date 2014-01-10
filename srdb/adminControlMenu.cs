@@ -60,5 +60,17 @@ namespace srdb
             adminResetUserPassword arup = new adminResetUserPassword();
             arup.Show();
         }
+
+        private void btnEditRecord_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            editForm ef = new editForm();
+            ef.Show();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

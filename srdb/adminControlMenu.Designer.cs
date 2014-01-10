@@ -35,6 +35,8 @@
             this.btnSQLQuery = new System.Windows.Forms.Button();
             this.btnMainMenu = new System.Windows.Forms.Button();
             this.btnResetUserPassword = new System.Windows.Forms.Button();
+            this.btnEditRecord = new System.Windows.Forms.Button();
+            this.btnLogOut = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDeleteRecord
@@ -49,7 +51,7 @@
             // 
             // btnAddRemoveUser
             // 
-            this.btnAddRemoveUser.Location = new System.Drawing.Point(12, 44);
+            this.btnAddRemoveUser.Location = new System.Drawing.Point(12, 76);
             this.btnAddRemoveUser.Name = "btnAddRemoveUser";
             this.btnAddRemoveUser.Size = new System.Drawing.Size(121, 23);
             this.btnAddRemoveUser.TabIndex = 1;
@@ -69,7 +71,7 @@
             // 
             // btnSQLQuery
             // 
-            this.btnSQLQuery.Location = new System.Drawing.Point(170, 44);
+            this.btnSQLQuery.Location = new System.Drawing.Point(170, 43);
             this.btnSQLQuery.Name = "btnSQLQuery";
             this.btnSQLQuery.Size = new System.Drawing.Size(121, 23);
             this.btnSQLQuery.TabIndex = 3;
@@ -79,7 +81,7 @@
             // 
             // btnMainMenu
             // 
-            this.btnMainMenu.Location = new System.Drawing.Point(170, 78);
+            this.btnMainMenu.Location = new System.Drawing.Point(170, 76);
             this.btnMainMenu.Name = "btnMainMenu";
             this.btnMainMenu.Size = new System.Drawing.Size(121, 23);
             this.btnMainMenu.TabIndex = 4;
@@ -89,7 +91,7 @@
             // 
             // btnResetUserPassword
             // 
-            this.btnResetUserPassword.Location = new System.Drawing.Point(12, 78);
+            this.btnResetUserPassword.Location = new System.Drawing.Point(12, 109);
             this.btnResetUserPassword.Name = "btnResetUserPassword";
             this.btnResetUserPassword.Size = new System.Drawing.Size(121, 23);
             this.btnResetUserPassword.TabIndex = 5;
@@ -97,11 +99,33 @@
             this.btnResetUserPassword.UseVisualStyleBackColor = true;
             this.btnResetUserPassword.Click += new System.EventHandler(this.btnResetUserPassword_Click);
             // 
+            // btnEditRecord
+            // 
+            this.btnEditRecord.Location = new System.Drawing.Point(12, 43);
+            this.btnEditRecord.Name = "btnEditRecord";
+            this.btnEditRecord.Size = new System.Drawing.Size(121, 23);
+            this.btnEditRecord.TabIndex = 6;
+            this.btnEditRecord.Text = "Edit Record";
+            this.btnEditRecord.UseVisualStyleBackColor = true;
+            this.btnEditRecord.Click += new System.EventHandler(this.btnEditRecord_Click);
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.Location = new System.Drawing.Point(170, 109);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Size = new System.Drawing.Size(121, 23);
+            this.btnLogOut.TabIndex = 7;
+            this.btnLogOut.Text = "Logout";
+            this.btnLogOut.UseVisualStyleBackColor = true;
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
+            // 
             // adminControlMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(300, 114);
+            this.ClientSize = new System.Drawing.Size(300, 146);
+            this.Controls.Add(this.btnLogOut);
+            this.Controls.Add(this.btnEditRecord);
             this.Controls.Add(this.btnResetUserPassword);
             this.Controls.Add(this.btnMainMenu);
             this.Controls.Add(this.btnSQLQuery);
@@ -124,5 +148,7 @@
         private System.Windows.Forms.Button btnSQLQuery;
         private System.Windows.Forms.Button btnMainMenu;
         private System.Windows.Forms.Button btnResetUserPassword;
+        private System.Windows.Forms.Button btnEditRecord;
+        private System.Windows.Forms.Button btnLogOut;
     }
 }

@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearchByName = new System.Windows.Forms.TextBox();
             this.btnMainMenu = new System.Windows.Forms.Button();
-            this.btnEditRecord = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +67,7 @@
             // 
             // btnMainMenu
             // 
-            this.btnMainMenu.Location = new System.Drawing.Point(773, 277);
+            this.btnMainMenu.Location = new System.Drawing.Point(897, 280);
             this.btnMainMenu.Name = "btnMainMenu";
             this.btnMainMenu.Size = new System.Drawing.Size(75, 23);
             this.btnMainMenu.TabIndex = 8;
@@ -76,19 +75,9 @@
             this.btnMainMenu.UseVisualStyleBackColor = true;
             this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
             // 
-            // btnEditRecord
-            // 
-            this.btnEditRecord.Location = new System.Drawing.Point(137, 277);
-            this.btnEditRecord.Name = "btnEditRecord";
-            this.btnEditRecord.Size = new System.Drawing.Size(75, 23);
-            this.btnEditRecord.TabIndex = 6;
-            this.btnEditRecord.Text = "Edit Record";
-            this.btnEditRecord.UseVisualStyleBackColor = true;
-            this.btnEditRecord.Click += new System.EventHandler(this.btnEditRecord_Click);
-            // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(455, 277);
+            this.btnRefresh.Location = new System.Drawing.Point(12, 280);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 9;
@@ -103,7 +92,6 @@
             this.ClientSize = new System.Drawing.Size(984, 315);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.btnMainMenu);
-            this.Controls.Add(this.btnEditRecord);
             this.Controls.Add(this.txtSearchByName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
@@ -124,7 +112,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearchByName;
         private System.Windows.Forms.Button btnMainMenu;
-        private System.Windows.Forms.Button btnEditRecord;
         private System.Windows.Forms.Button btnRefresh;
     }
 }

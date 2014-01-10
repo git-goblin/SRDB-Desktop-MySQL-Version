@@ -32,7 +32,6 @@
             this.txtSearchBySRDBID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnMainMenu = new System.Windows.Forms.Button();
-            this.btnEditRecord = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -57,23 +56,13 @@
             // 
             // btnMainMenu
             // 
-            this.btnMainMenu.Location = new System.Drawing.Point(773, 284);
+            this.btnMainMenu.Location = new System.Drawing.Point(897, 284);
             this.btnMainMenu.Name = "btnMainMenu";
             this.btnMainMenu.Size = new System.Drawing.Size(75, 23);
             this.btnMainMenu.TabIndex = 17;
             this.btnMainMenu.Text = "Main Menu";
             this.btnMainMenu.UseVisualStyleBackColor = true;
             this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
-            // 
-            // btnEditRecord
-            // 
-            this.btnEditRecord.Location = new System.Drawing.Point(137, 284);
-            this.btnEditRecord.Name = "btnEditRecord";
-            this.btnEditRecord.Size = new System.Drawing.Size(75, 23);
-            this.btnEditRecord.TabIndex = 15;
-            this.btnEditRecord.Text = "Edit Record";
-            this.btnEditRecord.UseVisualStyleBackColor = true;
-            this.btnEditRecord.Click += new System.EventHandler(this.btnEditRecord_Click);
             // 
             // dataGridView1
             // 
@@ -88,7 +77,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(437, 284);
+            this.btnRefresh.Location = new System.Drawing.Point(12, 284);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 20;
@@ -105,7 +94,6 @@
             this.Controls.Add(this.txtSearchBySRDBID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnMainMenu);
-            this.Controls.Add(this.btnEditRecord);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "searchServiceRecordID";
@@ -123,7 +111,6 @@
         private System.Windows.Forms.TextBox txtSearchBySRDBID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMainMenu;
-        private System.Windows.Forms.Button btnEditRecord;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnRefresh;
     }
