@@ -17,10 +17,12 @@ namespace srdb
         private DBConnect dbConnect;
         private validate val;
         private String number_of_services, firstName, surName, services_left, services_Remaining;
+        private DateTime prev_date;
         public inputService()
         {
             dbConnect = new DBConnect();
             val = new validate();
+            DateTime date_today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             InitializeComponent();
         }
 
@@ -139,10 +141,31 @@ namespace srdb
                 return;
             }
 
-        }
 
-        //update previous record
-        
+
+            //update previous record
+            string update_previous_service = "UPDATE services SET services_remaining=@services_remaining, services_left=@services_left WHERE IN (SRID=@SRID, date=@prev_date)";
+            try
+            {
+                dbConnect.services_initialise();
+                dbConnect.services_Open_Connection();
+                using (MySqlCommand update_prev_service = new MySqlCommand(update_previous_service, dbConnect.services_connection))
+                {
+                    update_prev_service.Parameters.AddWithValue("@services_remaining", services_Remaining);
+                    update_prev_service.Parameters.AddWithValue("@services_left", services_left);
+                    update_prev_service.Parameters.AddWithValue("@prev_date", prev_date);
+                    update_prev_service.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
+
+                    update_prev_service.ExecuteNonQuery();
+                    dbConnect.services_CloseConnection();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error updating the previous record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+       
 
         //insert the new record into services
         //close the connection and done!
