@@ -15,7 +15,8 @@ namespace srdb
     public partial class inputService : Form
     {
         private DBConnect dbConnect;
-        private validate val; 
+        private validate val;
+        private String number_of_services, firstName, surName, services_left, services_Remaining;
         public inputService()
         {
             dbConnect = new DBConnect();
@@ -46,10 +47,60 @@ namespace srdb
 
         private void btnSaveService_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This may take a moment...", "Please be patient", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            //Save the record
-            int val1 = val.validate_currency(txtAmount.Text);
-            int val3 = val.validate_id(txtServiceRecordID.Text);
+            try
+            {
+                MessageBox.Show("This may take a moment...", "Please be patient", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                //Save the record
+                int val1 = val.validate_currency(txtAmount.Text);
+                int val2 = val.validate_invoice_number(txtInvoiceNumber.Text);
+                int val3 = val.validate_id(txtServiceRecordID.Text);
+
+                if (val1 != 1 && val2 != 1 && val3 != 1)
+                {
+                    MessageBox.Show("There were errors with the details you have entered! Review before sending again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            
+                
+
+                //select the values from records
+                dbConnect.Initialize();
+                dbConnect.OpenConnection();
+                MySqlCommand read_from_records = new MySqlCommand("SELECT * FROM records WHERE SRID = @SRID", dbConnect.connection);
+                read_from_records.Parameters.Add("@SRID", txtServiceRecordID.Text);
+                using (MySqlDataReader read = read_from_records.ExecuteReader())
+                {
+                    firstName = read.GetString(read.GetOrdinal("firstName"));
+                    surName = read.GetString(read.GetOrdinal("surName"));
+                    number_of_services = read.GetString(read.GetOrdinal("number_of_services"));
+                }
+                dbConnect.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error gettings values from records! " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //compare services and check
+            try
+            {
+                if (number_of_services == "0")
+                {
+                    MessageBox.Show("This person currently has 0 services left!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    return;
+                }
+
+
+            }
+
+
+
+
+
+            //update previous record
+            //insert the new record into services
+            //close the connection and done!
+
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
