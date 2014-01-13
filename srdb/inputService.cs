@@ -60,8 +60,8 @@ namespace srdb
                     MessageBox.Show("There were errors with the details you have entered! Review before sending again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-            
-                
+
+
 
                 //select the values from records
                 dbConnect.Initialize();
@@ -80,6 +80,39 @@ namespace srdb
             {
                 MessageBox.Show("Error gettings values from records! " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //checks to see if a record exists, if not, create one
+            try
+            {
+                dbConnect.services_initialise();
+                dbConnect.services_Open_Connection();
+                MySqlCommand check_record = new MySqlCommand("SELECT * FROM services WHERE SRID=@SRID", dbConnect.services_connection);
+                if (check_record.ExecuteScalar() == null)
+                {
+                    try
+                    {
+                        string insert_query = "INSERT INTO (SRID, firstName, surName, services_remaining) VALUES (@SRID, @firstName, @surName, @services_remaining)";
+                        using (MySqlCommand insert_service = new MySqlCommand(insert_query, dbConnect.services_connection))
+                        {
+                            insert_service.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
+                            insert_service.Parameters.AddWithValue("@firstName", firstName);
+                            insert_service.Parameters.AddWithValue("@surName", surName);
+                            insert_service.Parameters.AddWithValue("@services_remaining", services_Remaining);
+
+                            insert_service.ExecuteNonQuery();
+                            dbConnect.services_CloseConnection();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error inserting new services details! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error checking record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
             //compare services and check
             try
@@ -90,8 +123,8 @@ namespace srdb
                 read_from_services.Parameters.Add("@SRID", txtServiceRecordID.Text);
                 using (MySqlDataReader read = read_from_services.ExecuteReader())
                 {
-                 services_left = read.GetString(read.GetOrdinal("services_left"));
-                 services_Remaining = read.GetString(read.GetOrdinal("services_remaining"));
+                    services_left = read.GetString(read.GetOrdinal("services_left"));
+                    services_Remaining = read.GetString(read.GetOrdinal("services_remaining"));
                 }
                 dbConnect.CloseConnection();
             }
@@ -100,19 +133,21 @@ namespace srdb
                 MessageBox.Show("Error gettings values from records! " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-                if (services_Remaining == "0")
-                {
-                    MessageBox.Show("This person currently has no services left!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    return;
-                }
-
+            if (services_Remaining == "0")
+            {
+                MessageBox.Show("This person currently has no services left!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
             }
 
-            //update previous record
-            //insert the new record into services
-            //close the connection and done!
-
         }
+
+        //update previous record
+        
+
+        //insert the new record into services
+        //close the connection and done!
+
+
 
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
@@ -120,30 +155,30 @@ namespace srdb
             mainMenu mm = new mainMenu();
             mm.Show();
         }
-         public void loadPaymentMethodCB()
-       {
-           try
-           {
-               dbConnect.combobox_initialise();
-               dbConnect.combobox_Open_Connection();
+        public void loadPaymentMethodCB()
+        {
+            try
+            {
+                dbConnect.combobox_initialise();
+                dbConnect.combobox_Open_Connection();
 
-               var query = "SELECT paymentMethod FROM paymentMethod";
-               using (var command = new MySqlCommand(query, dbConnect.cb_connection))
-               {
-                   using (var reader = command.ExecuteReader())
-                   {
-                       //Iterate through the rows and add it to the combobox's items
-                       while (reader.Read())
-                       {
-                           cbPaymentmethod.Items.Add(reader.GetString("paymentMethod"));
-                       }
-                   }
-               }
-           }
-           catch (Exception ex)
-           {
-               MessageBox.Show("Error loading model ComboBox " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-           }
-       } 
+                var query = "SELECT paymentMethod FROM paymentMethod";
+                using (var command = new MySqlCommand(query, dbConnect.cb_connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        //Iterate through the rows and add it to the combobox's items
+                        while (reader.Read())
+                        {
+                            cbPaymentmethod.Items.Add(reader.GetString("paymentMethod"));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading model ComboBox " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
