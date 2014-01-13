@@ -21,6 +21,7 @@ namespace srdb
     class DBConnect
     {
         public MySqlConnection connection;
+        public MySqlConnection services_connection;
         public MySqlConnection login_connection;
         public MySqlConnection cb_connection;
         private string server;
@@ -194,11 +195,11 @@ namespace srdb
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error););
                 return false;
             }
         }
-           public void combobox_initialise()
+        public void combobox_initialise()
         {
             server = "localhost";
             database = "combobox";
@@ -246,7 +247,59 @@ namespace srdb
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error););
+                return false;
+            }
+        }
+        public void services_initialise()
+        {
+            server = "localhost";
+            database = "services";
+            uid = "root";
+            password = "MySQuireL321!";
+            string connectionString;
+            connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
+
+            services_connection = new MySqlConnection(connectionString);
+        }
+
+
+        //open connection to database
+        public bool services_Open_Connection()
+        {
+            try
+            {
+                services_connection.Close();
+                services_connection.Open();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                //0: Cannot connect to server.
+                //1045: Invalid user name and/or password.
+                switch (ex.Number)
+                {
+                    case 0:
+                        MessageBox.Show("Cannot connect to server.  Contact administrator", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+
+                    case 1045:
+                        MessageBox.Show("Invalid username/password, please try again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+                return false;
+            }
+        }
+        public bool services_CloseConnection()
+        {
+            try
+            {
+                services_connection.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
