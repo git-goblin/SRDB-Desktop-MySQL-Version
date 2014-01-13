@@ -84,18 +84,29 @@ namespace srdb
             //compare services and check
             try
             {
-                if (number_of_services == "0")
+                dbConnect.services_initialise();
+                dbConnect.services_Open_Connection();
+                MySqlCommand read_from_services = new MySqlCommand("SELECT * FROM services WHERE SRID = @SRID AND `services_left` = `TRUE`", dbConnect.services_connection);
+                read_from_services.Parameters.Add("@SRID", txtServiceRecordID.Text);
+                using (MySqlDataReader read = read_from_services.ExecuteReader())
                 {
-                    MessageBox.Show("This person currently has 0 services left!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                 services_left = read.GetString(read.GetOrdinal("services_left"));
+                 services_Remaining = read.GetString(read.GetOrdinal("services_remaining"));
+                }
+                dbConnect.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error gettings values from records! " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+                if (services_Remaining == "0")
+                {
+                    MessageBox.Show("This person currently has no services left!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     return;
                 }
 
-
             }
-
-
-
-
 
             //update previous record
             //insert the new record into services
