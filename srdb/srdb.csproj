@@ -165,6 +165,12 @@
     <Compile Include="editForm.Designer.cs">
       <DependentUpon>editForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="inputService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="inputService.Designer.cs">
+      <DependentUpon>inputService.cs</DependentUpon>
+    </Compile>
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="editForm.resx">
       <DependentUpon>editForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="inputService.resx">
+      <DependentUpon>inputService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="login.resx">
       <DependentUpon>login.cs</DependentUpon>

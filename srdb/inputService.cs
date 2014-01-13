@@ -169,10 +169,20 @@ namespace srdb
             {
                 MessageBox.Show("Error updating the previous record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-       
 
-        //insert the new record into services
+
+            //insert the new record into services
+            string inset_query = "INSERT INTO services VALUES () WHERE SRID=@SRID";
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
         //close the connection and done!
 
 
