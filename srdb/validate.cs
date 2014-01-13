@@ -23,7 +23,18 @@ namespace srdb
                 return 0;
             }
         }
-        
+        public int validate_invoice_number(string input)
+        {
+            if (input.Length < 3 || input == "")
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
         public int validate_name(string input)
         {
             Regex regex_name = new Regex("^[A-Z][a-zA-Z]*$"); //@"/^[a-zA-ZàáâäãåąćęèéêëìíîïłńòóôöõøùúûüÿýżźñçčšžÀÁÂÄÃÅĄĆĘÈÉÊËÌÍÎÏŁŃÒÓÔÖÕØÙÚÛÜŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u"); //[A-Z][a-z]+( [A-Z][a-z]+) old REGEX
