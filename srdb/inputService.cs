@@ -16,7 +16,7 @@ namespace srdb
     {
         private DBConnect dbConnect;
         private validate val;
-        private String number_of_services, firstName, surName, services_left, services_Remaining;
+        private String number_of_services, firstName, surName, services_left, services_Remaining, previous_date;
         private DateTime prev_date;
         public inputService()
         {
@@ -127,6 +127,7 @@ namespace srdb
                 {
                     services_left = read.GetString(read.GetOrdinal("services_left"));
                     services_Remaining = read.GetString(read.GetOrdinal("services_remaining"));
+                    previous_date = read.GetString(read.GetOrdinal("date"));
                 }
                 dbConnect.CloseConnection();
             }
@@ -142,9 +143,13 @@ namespace srdb
             }
 
 
-
             //update previous record
             string update_previous_service = "UPDATE services SET services_remaining=@services_remaining, services_left=@services_left WHERE IN (SRID=@SRID, date=@prev_date)";
+            int n_o_s = Convert.ToInt32(number_of_services);
+            int s_r = Convert.ToInt32(services_Remaining);
+            s_r = n_o_s - 1;
+            services_Remaining = s_r.ToString();
+            services_left = "FALSE";
             try
             {
                 dbConnect.services_initialise();
@@ -153,7 +158,7 @@ namespace srdb
                 {
                     update_prev_service.Parameters.AddWithValue("@services_remaining", services_Remaining);
                     update_prev_service.Parameters.AddWithValue("@services_left", services_left);
-                    update_prev_service.Parameters.AddWithValue("@prev_date", prev_date);
+                    update_prev_service.Parameters.AddWithValue("@prev_date", previous_date);
                     update_prev_service.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
 
                     update_prev_service.ExecuteNonQuery();
