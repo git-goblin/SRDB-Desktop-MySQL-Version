@@ -52,6 +52,9 @@
   <PropertyGroup>
     <ApplicationIcon>Visualpharm-Icons8-Metro-Style-Accounting-Bill.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
       <HintPath>\\REDWOOD\RedirectedFolders\Tobya1\Desktop\itextsharp.dll</HintPath>
