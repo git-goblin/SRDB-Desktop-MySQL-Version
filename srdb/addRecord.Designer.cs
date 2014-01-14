@@ -66,6 +66,9 @@
             this.soldBy = new System.Windows.Forms.ComboBox();
             this.txtCommissionAmount = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
+            this.cbSRID = new System.Windows.Forms.CheckBox();
+            this.txtSRID = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -354,7 +357,7 @@
             // 
             // btnClearform
             // 
-            this.btnClearform.Location = new System.Drawing.Point(300, 184);
+            this.btnClearform.Location = new System.Drawing.Point(300, 205);
             this.btnClearform.Name = "btnClearform";
             this.btnClearform.Size = new System.Drawing.Size(133, 34);
             this.btnClearform.TabIndex = 32;
@@ -364,7 +367,7 @@
             // 
             // btnAddrecord
             // 
-            this.btnAddrecord.Location = new System.Drawing.Point(300, 246);
+            this.btnAddrecord.Location = new System.Drawing.Point(300, 254);
             this.btnAddrecord.Name = "btnAddrecord";
             this.btnAddrecord.Size = new System.Drawing.Size(133, 34);
             this.btnAddrecord.TabIndex = 33;
@@ -374,7 +377,7 @@
             // 
             // btnMenu
             // 
-            this.btnMenu.Location = new System.Drawing.Point(300, 307);
+            this.btnMenu.Location = new System.Drawing.Point(300, 302);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(133, 34);
             this.btnMenu.TabIndex = 34;
@@ -408,11 +411,40 @@
             this.label17.TabIndex = 36;
             this.label17.Text = "Commission Amount: £";
             // 
+            // cbSRID
+            // 
+            this.cbSRID.AutoSize = true;
+            this.cbSRID.Location = new System.Drawing.Point(294, 179);
+            this.cbSRID.Name = "cbSRID";
+            this.cbSRID.Size = new System.Drawing.Size(139, 17);
+            this.cbSRID.TabIndex = 82;
+            this.cbSRID.Text = "Tick for manual ID entry";
+            this.cbSRID.UseVisualStyleBackColor = true;
+            // 
+            // txtSRID
+            // 
+            this.txtSRID.Location = new System.Drawing.Point(338, 153);
+            this.txtSRID.Name = "txtSRID";
+            this.txtSRID.Size = new System.Drawing.Size(95, 20);
+            this.txtSRID.TabIndex = 81;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(234, 156);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(98, 13);
+            this.label18.TabIndex = 80;
+            this.label18.Text = "Service Record ID:";
+            // 
             // addRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 348);
+            this.Controls.Add(this.cbSRID);
+            this.Controls.Add(this.txtSRID);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.txtCommissionAmount);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.soldBy);
@@ -499,5 +531,8 @@
         private System.Windows.Forms.ComboBox soldBy;
         private System.Windows.Forms.TextBox txtCommissionAmount;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox cbSRID;
+        private System.Windows.Forms.TextBox txtSRID;
+        private System.Windows.Forms.Label label18;
     }
 }
