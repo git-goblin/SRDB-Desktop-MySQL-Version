@@ -63,14 +63,14 @@ namespace srdb
                     return;
                 }
 
-
-
                 //select the values from records
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
-                MySqlCommand read_from_records = new MySqlCommand("SELECT * FROM records WHERE SRID = @SRID", dbConnect.connection);
-                read_from_records.Parameters.Add("@SRID", txtServiceRecordID.Text);
-                using (MySqlDataReader read = read_from_records.ExecuteReader())
+                String get_rec_query = "SELECT * FROM records WHERE SRID = @SRID";
+                MySqlCommand get_from_records = new MySqlCommand(get_rec_query, dbConnect.connection);
+                get_from_records.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
+                get_from_records.ExecuteNonQuery();
+                using (MySqlDataReader read = get_from_records.ExecuteReader())
                 {
                     firstName = read.GetString(read.GetOrdinal("firstName"));
                     surName = read.GetString(read.GetOrdinal("surName"));
