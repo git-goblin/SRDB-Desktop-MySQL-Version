@@ -44,6 +44,7 @@ using MySql.Data.MySqlClient;
                 paymentMethod.SelectedIndex = 0;
                 numberofServices.SelectedIndex = 0;
                 dateSold.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+                txtSRID.Clear();
             }
 
             private void btnSelectID_Click(object sender, EventArgs e)
@@ -85,6 +86,7 @@ using MySql.Data.MySqlClient;
                         txtInvoicetotal.Text = read.GetString(read.GetOrdinal("invoice_total"));
                         numberofServices.Text = read.GetString(read.GetOrdinal("number_of_services"));
                         txtCommissionAmount.Text = read.GetString(read.GetOrdinal("commission_amount"));
+                        txtSRID.Text = read.GetString(read.GetOrdinal("SRID"));
                    //     cmd.ExecuteNonQuery();
                      //   dbConnect.CloseConnection();
                     }
@@ -238,12 +240,12 @@ using MySql.Data.MySqlClient;
                     int var6 = val.validate_currency(txtInvoicetotal.Text);
                     int var7 = val.validate_currency(txtCommissionAmount.Text);
    
-                  int varID = val.validate_id(txtSelectID.Text); 
-                     if (varID != 1)
-                  {
-                    return;
-                  }
-
+                      int varID = val.validate_id(txtSelectID.Text); 
+                      if (varID != 1)
+                     {
+                        return;
+                     }
+                
                     int go_no_go = val.launch(var1, var2, var3, var4, var5, var6, var7);
 
                     if (go_no_go != 1)
@@ -269,9 +271,16 @@ using MySql.Data.MySqlClient;
                     String number_of_services = numberofServices.Text;
                     String commission_amount = txtCommissionAmount.Text;
                     string ID = txtSelectID.Text;
+                    String SRID = txtSRID.Text;
 
-                    string query = "UPDATE records SET firstName=@firstName, surName=@surName, address1=@address1, address2=@address2, postcode=@postcode, registration=@registration, model=@model, sold_by=@sold_by, date_sold=@date_sold, invoice_number=@invoice_number, sales_branch=@sales_branch, type=@type, payment_method=@payment_method, total=@total, invoice_total=@invoice_total, number_of_services=@number_of_services, commission_amount=@commission_amount WHERE ID=@ID";
-
+                        int var8 = val.validate_srid(txtSRID.Text);
+                        if (var8 != 1)
+                        {
+                            return;
+                        }
+                    
+                    string query = "UPDATE records SET firstName=@firstName, surName=@surName, address1=@address1, address2=@address2, postcode=@postcode, registration=@registration, model=@model, sold_by=@sold_by, date_sold=@date_sold, invoice_number=@invoice_number, sales_branch=@sales_branch, type=@type, payment_method=@payment_method, total=@total, invoice_total=@invoice_total, number_of_services=@number_of_services, commission_amount=@commission_amount, SRID=@SRID WHERE ID=@ID";
+                   
                     dbConnect.Initialize();
                     dbConnect.OpenConnection();
 
@@ -296,6 +305,7 @@ using MySql.Data.MySqlClient;
                         cmd.Parameters.AddWithValue("@invoice_total", invoice_total);
                         cmd.Parameters.AddWithValue("@number_of_services", number_of_services);
                         cmd.Parameters.AddWithValue("@commission_amount", commission_amount);
+                        cmd.Parameters.AddWithValue("@SRID", SRID);
                         cmd.ExecuteNonQuery();
                         dbConnect.CloseConnection();
                     }
