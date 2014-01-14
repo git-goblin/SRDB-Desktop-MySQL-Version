@@ -18,11 +18,11 @@ namespace srdb
         private validate val;
         private String number_of_services, firstName, surName, services_left, services_Remaining, previous_date;
         private DateTime prev_date;
+        private DateTime date_today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         public inputService()
         {
             dbConnect = new DBConnect();
             val = new validate();
-            DateTime date_today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             InitializeComponent();
         }
 
@@ -172,14 +172,29 @@ namespace srdb
 
 
             //insert the new record into services
-            string inset_query = "INSERT INTO services VALUES () WHERE SRID=@SRID";
+            string inset_query = "INSERT INTO services VALUES (@SRID, @date, @firstName, @surName, @amount, @services_remaining, @services_left, @invoice_number) WHERE SRID=@SRID";
             try
             {
+                dbConnect.services_initialise();
+                dbConnect.services_Open_Connection();
+                using (MySqlCommand insert_service = new MySqlCommand(inset_query, dbConnect.services_connection))
+                {
+                    insert_service.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
+                    insert_service.Parameters.AddWithValue("@date", date_today);
+                    insert_service.Parameters.AddWithValue("@firstName", firstName);
+                    insert_service.Parameters.AddWithValue("@surName", surName);
+                    insert_service.Parameters.AddWithValue("@amount", txtAmount.Text);
+                    insert_service.Parameters.AddWithValue("@services_remaining", services_Remaining);
+                    insert_service.Parameters.AddWithValue("@services_left", services_left); //Another check can be added, set this to true however is services remaing == 0 then this needs to be set to false
+                    insert_service.Parameters.AddWithValue("@invoice_number", txtInvoiceNumber.Text);
 
+                    insert_service.ExecuteNonQuery();
+                    dbConnect.services_CloseConnection();
+                }
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("Error inserting the record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
