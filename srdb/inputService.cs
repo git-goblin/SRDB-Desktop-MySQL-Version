@@ -194,7 +194,7 @@ namespace srdb
                     insert_service.Parameters.AddWithValue("@surName", surName);
                     insert_service.Parameters.AddWithValue("@amount", txtAmount.Text);
                     insert_service.Parameters.AddWithValue("@services_remaining", services_Remaining);
-                    insert_service.Parameters.AddWithValue("@services_left", services_left); //Another check can be added, set this to true however is services remaing == 0 then this needs to be set to false
+                    insert_service.Parameters.AddWithValue("@services_left", input_sl); //Another check can be added, set this to true however is services remaing == 0 then this needs to be set to false
                     insert_service.Parameters.AddWithValue("@invoice_number", txtInvoiceNumber.Text);
 
                     insert_service.ExecuteNonQuery();
