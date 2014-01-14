@@ -195,10 +195,26 @@ namespace srdb
                 String number_of_services = numberofServices.Text;
                 String commission_amount = txtCommissionAmount.Text;
 
-                string query = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount)";
+                string query; // = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";
+
+                if (cbSRID.Checked)
+                {
+                    int var8 = val.validate_srid(txtSRID.Text);
+                    if (var8 != 1)
+                    {
+                        return;
+                    }
+                    query = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";
+                }
+                else
+                {
+                    query = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount)";
+                }
 
                 using (MySqlCommand cmd = new MySqlCommand(query, dbConnect.connection))
                 {
+                    if (cbSRID.Checked)
+                    {
                     cmd.Parameters.AddWithValue("@firstName", firstName);
                     cmd.Parameters.AddWithValue("@surName", surName);
                     cmd.Parameters.AddWithValue("@address1", address1);
@@ -216,7 +232,28 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@invoice_total", invoice_total);
                     cmd.Parameters.AddWithValue("@number_of_services", number_of_services);
                     cmd.Parameters.AddWithValue("@commission_amount", commission_amount);
-                   
+                    cmd.Parameters.AddWithValue("@SRID", txtSRID.Text);
+                    }
+                    else 
+                    {
+                        cmd.Parameters.AddWithValue("@firstName", firstName);
+                        cmd.Parameters.AddWithValue("@surName", surName);
+                        cmd.Parameters.AddWithValue("@address1", address1);
+                        cmd.Parameters.AddWithValue("@address2", address2);
+                        cmd.Parameters.AddWithValue("@postcode", postcode);
+                        cmd.Parameters.AddWithValue("@registration", registration);
+                        cmd.Parameters.AddWithValue("@model", model);
+                        cmd.Parameters.AddWithValue("@sold_by", sold_by);
+                        cmd.Parameters.AddWithValue("@date_sold", date_sold);
+                        cmd.Parameters.AddWithValue("@invoice_number", invoiceNumber);
+                        cmd.Parameters.AddWithValue("@sales_branch", sales_branch);
+                        cmd.Parameters.AddWithValue("@type", type);
+                        cmd.Parameters.AddWithValue("@payment_method", payment_method);
+                        cmd.Parameters.AddWithValue("@total", total);
+                        cmd.Parameters.AddWithValue("@invoice_total", invoice_total);
+                        cmd.Parameters.AddWithValue("@number_of_services", number_of_services);
+                        cmd.Parameters.AddWithValue("@commission_amount", commission_amount);
+                    }
                     cmd.ExecuteNonQuery();
                     dbConnect.CloseConnection();
                 }
@@ -248,6 +285,7 @@ namespace srdb
             paymentMethod.SelectedIndex = 0;
             numberofServices.SelectedIndex = 0;
             dateSold.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            txtSRID.Clear();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
