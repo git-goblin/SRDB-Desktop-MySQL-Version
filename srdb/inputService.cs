@@ -55,7 +55,7 @@ namespace srdb
                 //Save the record
                 int val1 = val.validate_currency(txtAmount.Text);
                 int val2 = val.validate_invoice_number(txtInvoiceNumber.Text);
-                int val3 = val.validate_id(txtServiceRecordID.Text);
+                int val3 = val.validate_srid(txtServiceRecordID.Text);
 
                 if (val1 != 1 && val2 != 1 && val3 != 1)
                 {
