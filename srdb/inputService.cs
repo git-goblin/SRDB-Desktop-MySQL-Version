@@ -16,7 +16,7 @@ namespace srdb
     {
         private DBConnect dbConnect;
         private validate val;
-        private String number_of_services, firstName, surName, services_left, services_Remaining, previous_date;
+        private String number_of_services, firstName, surName, services_left, services_Remaining, previous_date, input_sl;
         private DateTime prev_date;
         private DateTime date_today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         public inputService()
@@ -145,11 +145,21 @@ namespace srdb
 
             //update previous record
             string update_previous_service = "UPDATE services SET services_remaining=@services_remaining, services_left=@services_left WHERE IN (SRID=@SRID, date=@prev_date)";
+            
+            //Get's the values pulled from the DB and converts them to INT so calculations can be performed 
             int n_o_s = Convert.ToInt32(number_of_services);
             int s_r = Convert.ToInt32(services_Remaining);
-            s_r = n_o_s - 1;
+            if (s_r == 0)
+            {
+                services_left = "FALSE";
+                s_r = 0;
+            }
+            else
+            {
+                input_sl = "TRUE";
+                s_r = n_o_s - 1;
+            }
             services_Remaining = s_r.ToString();
-            services_left = "FALSE";
             try
             {
                 dbConnect.services_initialise();
@@ -169,8 +179,7 @@ namespace srdb
             {
                 MessageBox.Show("Error updating the previous record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
+            
             //insert the new record into services
             string inset_query = "INSERT INTO services VALUES (@SRID, @date, @firstName, @surName, @amount, @services_remaining, @services_left, @invoice_number) WHERE SRID=@SRID";
             try
