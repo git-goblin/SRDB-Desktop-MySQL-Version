@@ -77,6 +77,20 @@ namespace srdb
             }
         }
 
+        public int validate_srid(string input)
+        {
+            Regex regex_SRID = new Regex("^[0-9]{1,999999}$");
+            if (regex_SRID.IsMatch(input) && input != "" && input.Length > 5)
+            {
+                return 1;
+            }
+            else
+            {
+                MessageBox.Show("Invalid input for Service Record ID!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         public int validate_currency(string input)
         {
             Regex regex_currency = new Regex(@"^\-?\(?\£?\s*\-?\s*\(?(((\d{1,3}((\,\d{3})*|\d*))?(\.\d{1,4})?)|((\d{1,3}((\,\d{3})*|\d*))(\.\d{0,4})?))\)?$");//("/^£?(([1-9]{1,3}(,\d{3})*(\.\d{2})?)|(0\.[1-9]\d)|(0\.0[1-9]))$/"); 
