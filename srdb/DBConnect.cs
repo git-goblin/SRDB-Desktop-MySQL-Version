@@ -195,7 +195,7 @@ namespace srdb
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error););
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -247,7 +247,7 @@ namespace srdb
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error););
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
