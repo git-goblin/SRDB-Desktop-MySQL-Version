@@ -49,5 +49,12 @@ namespace srdb
         {
             Application.Exit();
         }
+
+        private void btnServices_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            inputService inpts = new inputService();
+            inpts.Show();
+        }
     }
 }
