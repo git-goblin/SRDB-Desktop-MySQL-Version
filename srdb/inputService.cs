@@ -23,6 +23,7 @@ namespace srdb
             val = new validate();
             InitializeComponent();
         }
+
         private void update_previous_record()
         {
             string update_previous_service = "UPDATE services SET services_remaining=@services_remaining, services_left=@services_left WHERE IN (SRID=@SRID, date=@prev_date)";
@@ -178,9 +179,11 @@ namespace srdb
                     using (MySqlDataReader reader = read_from_services.ExecuteReader())
                     {
                         while (reader.Read())
-                        services_left = reader.GetString(reader.GetOrdinal("services_left"));
-                        services_Remaining = reader.GetString(reader.GetOrdinal("services_remaining"));
-                        previous_date = reader.GetString(reader.GetOrdinal("date"));
+                        {
+                            services_left = reader.GetString(reader.GetOrdinal("services_left"));
+                            services_Remaining = reader.GetString(reader.GetOrdinal("services_remaining"));
+                            previous_date = reader.GetString(reader.GetOrdinal("date"));
+                        }
                     }
                     //dbConnect.CloseConnection();
                 }
