@@ -254,7 +254,7 @@ namespace srdb
         public void services_initialise()
         {
             server = "localhost";
-            database = "services";
+            database = "srdb";
             uid = "root";
             password = "MySQuireL321!";
             string connectionString;
