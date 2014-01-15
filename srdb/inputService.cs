@@ -16,8 +16,8 @@ namespace srdb
     {
         private DBConnect dbConnect;
         private validate val;
-        private String number_of_services, firstName, surName, services_left, services_Remaining, previous_date, input_sl;
-        private DateTime date_today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+        private String number_of_services, firstName, surName, services_left, services_Remaining, previous_date, input_sl, sl;
+        private DateTime date_today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.);
         public inputService()
         {
             dbConnect = new DBConnect();
@@ -59,6 +59,7 @@ namespace srdb
             catch (Exception ex)
             {
                 MessageBox.Show("Error updating the previous record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -136,13 +137,15 @@ namespace srdb
                     {
                         try
                         {
-                            string insert_query = "INSERT INTO services (SRID, firstName, surName) VALUES (@SRID, @firstName, @surName)";
+                            string insert_query = "INSERT INTO services (SRID, firstName, surName, date, services_remaining, services_left) VALUES (@SRID, @firstName, @surName, @date, @services_remaining, @services_left)";
                             using (MySqlCommand insert_service = new MySqlCommand(insert_query, dbConnect.services_connection))
                             {
                                 insert_service.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
                                 insert_service.Parameters.AddWithValue("@firstName", firstName);
                                 insert_service.Parameters.AddWithValue("@surName", surName);
-                              //  insert_service.Parameters.AddWithValue("@services_remaining", services_Remaining);
+                                insert_service.Parameters.AddWithValue("@date", date_today);
+                                insert_service.Parameters.AddWithValue("@services_left", txtServiceRecordID.Text); //Crude work around, it would keep flagging this as a previous service since service_left = TRUE so now it is set as the SRID it won't flag
+                                insert_service.Parameters.AddWithValue("@services_remaining", number_of_services);
 
                                 insert_service.ExecuteNonQuery();
                                 // dbConnect.services_CloseConnection();
@@ -166,11 +169,13 @@ namespace srdb
             //compare services and check
             try
             {
+                sl = "TRUE";
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
-                using (MySqlCommand read_from_services = new MySqlCommand("SELECT * FROM services WHERE SRID=@SRID AND services_left = `TRUE`", dbConnect.services_connection))
+                using (MySqlCommand read_from_services = new MySqlCommand("SELECT * FROM services WHERE SRID=@SRID AND services_left=@SL", dbConnect.services_connection))
                 {
                    read_from_services.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
+                   read_from_services.Parameters.AddWithValue("@SL", sl);
                     using (MySqlDataReader read = read_from_services.ExecuteReader())
                     {
                         while(read.Read())
@@ -183,7 +188,8 @@ namespace srdb
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error gettings values from records! " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error gettings values from records for checking! " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             if (services_Remaining == "0")
@@ -192,15 +198,15 @@ namespace srdb
                 return;
             }
 
-            //update previous record
-
-            if (previous_date == "NULL")
+            //update previous record if an existing one exists
+            string dt = date_today.ToString();
+            if (previous_date != dt)
             {
                 update_previous_record();
             }
 
             //insert the new record into services
-            string inset_query = "INSERT INTO services VALUES (@SRID, @date, @firstName, @surName, @amount, @services_remaining, @services_left, @invoice_number) WHERE SRID=@SRID";
+            string inset_query = "INSERT INTO services VALUES (@SRID, @date, @firstName, @surName, @amount, @services_remaining, @services_left, @invoice_number)";
             try
             {
                 dbConnect.services_initialise();
@@ -222,6 +228,7 @@ namespace srdb
             catch (Exception ex)
             {
                 MessageBox.Show("Error inserting the record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
