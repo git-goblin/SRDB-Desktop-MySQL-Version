@@ -17,7 +17,6 @@ namespace srdb
         private DBConnect dbConnect;
         private validate val;
         private String number_of_services, firstName, surName, services_left, services_Remaining, previous_date, input_sl, sl;
-        private DateTime date_today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.);
         public inputService()
         {
             dbConnect = new DBConnect();
@@ -126,7 +125,7 @@ namespace srdb
             }
             //checks to see if a record exists, if not, create one
             try
-            {
+            {  
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
                 using (MySqlCommand check_record = new MySqlCommand("SELECT * FROM services WHERE SRID=@SRID", dbConnect.services_connection))
@@ -143,7 +142,7 @@ namespace srdb
                                 insert_service.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
                                 insert_service.Parameters.AddWithValue("@firstName", firstName);
                                 insert_service.Parameters.AddWithValue("@surName", surName);
-                                insert_service.Parameters.AddWithValue("@date", date_today);
+                                insert_service.Parameters.AddWithValue("@date", dataOfService.Text);
                                 insert_service.Parameters.AddWithValue("@services_left", txtServiceRecordID.Text); //Crude work around, it would keep flagging this as a previous service since service_left = TRUE so now it is set as the SRID it won't flag
                                 insert_service.Parameters.AddWithValue("@services_remaining", number_of_services);
 
@@ -176,12 +175,12 @@ namespace srdb
                 {
                    read_from_services.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
                    read_from_services.Parameters.AddWithValue("@SL", sl);
-                    using (MySqlDataReader read = read_from_services.ExecuteReader())
+                    using (MySqlDataReader reader = read_from_services.ExecuteReader())
                     {
-                        while(read.Read())
-                        services_left = read.GetString(read.GetOrdinal("services_left"));
-                        services_Remaining = read.GetString(read.GetOrdinal("services_remaining"));
-                        previous_date = read.GetString(read.GetOrdinal("date"));
+                        while (reader.Read())
+                        services_left = reader.GetString(reader.GetOrdinal("services_left"));
+                        services_Remaining = reader.GetString(reader.GetOrdinal("services_remaining"));
+                        previous_date = reader.GetString(reader.GetOrdinal("date"));
                     }
                     //dbConnect.CloseConnection();
                 }
@@ -199,8 +198,8 @@ namespace srdb
             }
 
             //update previous record if an existing one exists
-            string dt = date_today.ToString();
-            if (previous_date != dt)
+            
+            if (previous_date != dataOfService.Text)
             {
                 update_previous_record();
             }
@@ -214,7 +213,7 @@ namespace srdb
                 using (MySqlCommand insert_service = new MySqlCommand(inset_query, dbConnect.services_connection))
                 {
                     insert_service.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
-                    insert_service.Parameters.AddWithValue("@date", date_today);
+                    insert_service.Parameters.AddWithValue("@date", dataOfService.Text);
                     insert_service.Parameters.AddWithValue("@firstName", firstName);
                     insert_service.Parameters.AddWithValue("@surName", surName);
                     insert_service.Parameters.AddWithValue("@amount", txtAmount.Text);
