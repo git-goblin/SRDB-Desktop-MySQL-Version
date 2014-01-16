@@ -16,7 +16,8 @@ namespace srdb
     {
         private DBConnect dbConnect;
         private validate val;
-        private String number_of_services, firstName, surName, services_left, services_Remaining, previous_date, input_sl, sl;
+        private String firstName, surName, number_of_services;
+        private String date, services_remaining, services_left;
         public inputService()
         {
             dbConnect = new DBConnect();
@@ -24,44 +25,6 @@ namespace srdb
             InitializeComponent();
         }
 
-        private void update_previous_record()
-        {
-            string update_previous_service = "UPDATE services SET services_remaining=@services_remaining, services_left=@services_left WHERE IN (SRID=@SRID, date=@prev_date)";
-
-            //Get's the values pulled from the DB and converts them to INT so calculations can be performed 
-            int n_o_s = Convert.ToInt32(number_of_services);
-            int s_r = Convert.ToInt32(services_Remaining);
-            if (s_r == 0)
-            {
-                services_left = "FALSE";
-                s_r = 0;
-            }
-            else
-            {
-                input_sl = "TRUE";
-                s_r = n_o_s - 1;
-            }
-            services_Remaining = s_r.ToString();
-            try
-            {
-                dbConnect.services_initialise();
-                dbConnect.services_Open_Connection();
-                using (MySqlCommand update_prev_service = new MySqlCommand(update_previous_service, dbConnect.services_connection))
-                {
-                    update_prev_service.Parameters.AddWithValue("@services_remaining", services_Remaining);
-                    update_prev_service.Parameters.AddWithValue("@services_left", services_left);
-                    update_prev_service.Parameters.AddWithValue("@prev_date", previous_date);
-                    update_prev_service.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
-
-                    update_prev_service.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error updating the previous record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
 
         private void inputService_Load(object sender, EventArgs e)
         {
@@ -85,158 +48,104 @@ namespace srdb
             dataOfService.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         }
 
-        private void btnSaveService_Click(object sender, EventArgs e)
+        //Functions go here -->
+        private void get_values_from_records()
         {
             try
             {
-                MessageBox.Show("This may take a moment...", "Please be patient", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                //Save the record
-                int val1 = val.validate_currency(txtAmount.Text);
-                int val2 = val.validate_invoice_number(txtInvoiceNumber.Text);
-                int val3 = val.validate_srid(txtServiceRecordID.Text);
-
-                if (val1 != 1 && val2 != 1 && val3 != 1)
-                {
-                    MessageBox.Show("There were errors with the details you have entered! Review before sending again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                //select the values from records
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
-                String get_rec_query = "SELECT * FROM records WHERE SRID=@SRID";
-                using (MySqlCommand get_from_records = new MySqlCommand(get_rec_query, dbConnect.connection))
+                string get_query = "SELECT * FROM records WHERE SRID=@SRID";
+                using (MySqlCommand gvfr = new MySqlCommand(get_query, dbConnect.connection))
                 {
-                    get_from_records.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
-                 //   get_from_records.ExecuteNonQuery();
-                    using (MySqlDataReader read = get_from_records.ExecuteReader())
+                    gvfr.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
+                    using (MySqlDataReader read = gvfr.ExecuteReader())
                     {
-                        while(read.Read())
-                        firstName = read.GetString(read.GetOrdinal("firstName"));
-                        surName = read.GetString(read.GetOrdinal("surName"));
-                        number_of_services = read.GetString(read.GetOrdinal("number_of_services"));
-                    }
-                    //    dbConnect.CloseConnection();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error gettings values from records! " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            //checks to see if a record exists, if not, create one
-            try
-            {  
-                dbConnect.services_initialise();
-                dbConnect.services_Open_Connection();
-                using (MySqlCommand check_record = new MySqlCommand("SELECT * FROM services WHERE SRID=@SRID", dbConnect.services_connection))
-                {
-                    check_record.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
-
-                    if (check_record.ExecuteScalar() == null)
-                    {
-                        try
+                        while (read.Read())
                         {
-                            string insert_query = "INSERT INTO services (SRID, firstName, surName, date, services_remaining, services_left) VALUES (@SRID, @firstName, @surName, @date, @services_remaining, @services_left)";
-                            using (MySqlCommand insert_service = new MySqlCommand(insert_query, dbConnect.services_connection))
-                            {
-                                insert_service.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
-                                insert_service.Parameters.AddWithValue("@firstName", firstName);
-                                insert_service.Parameters.AddWithValue("@surName", surName);
-                                insert_service.Parameters.AddWithValue("@date", dataOfService.Text);
-                                insert_service.Parameters.AddWithValue("@services_left", txtServiceRecordID.Text); //Crude work around, it would keep flagging this as a previous service since service_left = TRUE so now it is set as the SRID it won't flag
-                                insert_service.Parameters.AddWithValue("@services_remaining", number_of_services);
-
-                                insert_service.ExecuteNonQuery();
-                                // dbConnect.services_CloseConnection();
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Error inserting new service users details! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            firstName = read.GetString(read.GetOrdinal("firstName"));
+                            surName = read.GetString(read.GetOrdinal("surName"));
+                            number_of_services = read.GetString(read.GetOrdinal("number_of_services"));
                         }
                     }
                 }
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("Error checking record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-
-            //compare services and check
-            try
-            {
-                sl = "TRUE";
-                dbConnect.services_initialise();
-                dbConnect.services_Open_Connection();
-                using (MySqlCommand read_from_services = new MySqlCommand("SELECT * FROM services WHERE SRID=@SRID AND services_left=@SL", dbConnect.services_connection))
-                {
-                   read_from_services.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
-                   read_from_services.Parameters.AddWithValue("@SL", sl);
-                    using (MySqlDataReader reader = read_from_services.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            services_left = reader.GetString(reader.GetOrdinal("services_left"));
-                            services_Remaining = reader.GetString(reader.GetOrdinal("services_remaining"));
-                            previous_date = reader.GetString(reader.GetOrdinal("date"));
-                        }
-                    }
-                    //dbConnect.CloseConnection();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error gettings values from records for checking! " + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (services_Remaining == "0")
-            {
-                MessageBox.Show("This person currently has no services left!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                return;
-            }
-
-            //update previous record if an existing one exists
-            
-            if (previous_date != dataOfService.Text)
-            {
-                update_previous_record();
-            }
-
-            //insert the new record into services
-            string inset_query = "INSERT INTO services VALUES (@SRID, @date, @firstName, @surName, @amount, @services_remaining, @services_left, @invoice_number)";
-            try
-            {
-                dbConnect.services_initialise();
-                dbConnect.services_Open_Connection();
-                using (MySqlCommand insert_service = new MySqlCommand(inset_query, dbConnect.services_connection))
-                {
-                    insert_service.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
-                    insert_service.Parameters.AddWithValue("@date", dataOfService.Text);
-                    insert_service.Parameters.AddWithValue("@firstName", firstName);
-                    insert_service.Parameters.AddWithValue("@surName", surName);
-                    insert_service.Parameters.AddWithValue("@amount", txtAmount.Text);
-                    insert_service.Parameters.AddWithValue("@services_remaining", services_Remaining);
-                    insert_service.Parameters.AddWithValue("@services_left", input_sl); //Another check can be added, set this to true however is services remaing == 0 then this needs to be set to false
-                    insert_service.Parameters.AddWithValue("@invoice_number", txtInvoiceNumber.Text);
-
-                    insert_service.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error inserting the record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show("Error getting values from records! " +ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        //close the connection and done!
+        private void check_services()
+        {
+            try
+            {
+                dbConnect.services_initialise();
+                dbConnect.services_Open_Connection();
+                string check_query = "SELECT MIN(services_remaining) FROM services WHERE SRID=@SRID AND services_left=@SL";
+                using (MySqlCommand cs = new MySqlCommand(check_query, dbConnect.services_connection))
+                {
+                    cs.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
+                    cs.Parameters.AddWithValue("@SL", "TRUE"); 
+                    using (MySqlDataReader read = cs.ExecuteReader())
+                    {
+                        while (read.Read())
+                        {
+                                //will use an IF statement, if NULL so something else, do something else
+                                //Could use similar style to login form
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error checking services! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void create_new_service()
+        {
+            try
+            {
+                dbConnect.services_initialise();
+                dbConnect.services_Open_Connection();
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error creating new service record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSaveService_Click(object sender, EventArgs e)
+        {
+            int val1, val2, val3;
+
+            MessageBox.Show("This may take a while...", "Be patient", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            //get the values from the records table we need: firstname, surname and number of services
+            get_values_from_records();
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
         {
