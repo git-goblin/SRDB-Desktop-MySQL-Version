@@ -115,22 +115,52 @@ namespace srdb
 
         private void update_previous_record()
         {
-            dbConnect.services_initialise();
-            dbConnect.services_Open_Connection();
-            string update_query = "UPDATE services SET () WHERE ID=@ID";
-            using (MySqlCommand upr = new MySqlCommand(update_query, dbConnect.services_connection))
+            try
             {
-                upr.Parameters.AddWithValue("@ID", "");
+                dbConnect.services_initialise();
+                dbConnect.services_Open_Connection();
+                string update_query = "UPDATE services SET services_left=@SL WHERE ID=@ID";
+                using (MySqlCommand upr = new MySqlCommand(update_query, dbConnect.services_connection))
+                {
+                    upr.Parameters.AddWithValue("@ID", rowID);
+                    upr.Parameters.AddWithValue("@SL", "FALSE");
+                }
+                create_new_service();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Error updating previous record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
-
+         
+        private void check_service_remaining()
+        {
+            int n_o_s = Convert.ToInt32(number_of_services);
+            int sr = Convert.ToInt32(services_remaining);
+            if (sr == 0)
+            {
+                MessageBox.Show("The person has no services left!", "Be patient", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return; 
+            }
+            else if (sr > 0)
+            {
+                sr = sr - 1;
+                services_remaining = sr.ToString();
+                create_new_service();
+            }
+            else
+            {
+                sr = n_o_s;
+                sr = sr - 1;
+                services_remaining = sr.ToString();
+                create_new_service();
+            }
+        }
         private void create_new_service()
         {
             try
             {
-                int n_o_s = Convert.ToInt32(number_of_services);
-                int sr = n_o_s - 1;
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
                 string insert_new_service_query = "INSERT INTO services (SRID, date, firstName, surName, amount, services_remianing, services_left, invoice_number) VALUES (@SRID, @date, @firstName, @surName, @amount, @services_remianing, @services_left, @invoice_number)";
@@ -140,7 +170,7 @@ namespace srdb
                     cns.Parameters.AddWithValue("@date", dataOfService.Text);
                     cns.Parameters.AddWithValue("@firstName", firstName);
                     cns.Parameters.AddWithValue("@surName", surName);
-                    cns.Parameters.AddWithValue("@services_remianing", sr);
+                    cns.Parameters.AddWithValue("@services_remianing", services_remaining);
                     cns.Parameters.AddWithValue("@services_left", "TRUE");
                     cns.Parameters.AddWithValue("@invoice_number", txtInvoiceNumber.Text);
 
@@ -170,26 +200,8 @@ namespace srdb
             get_values_from_records();
             //check the number of services remaining and add in a new service into the DB or if not record is available, create a new one
             check_services();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            //check what to do based on the number of services remaining
+            check_service_remaining();
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
