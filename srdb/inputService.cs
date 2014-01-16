@@ -87,13 +87,14 @@ namespace srdb
                 {
                     cs.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
                     cs.Parameters.AddWithValue("@SL", "TRUE"); 
-                    using (MySqlDataReader read = cs.ExecuteReader())
+
+                    if (cs.ExecuteScalar() == null)
                     {
-                        while (read.Read())
-                        {
-                                //will use an IF statement, if NULL so something else, do something else
-                                //Could use similar style to login form
-                        }
+                        create_new_service();
+                    }
+                    else
+                    {
+                        //If there is a record currently in the DB do this
                     }
                 }
             }
@@ -101,6 +102,18 @@ namespace srdb
             {
                 MessageBox.Show("Error checking services! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void update_previous_record()
+        {
+            dbConnect.services_initialise();
+            dbConnect.services_Open_Connection();
+            string update_query = "UPDATE services SET () WHERE ID=@ID";
+            using (MySqlCommand upr = new MySqlCommand(update_query, dbConnect.services_connection))
+            {
+                upr.Parameters.AddWithValue("@ID", "");
+            }
+
         }
 
         private void create_new_service()
