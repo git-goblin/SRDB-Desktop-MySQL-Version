@@ -107,8 +107,23 @@ namespace srdb
         {
             try
             {
+                int n_o_s = Convert.ToInt32(number_of_services);
+                int sr = n_o_s - 1;
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
+                string insert_new_service_query = "INSERT INTO services (SRID, date, firstName, surName, amount, services_remianing, services_left, invoice_number) VALUES (@SRID, @date, @firstName, @surName, @amount, @services_remianing, @services_left, @invoice_number)";
+                using (MySqlCommand cns = new MySqlCommand(insert_new_service_query, dbConnect.services_connection))
+                {
+                    cns.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
+                    cns.Parameters.AddWithValue("@date", dataOfService.Text);
+                    cns.Parameters.AddWithValue("@firstName", firstName);
+                    cns.Parameters.AddWithValue("@surName", surName);
+                    cns.Parameters.AddWithValue("@services_remianing", sr);
+                    cns.Parameters.AddWithValue("@services_left", "TRUE");
+                    cns.Parameters.AddWithValue("@invoice_number", txtInvoiceNumber.Text);
+
+                    cns.ExecuteNonQuery();
+                }
 
             }
             catch (MySqlException ex)
@@ -119,7 +134,14 @@ namespace srdb
 
         private void btnSaveService_Click(object sender, EventArgs e)
         {
-            int val1, val2, val3;
+            int val1, val2;
+            val1 = val.validate_srid(txtServiceRecordID.Text);
+            val2 = val.validate_currency(txtAmount.Text);
+
+            if (val1 != 1 && val2 != 1 && txtInvoiceNumber.TextLength < 3)
+            {
+                return;
+            }
 
             MessageBox.Show("This may take a while...", "Be patient", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             //get the values from the records table we need: firstname, surname and number of services
