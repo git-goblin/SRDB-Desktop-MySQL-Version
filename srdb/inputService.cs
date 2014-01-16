@@ -17,7 +17,7 @@ namespace srdb
         private DBConnect dbConnect;
         private validate val;
         private String firstName, surName, number_of_services;
-        private String date, services_remaining, services_left;
+        private String date, services_remaining, rowID;
         public inputService()
         {
             dbConnect = new DBConnect();
@@ -95,6 +95,15 @@ namespace srdb
                     else
                     {
                         //If there is a record currently in the DB do this
+                        using (MySqlDataReader read = cs.ExecuteReader())
+                        {
+                            while (read.Read())
+                            {
+                                services_remaining = read.GetString(read.GetOrdinal("services_remaining"));
+                                rowID = read.GetString(read.GetOrdinal("ID"));
+                            }
+                        }
+                        update_previous_record();
                     }
                 }
             }
@@ -159,7 +168,8 @@ namespace srdb
             MessageBox.Show("This may take a while...", "Be patient", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             //get the values from the records table we need: firstname, surname and number of services
             get_values_from_records();
-
+            //check the number of services remaining and add in a new service into the DB or if not record is available, create a new one
+            check_services();
 
 
 
