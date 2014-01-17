@@ -17,7 +17,7 @@ namespace srdb
         private DBConnect dbConnect;
         private validate val;
         private String firstName, surName, number_of_services;
-        private String date, services_remaining, rowID;
+        private String services_remaining, rowID;
         public inputService()
         {
             dbConnect = new DBConnect();
@@ -83,11 +83,11 @@ namespace srdb
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
                 string check_query = "SELECT MIN(services_remaining) FROM services WHERE SRID=@SRID AND services_left=@SL";
-                using (MySqlCommand cs = new MySqlCommand(check_query, dbConnect.services_connection))
-                {
+                MySqlCommand cs = new MySqlCommand(check_query, dbConnect.services_connection);
+                
                     cs.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
-                    cs.Parameters.AddWithValue("@SL", "TRUE"); 
-
+                    cs.Parameters.AddWithValue("@SL", "TRUE");
+               
                     if (cs.ExecuteScalar() == null)
                     {
                         create_new_service();
@@ -105,7 +105,7 @@ namespace srdb
                         }
                         update_previous_record();
                     }
-                }
+                
             }
             catch (MySqlException ex)
             {
@@ -186,11 +186,12 @@ namespace srdb
 
         private void btnSaveService_Click(object sender, EventArgs e)
         {
-            int val1, val2;
+            int val1, val2, val3;
             val1 = val.validate_srid(txtServiceRecordID.Text);
             val2 = val.validate_currency(txtAmount.Text);
+            val3 = val.validate_invoice_number(txtInvoiceNumber.Text);
 
-            if (val1 != 1 && val2 != 1 && txtInvoiceNumber.TextLength < 3)
+            if (val1 != 1 || val2 != 1 || val3 != 1)
             {
                 return;
             }
