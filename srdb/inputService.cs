@@ -87,8 +87,9 @@ namespace srdb
                 
                     cs.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
                     cs.Parameters.AddWithValue("@SL", "TRUE");
-               
-                    if (cs.ExecuteScalar() == null)
+                    var scal_var = cs.ExecuteScalar();
+                    MessageBox.Show("Value of scaler: " + scal_var);
+                  if (scal_var == DBNull.Value)
                     {
                         create_new_service();
                     }
@@ -104,10 +105,20 @@ namespace srdb
                             }
                         }
                         update_previous_record();
+                    } 
+            /*    using (MySqlDataReader read = cs.ExecuteReader())
+                {
+                    while (read.Read())
+                    {
+             
+                            services_remaining = Convert.ToString(read.GetInt32(6));
+                            rowID = services_remaining = Convert.ToString(read.GetInt32(9));
+                            check_service_remaining();
                     }
+                } */
                 
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Error checking services! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
