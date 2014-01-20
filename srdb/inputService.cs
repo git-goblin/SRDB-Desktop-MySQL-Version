@@ -95,6 +95,7 @@ namespace srdb
                         int n_o_s = Convert.ToInt32(number_of_services);
                         int sr;
                         sr = n_o_s - 1;
+                        services_left = "TRUE";
                         services_remaining = sr.ToString();
                         create_new_service();
                     }
@@ -134,6 +135,8 @@ namespace srdb
                 {
                     upr.Parameters.AddWithValue("@ID", rowID);
                     upr.Parameters.AddWithValue("@SL", "FALSE");
+
+                    upr.ExecuteNonQuery();
                 }
             }
             catch (MySqlException ex)
