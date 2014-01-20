@@ -91,6 +91,10 @@ namespace srdb
                     MessageBox.Show("Value of scaler: " + scal_var);
                   if (scal_var == DBNull.Value)
                     {
+                        int n_o_s = Convert.ToInt32(number_of_services);
+                        int sr;
+                        sr = n_o_s - 1;
+                        services_remaining = sr.ToString();
                         create_new_service();
                     }
                     else
@@ -106,17 +110,6 @@ namespace srdb
                         }
                         update_previous_record();
                     } 
-            /*    using (MySqlDataReader read = cs.ExecuteReader())
-                {
-                    while (read.Read())
-                    {
-             
-                            services_remaining = Convert.ToString(read.GetInt32(6));
-                            rowID = services_remaining = Convert.ToString(read.GetInt32(9));
-                            check_service_remaining();
-                    }
-                } */
-                
             }
             catch (Exception ex)
             {
@@ -147,22 +140,14 @@ namespace srdb
          
         private void check_service_remaining()
         {
-            int n_o_s = Convert.ToInt32(number_of_services);
             int sr = Convert.ToInt32(services_remaining);
-            if (sr == 0)
+            if (sr < 1)
             {
                 MessageBox.Show("The person has no services left!", "Be patient", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 return; 
             }
             else if (sr > 0)
             {
-                sr = sr - 1;
-                services_remaining = sr.ToString();
-                create_new_service();
-            }
-            else
-            {
-                sr = n_o_s;
                 sr = sr - 1;
                 services_remaining = sr.ToString();
                 create_new_service();
@@ -174,14 +159,15 @@ namespace srdb
             {
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
-                string insert_new_service_query = "INSERT INTO services (SRID, date, firstName, surName, amount, services_remianing, services_left, invoice_number) VALUES (@SRID, @date, @firstName, @surName, @amount, @services_remianing, @services_left, @invoice_number)";
+                string insert_new_service_query = "INSERT INTO services (SRID, date, firstName, surName, amount, services_remaining, services_left, invoice_number) VALUES (@SRID, @date, @firstName, @surName, @amount, @services_remaining, @services_left, @invoice_number)";
                 using (MySqlCommand cns = new MySqlCommand(insert_new_service_query, dbConnect.services_connection))
                 {
                     cns.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
                     cns.Parameters.AddWithValue("@date", dataOfService.Text);
                     cns.Parameters.AddWithValue("@firstName", firstName);
                     cns.Parameters.AddWithValue("@surName", surName);
-                    cns.Parameters.AddWithValue("@services_remianing", services_remaining);
+                    cns.Parameters.AddWithValue("@amount", txtAmount.Text);
+                    cns.Parameters.AddWithValue("@services_remaining", services_remaining);
                     cns.Parameters.AddWithValue("@services_left", "TRUE");
                     cns.Parameters.AddWithValue("@invoice_number", txtInvoiceNumber.Text);
 
@@ -192,6 +178,7 @@ namespace srdb
             catch (MySqlException ex)
             {
                 MessageBox.Show("Error creating new service record! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 
@@ -213,7 +200,6 @@ namespace srdb
             //check the number of services remaining and add in a new service into the DB or if not record is available, create a new one
             check_services();
             //check what to do based on the number of services remaining
-            check_service_remaining();
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
