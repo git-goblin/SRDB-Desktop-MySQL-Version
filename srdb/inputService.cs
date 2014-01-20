@@ -16,7 +16,7 @@ namespace srdb
     {
         private DBConnect dbConnect;
         private validate val;
-        private String firstName, surName, number_of_services;
+        private String firstName, surName, number_of_services, services_left;
         private String services_remaining, rowID;
         public inputService()
         {
@@ -113,8 +113,8 @@ namespace srdb
                                 rowID = read.GetString(read.GetOrdinal("ID"));
                             }
                         }
-                        check_service_remaining();
                         update_previous_record();
+                        check_service_remaining();
                     } 
             }
             catch (Exception ex)
@@ -135,7 +135,6 @@ namespace srdb
                     upr.Parameters.AddWithValue("@ID", rowID);
                     upr.Parameters.AddWithValue("@SL", "FALSE");
                 }
-                create_new_service();
             }
             catch (MySqlException ex)
             {
@@ -155,6 +154,10 @@ namespace srdb
             else if (sr > 0)
             {
                 sr = sr - 1;
+                if (sr == 0)
+                {
+                    services_left = "FALSE";
+                }
                 services_remaining = sr.ToString();
                 create_new_service();
             }
@@ -174,12 +177,11 @@ namespace srdb
                     cns.Parameters.AddWithValue("@surName", surName);
                     cns.Parameters.AddWithValue("@amount", txtAmount.Text);
                     cns.Parameters.AddWithValue("@services_remaining", services_remaining);
-                    cns.Parameters.AddWithValue("@services_left", "TRUE");
+                    cns.Parameters.AddWithValue("@services_left", services_left);
                     cns.Parameters.AddWithValue("@invoice_number", txtInvoiceNumber.Text);
 
                     cns.ExecuteNonQuery();
                 }
-
             }
             catch (MySqlException ex)
             {
@@ -204,8 +206,9 @@ namespace srdb
             //get the values from the records table we need: firstname, surname and number of services
             get_values_from_records();
             //check the number of services remaining and add in a new service into the DB or if not record is available, create a new one
-            //check_services();
+            check_services();
             //check what to do based on the number of services remaining
+            MessageBox.Show("Added and Completed!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
