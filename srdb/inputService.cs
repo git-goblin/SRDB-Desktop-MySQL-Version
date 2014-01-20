@@ -83,13 +83,14 @@ namespace srdb
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
                 string check_query = "SELECT MIN(services_remaining) FROM services WHERE SRID=@SRID AND services_left=@SL";
+                string pull_query = "SELECT * FROM services WHERE SRID=@SRID AND services_left=@SL AND services_remaining=@SR";
                 MySqlCommand cs = new MySqlCommand(check_query, dbConnect.services_connection);
                 
                     cs.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
                     cs.Parameters.AddWithValue("@SL", "TRUE");
-                    var scal_var = cs.ExecuteScalar();
-                    MessageBox.Show("Value of scaler: " + scal_var);
-                  if (scal_var == DBNull.Value)
+                    var serv_rem = cs.ExecuteScalar();
+                    MessageBox.Show("Value of scaler: " + serv_rem);
+                    if (serv_rem == DBNull.Value)
                     {
                         int n_o_s = Convert.ToInt32(number_of_services);
                         int sr;
@@ -99,8 +100,12 @@ namespace srdb
                     }
                     else
                     {
+                        MySqlCommand cs2 = new MySqlCommand(pull_query, dbConnect.services_connection);
+                        cs2.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
+                        cs2.Parameters.AddWithValue("@SL", "TRUE");
+                        cs2.Parameters.AddWithValue("@SR", serv_rem);
                         //If there is a record currently in the DB do this
-                        using (MySqlDataReader read = cs.ExecuteReader())
+                        using (MySqlDataReader read = cs2.ExecuteReader())
                         {
                             while (read.Read())
                             {
@@ -108,6 +113,7 @@ namespace srdb
                                 rowID = read.GetString(read.GetOrdinal("ID"));
                             }
                         }
+                        check_service_remaining();
                         update_previous_record();
                     } 
             }
@@ -198,7 +204,7 @@ namespace srdb
             //get the values from the records table we need: firstname, surname and number of services
             get_values_from_records();
             //check the number of services remaining and add in a new service into the DB or if not record is available, create a new one
-            check_services();
+            //check_services();
             //check what to do based on the number of services remaining
         }
 
