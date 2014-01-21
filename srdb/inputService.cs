@@ -76,10 +76,47 @@ namespace srdb
             }
         }
 
+        private int check_false_services()
+        {
+            try
+            {
+                string get_false_query = "SELECT * FROM services WHERE SRID=@SRID AND services_left=@SL AND services_remaining=@SR";
+                dbConnect.services_initialise();
+                dbConnect.services_Open_Connection();
+                MySqlCommand gfq = new MySqlCommand(get_false_query, dbConnect.services_connection);
+                gfq.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
+                gfq.Parameters.AddWithValue("@SL", "FALSE");
+                gfq.Parameters.AddWithValue("@SR", "0");
+                var check_false_var = gfq.ExecuteScalar();
+
+                if (check_false_var != DBNull.Value)
+                {
+                    MessageBox.Show("This person has no bookings left!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Checking false values! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
         private void check_services()
         {
             try
             {
+                int check_var = check_false_services();
+                if (check_var == 1)
+                {
+                    return;
+                }
+
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
                 string check_query = "SELECT MIN(services_remaining) FROM services WHERE SRID=@SRID AND services_left=@SL";
@@ -151,7 +188,7 @@ namespace srdb
             int sr = Convert.ToInt32(services_remaining);
             if (sr < 1)
             {
-                MessageBox.Show("The person has no services left!", "Be patient", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("This is the last service available for this person!", "Notice", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 return; 
             }
             else if (sr > 0)
@@ -185,6 +222,7 @@ namespace srdb
 
                     cns.ExecuteNonQuery();
                 }
+                MessageBox.Show("Added and Completed!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             catch (MySqlException ex)
             {
@@ -211,7 +249,6 @@ namespace srdb
             //check the number of services remaining and add in a new service into the DB or if not record is available, create a new one
             check_services();
             //check what to do based on the number of services remaining
-            MessageBox.Show("Added and Completed!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
