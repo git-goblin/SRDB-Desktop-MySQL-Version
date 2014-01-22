@@ -72,5 +72,12 @@ namespace srdb
         {
             Application.Exit();
         }
+
+        private void btnServicesReports_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            adminServicesReports asr = new adminServicesReports();
+            asr.Show();
+        }
     }
 }

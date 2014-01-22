@@ -82,34 +82,8 @@ namespace srdb
                     cell_invoice_number.Value = "Invoice Number";
 
                     Byte[] bin = excelpkg.GetAsByteArray();
-                    File.WriteAllBytes(@"C:\", bin); //writes to the file
-                    
+                    File.WriteAllBytes(@"C:\EXCEL\test_with_x.xlsx", bin); //writes to the file, needs to be XLSX format
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
             catch (Exception ex)
             {

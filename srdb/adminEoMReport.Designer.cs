@@ -69,17 +69,17 @@
             this.cbDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDate.FormattingEnabled = true;
             this.cbDate.Items.AddRange(new object[] {
-            "January,",
-            "February,",
-            "March,",
-            "April,",
-            "May,",
-            "June, ",
-            "July,",
-            "August,",
-            "September,",
-            "October,",
-            "November,",
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June ",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
             "December"});
             this.cbDate.Location = new System.Drawing.Point(51, 7);
             this.cbDate.Name = "cbDate";
