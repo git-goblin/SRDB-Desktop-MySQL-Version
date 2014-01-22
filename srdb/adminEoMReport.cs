@@ -21,6 +21,7 @@ namespace srdb
 {
     public partial class adminEoMReport : Form
     {
+        private DataTable sr_table = new DataTable();
         private DBConnect dbConnect;
         public adminEoMReport()
         {
@@ -28,40 +29,29 @@ namespace srdb
             InitializeComponent();
         }
 
+        private void fill_table()
+        {
+            String month = cbDate.Text;
+            String year = Convert.ToString(DateTime.Now.Year);
+            String like_value = month + " " + year;
+            String report_query = "SELECT * FROM services WHERE date LIKE '%" + like_value + "%'";
+     
+            dbConnect.services_initialise();
+            dbConnect.services_Open_Connection();
+            using (MySqlDataAdapter da = new MySqlDataAdapter(report_query, dbConnect.services_connection)) //create a new DataAdaptor
+            {
+                da.Fill(sr_table); //File the table with the values from the DataAdaptor
+            }
+        }
+
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             try
             {
-                dbConnect.services_initialise();
-                dbConnect.services_Open_Connection();
-                String month = cbDate.Text;
-                String year = Convert.ToString(DateTime.Now.Year);
-                String like_value = month + " " + year;
-                String report_query = "SELECT * FROM services WHERE date LIKE @like";
-                MySqlCommand eom = new MySqlCommand(report_query, dbConnect.services_connection);
-                eom.Parameters.AddWithValue("@LIKE", "%" + like_value + "%");
-                
-                //Add TEXT/ID validation here -->
-
-                using (MySqlDataReader read = eom.ExecuteReader())
-                {
-                    while (read.Read())
-                    {
-                        String SRID = read.GetString(read.GetOrdinal("SRID"));
-                        String date = read.GetString(read.GetOrdinal("date"));
-                        String firstName = read.GetString(read.GetOrdinal("firstName"));
-                        String surName = read.GetString(read.GetOrdinal("surName"));
-                        String amount = read.GetString(read.GetOrdinal("amount"));
-                        String services_remaining = read.GetString(read.GetOrdinal("services_remaining"));
-                        String services_left = read.GetString(read.GetOrdinal("services_left"));
-                        String invoice_number = read.GetString(read.GetOrdinal("invoice_number"));
-                    }
-                }
-
                 using (ExcelPackage excelpkg = new ExcelPackage())
                 {
                     excelpkg.Workbook.Properties.Title = "End of Month Report"; //Adds a title
-                    excelpkg.Workbook.Worksheets.Add(month); //creates a new worksheet
+                    excelpkg.Workbook.Worksheets.Add("Report"); //creates a new worksheet
                     ExcelWorksheet ws = excelpkg.Workbook.Worksheets[1]; //postion of the worksheet
                     ws.Name = "EoM Report";
 
@@ -81,8 +71,12 @@ namespace srdb
                     cell_services_left.Value = "Services Left";
                     cell_invoice_number.Value = "Invoice Number";
 
+                    fill_table();
+
+                    ws.Cells["A3"].LoadFromDataTable(sr_table, false);
+
                     Byte[] bin = excelpkg.GetAsByteArray();
-                    File.WriteAllBytes(@"C:\EXCEL\test_with_x.xlsx", bin); //writes to the file, needs to be XLSX format
+                    File.WriteAllBytes(@"C:\EXCEL\test.xlsx", bin); //writes to the file, needs to be XLSX format
                 }
             }
             catch (Exception ex)
