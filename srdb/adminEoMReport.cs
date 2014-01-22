@@ -34,7 +34,7 @@ namespace srdb
             String month = cbDate.Text;
             String year = Convert.ToString(DateTime.Now.Year);
             String like_value = month + " " + year;
-            String report_query = "SELECT * FROM services WHERE date LIKE '%" + like_value + "%'";
+            String report_query = "SELECT SRID, date, firstName, surName, amount, services_remaining, services_left, invoice_number FROM services WHERE date LIKE '%" + like_value + "%'";
      
             dbConnect.services_initialise();
             dbConnect.services_Open_Connection();
@@ -48,6 +48,13 @@ namespace srdb
         {
             try
             {
+                FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
+                fbd.ShowDialog();
+                string u_path = fbd.SelectedPath;
+                String month = cbDate.Text;
+                String year = Convert.ToString(DateTime.Now.Year);
+                String like_value = month + " " + year;
+                string file_name = "EoM Report for - " + like_value;
                 using (ExcelPackage excelpkg = new ExcelPackage())
                 {
                     excelpkg.Workbook.Properties.Title = "End of Month Report"; //Adds a title
@@ -56,14 +63,16 @@ namespace srdb
                     ws.Name = "EoM Report";
 
                     var cell_SRID = ws.Cells[1, 1]; //declare the cells
-                    var cell_firstName = ws.Cells[1, 2];
-                    var cell_surName = ws.Cells[1, 3];
-                    var cell_amount = ws.Cells[1, 4];
-                    var cell_services_remaining = ws.Cells[1, 5];
-                    var cell_services_left = ws.Cells[1, 6];
-                    var cell_invoice_number = ws.Cells[1, 7];
+                    var cell_date = ws.Cells[1, 2];
+                    var cell_firstName = ws.Cells[1, 3];
+                    var cell_surName = ws.Cells[1, 4];
+                    var cell_amount = ws.Cells[1, 5];
+                    var cell_services_remaining = ws.Cells[1, 6];
+                    var cell_services_left = ws.Cells[1, 7];
+                    var cell_invoice_number = ws.Cells[1, 8];
 
                     cell_SRID.Value = "SRID"; //sets a value to the cells
+                    cell_date.Value = "Date";
                     cell_firstName.Value = "Firstname";
                     cell_surName.Value = "Surname";
                     cell_amount.Value = "Amount";
@@ -76,8 +85,9 @@ namespace srdb
                     ws.Cells["A3"].LoadFromDataTable(sr_table, false);
 
                     Byte[] bin = excelpkg.GetAsByteArray();
-                    File.WriteAllBytes(@"C:\EXCEL\test.xlsx", bin); //writes to the file, needs to be XLSX format
+                    File.WriteAllBytes(u_path + "/" + file_name + ".xlsx", bin); //writes to the file, needs to be XLSX format
                 }
+                MessageBox.Show("Report created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             catch (Exception ex)
             {
