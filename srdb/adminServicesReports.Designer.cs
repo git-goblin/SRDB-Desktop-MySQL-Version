@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminServicesReports));
             this.btnEoMReport = new System.Windows.Forms.Button();
             this.btnSQLReport = new System.Windows.Forms.Button();
             this.btnMonthYearReport = new System.Windows.Forms.Button();
@@ -83,8 +84,10 @@
             this.Controls.Add(this.btnMonthYearReport);
             this.Controls.Add(this.btnSQLReport);
             this.Controls.Add(this.btnEoMReport);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "adminServicesReports";
-            this.Text = "adminServicesReports";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Admin Services Reports";
             this.ResumeLayout(false);
 
         }
