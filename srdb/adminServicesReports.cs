@@ -16,5 +16,29 @@ namespace srdb
         {
             InitializeComponent();
         }
+
+        private void btnEoMReport_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            adminEoMReport aar = new adminEoMReport();
+            aar.Show();
+        }
+
+        private void btnMonthYearReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSQLReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            adminControlMenu acm = new adminControlMenu();
+            acm.Show();
+        }
     }
 }
