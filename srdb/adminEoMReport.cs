@@ -102,5 +102,10 @@ namespace srdb
             adminControlMenu acm = new adminControlMenu();
             acm.Show();
         }
+
+        private void adminEoMReport_Load(object sender, EventArgs e)
+        {
+            cbDate.SelectedIndex = 0;
+        }
     }
 }

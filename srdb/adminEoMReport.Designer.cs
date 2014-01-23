@@ -99,6 +99,7 @@
             this.Name = "adminEoMReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin EoM Report";
+            this.Load += new System.EventHandler(this.adminEoMReport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
