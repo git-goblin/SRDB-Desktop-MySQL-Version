@@ -33,7 +33,9 @@ namespace srdb
 
         private void btnSQLReport_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            adminSQLServiceReport assr = new adminSQLServiceReport();
+            assr.Show();
         }
 
         private void btnMainMenu_Click(object sender, EventArgs e)
