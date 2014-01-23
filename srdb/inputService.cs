@@ -208,13 +208,14 @@ namespace srdb
             {
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
-                string insert_new_service_query = "INSERT INTO services (SRID, date, firstName, surName, amount, services_remaining, services_left, invoice_number) VALUES (@SRID, @date, @firstName, @surName, @amount, @services_remaining, @services_left, @invoice_number)";
+                string insert_new_service_query = "INSERT INTO services (SRID, date, firstName, surName, registration, amount, services_remaining, services_left, invoice_number) VALUES (@SRID, @date, @firstName, @surName, @registration, @amount, @services_remaining, @services_left, @invoice_number)";
                 using (MySqlCommand cns = new MySqlCommand(insert_new_service_query, dbConnect.services_connection))
                 {
                     cns.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
                     cns.Parameters.AddWithValue("@date", dataOfService.Text);
                     cns.Parameters.AddWithValue("@firstName", firstName);
                     cns.Parameters.AddWithValue("@surName", surName);
+                    cns.Parameters.AddWithValue("@registration", txtRegistration.Text);
                     cns.Parameters.AddWithValue("@amount", txtAmount.Text);
                     cns.Parameters.AddWithValue("@services_remaining", services_remaining);
                     cns.Parameters.AddWithValue("@services_left", services_left);
@@ -233,12 +234,13 @@ namespace srdb
 
         private void btnSaveService_Click(object sender, EventArgs e)
         {
-            int val1, val2, val3;
+            int val1, val2, val3, val4;
             val1 = val.validate_srid(txtServiceRecordID.Text);
             val2 = val.validate_currency(txtAmount.Text);
             val3 = val.validate_invoice_number(txtInvoiceNumber.Text);
+            val4 = val.validate_registration(txtRegistration.Text);
 
-            if (val1 != 1 || val2 != 1 || val3 != 1)
+            if (val1 != 1 || val2 != 1 || val3 != 1 || val4 != 1)
             {
                 return;
             }
