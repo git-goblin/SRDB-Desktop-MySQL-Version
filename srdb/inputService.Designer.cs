@@ -43,6 +43,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnClearForm = new System.Windows.Forms.Button();
             this.btnSearchMenu = new System.Windows.Forms.Button();
+            this.txtRegistration = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSaveService
@@ -83,7 +85,7 @@
             // 
             // txtInvoiceNumber
             // 
-            this.txtInvoiceNumber.Location = new System.Drawing.Point(103, 34);
+            this.txtInvoiceNumber.Location = new System.Drawing.Point(103, 39);
             this.txtInvoiceNumber.Name = "txtInvoiceNumber";
             this.txtInvoiceNumber.Size = new System.Drawing.Size(100, 20);
             this.txtInvoiceNumber.TabIndex = 5;
@@ -91,7 +93,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 37);
+            this.label2.Location = new System.Drawing.Point(21, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(85, 13);
             this.label2.TabIndex = 4;
@@ -99,7 +101,7 @@
             // 
             // txtAmount
             // 
-            this.txtAmount.Location = new System.Drawing.Point(103, 86);
+            this.txtAmount.Location = new System.Drawing.Point(103, 93);
             this.txtAmount.Name = "txtAmount";
             this.txtAmount.Size = new System.Drawing.Size(100, 20);
             this.txtAmount.TabIndex = 7;
@@ -107,7 +109,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 89);
+            this.label3.Location = new System.Drawing.Point(51, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 6;
@@ -115,7 +117,7 @@
             // 
             // dataOfService
             // 
-            this.dataOfService.Location = new System.Drawing.Point(103, 60);
+            this.dataOfService.Location = new System.Drawing.Point(103, 66);
             this.dataOfService.Name = "dataOfService";
             this.dataOfService.Size = new System.Drawing.Size(135, 20);
             this.dataOfService.TabIndex = 8;
@@ -123,7 +125,7 @@
             // Date
             // 
             this.Date.AutoSize = true;
-            this.Date.Location = new System.Drawing.Point(64, 66);
+            this.Date.Location = new System.Drawing.Point(64, 71);
             this.Date.Name = "Date";
             this.Date.Size = new System.Drawing.Size(33, 13);
             this.Date.TabIndex = 9;
@@ -133,7 +135,7 @@
             // 
             this.cbPaymentmethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPaymentmethod.FormattingEnabled = true;
-            this.cbPaymentmethod.Location = new System.Drawing.Point(103, 112);
+            this.cbPaymentmethod.Location = new System.Drawing.Point(103, 147);
             this.cbPaymentmethod.Name = "cbPaymentmethod";
             this.cbPaymentmethod.Size = new System.Drawing.Size(121, 21);
             this.cbPaymentmethod.TabIndex = 10;
@@ -141,7 +143,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 115);
+            this.label5.Location = new System.Drawing.Point(8, 150);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(90, 13);
             this.label5.TabIndex = 11;
@@ -167,11 +169,29 @@
             this.btnSearchMenu.UseVisualStyleBackColor = true;
             this.btnSearchMenu.Click += new System.EventHandler(this.btnSearchMenu_Click);
             // 
+            // txtRegistration
+            // 
+            this.txtRegistration.Location = new System.Drawing.Point(103, 120);
+            this.txtRegistration.Name = "txtRegistration";
+            this.txtRegistration.Size = new System.Drawing.Size(100, 20);
+            this.txtRegistration.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(32, 123);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Registration:";
+            // 
             // inputService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 151);
+            this.ClientSize = new System.Drawing.Size(347, 182);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtRegistration);
             this.Controls.Add(this.btnSearchMenu);
             this.Controls.Add(this.btnClearForm);
             this.Controls.Add(this.label5);
@@ -212,5 +232,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnClearForm;
         private System.Windows.Forms.Button btnSearchMenu;
+        private System.Windows.Forms.TextBox txtRegistration;
+        private System.Windows.Forms.Label label4;
     }
 }
