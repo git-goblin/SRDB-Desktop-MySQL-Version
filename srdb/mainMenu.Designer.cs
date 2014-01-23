@@ -41,7 +41,7 @@
             // 
             this.btnAddrecord.Location = new System.Drawing.Point(12, 12);
             this.btnAddrecord.Name = "btnAddrecord";
-            this.btnAddrecord.Size = new System.Drawing.Size(110, 41);
+            this.btnAddrecord.Size = new System.Drawing.Size(110, 26);
             this.btnAddrecord.TabIndex = 0;
             this.btnAddrecord.Text = "Add Record";
             this.btnAddrecord.UseVisualStyleBackColor = true;
@@ -51,7 +51,7 @@
             // 
             this.btnSearchrecords.Location = new System.Drawing.Point(143, 12);
             this.btnSearchrecords.Name = "btnSearchrecords";
-            this.btnSearchrecords.Size = new System.Drawing.Size(110, 41);
+            this.btnSearchrecords.Size = new System.Drawing.Size(110, 26);
             this.btnSearchrecords.TabIndex = 1;
             this.btnSearchrecords.Text = "Search Records";
             this.btnSearchrecords.UseVisualStyleBackColor = true;
@@ -59,9 +59,9 @@
             // 
             // btnAdminpanel
             // 
-            this.btnAdminpanel.Location = new System.Drawing.Point(12, 66);
+            this.btnAdminpanel.Location = new System.Drawing.Point(12, 44);
             this.btnAdminpanel.Name = "btnAdminpanel";
-            this.btnAdminpanel.Size = new System.Drawing.Size(110, 41);
+            this.btnAdminpanel.Size = new System.Drawing.Size(110, 27);
             this.btnAdminpanel.TabIndex = 2;
             this.btnAdminpanel.Text = "Administrator Panel";
             this.btnAdminpanel.UseVisualStyleBackColor = true;
@@ -69,9 +69,9 @@
             // 
             // btnGeneratePDF
             // 
-            this.btnGeneratePDF.Location = new System.Drawing.Point(143, 66);
+            this.btnGeneratePDF.Location = new System.Drawing.Point(143, 44);
             this.btnGeneratePDF.Name = "btnGeneratePDF";
-            this.btnGeneratePDF.Size = new System.Drawing.Size(110, 41);
+            this.btnGeneratePDF.Size = new System.Drawing.Size(110, 27);
             this.btnGeneratePDF.TabIndex = 3;
             this.btnGeneratePDF.Text = "Generate PDF";
             this.btnGeneratePDF.UseVisualStyleBackColor = true;
@@ -79,7 +79,7 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(178, 140);
+            this.btnLogout.Location = new System.Drawing.Point(178, 81);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(75, 23);
             this.btnLogout.TabIndex = 4;
@@ -89,9 +89,9 @@
             // 
             // btnServices
             // 
-            this.btnServices.Location = new System.Drawing.Point(12, 122);
+            this.btnServices.Location = new System.Drawing.Point(12, 77);
             this.btnServices.Name = "btnServices";
-            this.btnServices.Size = new System.Drawing.Size(110, 41);
+            this.btnServices.Size = new System.Drawing.Size(110, 27);
             this.btnServices.TabIndex = 5;
             this.btnServices.Text = "Services";
             this.btnServices.UseVisualStyleBackColor = true;
@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 176);
+            this.ClientSize = new System.Drawing.Size(266, 115);
             this.Controls.Add(this.btnServices);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnGeneratePDF);
