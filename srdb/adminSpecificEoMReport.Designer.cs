@@ -76,6 +76,7 @@
             this.btnMainMenu.TabIndex = 5;
             this.btnMainMenu.Text = "Main Menu";
             this.btnMainMenu.UseVisualStyleBackColor = true;
+            this.btnMainMenu.Click += new System.EventHandler(this.btnMainMenu_Click);
             // 
             // btnGenerate
             // 

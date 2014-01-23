@@ -109,5 +109,12 @@ namespace srdb
             }
 
         }
+
+        private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            adminControlMenu acm = new adminControlMenu();
+            acm.Show();
+        }
     }
 }
