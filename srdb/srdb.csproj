@@ -155,6 +155,12 @@
     <Compile Include="adminServicesReports.Designer.cs">
       <DependentUpon>adminServicesReports.cs</DependentUpon>
     </Compile>
+    <Compile Include="adminSpecificEoMReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminSpecificEoMReport.Designer.cs">
+      <DependentUpon>adminSpecificEoMReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="adminSQLQueryMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="adminServicesReports.resx">
       <DependentUpon>adminServicesReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminSpecificEoMReport.resx">
+      <DependentUpon>adminSpecificEoMReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="adminSQLQueryMenu.resx">
       <DependentUpon>adminSQLQueryMenu.cs</DependentUpon>
