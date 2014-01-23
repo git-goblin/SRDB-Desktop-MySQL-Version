@@ -61,27 +61,9 @@ namespace srdb
                     ExcelWorksheet ws = excelpkg.Workbook.Worksheets[1]; //postion of the worksheet
                     ws.Name = "EoM Report";
 
-                    var cell_SRID = ws.Cells[1, 1]; //declare the cells
-                    var cell_date = ws.Cells[1, 2];
-                    var cell_firstName = ws.Cells[1, 3];
-                    var cell_surName = ws.Cells[1, 4];
-                    var cell_amount = ws.Cells[1, 5];
-                    var cell_services_remaining = ws.Cells[1, 6];
-                    var cell_services_left = ws.Cells[1, 7];
-                    var cell_invoice_number = ws.Cells[1, 8];
-
-                    cell_SRID.Value = "SRID"; //sets a value to the cells
-                    cell_date.Value = "Date";
-                    cell_firstName.Value = "Firstname";
-                    cell_surName.Value = "Surname";
-                    cell_amount.Value = "Amount";
-                    cell_services_remaining.Value = "Services Remaining";
-                    cell_services_left.Value = "Services Left";
-                    cell_invoice_number.Value = "Invoice Number";
-
                     fill_table();
 
-                    ws.Cells["A3"].LoadFromDataTable(sr_table, false);
+                    ws.Cells["A3"].LoadFromDataTable(sr_table, true); //by setting to TRUE, it used the table column names as the headers
 
                     Byte[] bin = excelpkg.GetAsByteArray();
                     File.WriteAllBytes(u_path + "/" + file_name + ".xlsx", bin); //writes to the file, needs to be XLSX format
