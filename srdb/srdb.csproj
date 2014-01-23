@@ -167,6 +167,12 @@
     <Compile Include="adminSQLQueryMenu.Designer.cs">
       <DependentUpon>adminSQLQueryMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="adminSQLServiceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminSQLServiceReport.Designer.cs">
+      <DependentUpon>adminSQLServiceReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="adminViewAllUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="adminSQLQueryMenu.resx">
       <DependentUpon>adminSQLQueryMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="adminSQLServiceReport.resx">
+      <DependentUpon>adminSQLServiceReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="adminViewAllUsers.resx">
       <DependentUpon>adminViewAllUsers.cs</DependentUpon>
