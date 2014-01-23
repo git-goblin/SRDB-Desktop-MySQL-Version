@@ -52,7 +52,10 @@ namespace srdb
                 FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
                 fbd.ShowDialog();
                 string u_path = fbd.SelectedPath;
-                String date = Convert.ToString(DateTime.Now.Date);
+                String day = Convert.ToString(DateTime.Now.Day);
+                String month = Convert.ToString(DateTime.Now.Month);
+                String year = Convert.ToString(DateTime.Now.Year);
+                String date = day + "-" + month + "-" + year;
                 string file_name = "Report Created - " + date;
                 using (ExcelPackage excelpkg = new ExcelPackage())
                 {
