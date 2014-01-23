@@ -47,14 +47,14 @@
             this.txtPassword.Location = new System.Drawing.Point(70, 45);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(202, 20);
+            this.txtPassword.Size = new System.Drawing.Size(138, 20);
             this.txtPassword.TabIndex = 9;
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(70, 16);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(202, 20);
+            this.txtUsername.Size = new System.Drawing.Size(138, 20);
             this.txtUsername.TabIndex = 8;
             // 
             // label2
@@ -77,7 +77,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(202, 77);
+            this.btnLogin.Location = new System.Drawing.Point(138, 77);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(70, 23);
             this.btnLogin.TabIndex = 5;
@@ -139,7 +139,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 112);
+            this.ClientSize = new System.Drawing.Size(220, 112);
             this.Controls.Add(this.lblLatenc);
             this.Controls.Add(this.lblServerStat);
             this.Controls.Add(this.lblLatency);
