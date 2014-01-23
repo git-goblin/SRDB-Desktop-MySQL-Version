@@ -91,19 +91,6 @@
             // 
             this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYear.FormattingEnabled = true;
-            this.cbYear.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June ",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
             this.cbYear.Location = new System.Drawing.Point(48, 41);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(121, 21);
