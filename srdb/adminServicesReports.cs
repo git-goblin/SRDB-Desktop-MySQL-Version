@@ -26,7 +26,9 @@ namespace srdb
 
         private void btnMonthYearReport_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            adminSpecificEoMReport aser = new adminSpecificEoMReport();
+            aser.Show();
         }
 
         private void btnSQLReport_Click(object sender, EventArgs e)
