@@ -49,7 +49,7 @@ namespace srdb
         private void txtSearchBySRDBID_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(table);
-            dv.RowFilter = string.Format("ID LIKE '%{0}%'", txtSearchBySRDBID.Text);
+            dv.RowFilter = string.Format("SRID LIKE '%{0}%'", txtSearchBySRDBID.Text);
             dataGridView1.DataSource = dv;
         }
 
