@@ -148,7 +148,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-01-13 16:45:34
+-- Dump completed on 2014-01-24 12:06:00
 CREATE DATABASE  IF NOT EXISTS `srdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `srdb`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
@@ -186,7 +186,7 @@ CREATE TABLE `auth` (
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID_UNIQUE` (`ID`),
   UNIQUE KEY `username_UNIQUE` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,49 +195,8 @@ CREATE TABLE `auth` (
 
 LOCK TABLES `auth` WRITE;
 /*!40000 ALTER TABLE `auth` DISABLE KEYS */;
-INSERT INTO `auth` (`username`, `pass`, `email`, `firstName`, `surName`, `user_level`, `ID`) VALUES ('admin','c70b5dd9ebfb6f51d09d4132b7170c9d20750a7852f00680f65658f0310e810056e6763c34c9a00b0e940076f54495c169fc2302cceb312039271c43469507dc','dba@bobmail.com','Admin','istrator','Admin',1);
+INSERT INTO `auth` (`username`, `pass`, `email`, `firstName`, `surName`, `user_level`, `ID`) VALUES ('admin','c70b5dd9ebfb6f51d09d4132b7170c9d20750a7852f00680f65658f0310e810056e6763c34c9a00b0e940076f54495c169fc2302cceb312039271c43469507dc','dba@bobmail.com','admin','istratior','Admin',1);
 /*!40000 ALTER TABLE `auth` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `deleted_records`
---
-
-DROP TABLE IF EXISTS `deleted_records`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `deleted_records` (
-  `del_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ID` int(11) NOT NULL,
-  `firstName` varchar(45) NOT NULL,
-  `surName` varchar(45) NOT NULL,
-  `address1` varchar(45) NOT NULL,
-  `address2` varchar(45) DEFAULT NULL,
-  `postcode` varchar(45) NOT NULL,
-  `registration` varchar(45) NOT NULL,
-  `model` varchar(45) NOT NULL,
-  `sold_by` varchar(45) NOT NULL,
-  `date_sold` date NOT NULL,
-  `invoice_number` varchar(45) NOT NULL,
-  `sales_branch` varchar(45) NOT NULL,
-  `type` varchar(45) NOT NULL,
-  `payment_method` varchar(45) NOT NULL,
-  `total` float NOT NULL,
-  `invoice_total` varchar(45) NOT NULL,
-  `number_of_services` int(11) NOT NULL,
-  `being_edited` int(11) NOT NULL,
-  PRIMARY KEY (`del_ID`),
-  UNIQUE KEY `del_ID_UNIQUE` (`del_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `deleted_records`
---
-
-LOCK TABLES `deleted_records` WRITE;
-/*!40000 ALTER TABLE `deleted_records` DISABLE KEYS */;
-/*!40000 ALTER TABLE `deleted_records` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -248,8 +207,7 @@ DROP TABLE IF EXISTS `records`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `records` (
-  `ID` varchar(11) NOT NULL,
-  `SRID` varchar(45) NOT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(45) NOT NULL,
   `surName` varchar(45) NOT NULL,
   `address1` varchar(45) NOT NULL,
@@ -265,18 +223,23 @@ CREATE TABLE `records` (
   `payment_method` varchar(45) NOT NULL,
   `total` decimal(20,2) NOT NULL,
   `invoice_total` decimal(20,2) NOT NULL,
-  `number_of_services` int(11) NOT NULL DEFAULT '2',
+  `number_of_services` int(11) NOT NULL,
   `commission_amount` decimal(20,2) DEFAULT NULL,
-  `services_Remaining` varchar(45) NOT NULL,
-  `services_left` varchar(45) NOT NULL DEFAULT 'TRUE',
+  `SRID` varchar(45) NOT NULL,
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `ID_UNIQUE` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  UNIQUE KEY `ID_UNIQUE` (`ID`),
+  UNIQUE KEY `SRID_UNIQUE` (`SRID`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `records`
 --
+
+LOCK TABLES `records` WRITE;
+/*!40000 ALTER TABLE `records` DISABLE KEYS */;
+/*!40000 ALTER TABLE `records` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `services`
@@ -290,14 +253,15 @@ CREATE TABLE `services` (
   `date` varchar(45) DEFAULT NULL,
   `firstName` varchar(100) NOT NULL,
   `surName` varchar(100) NOT NULL,
+  `registration` varchar(45) NOT NULL,
   `amount` decimal(20,2) DEFAULT NULL,
-  `services_remaining` int(11) NOT NULL DEFAULT '0',
+  `services_remaining` varchar(45) NOT NULL DEFAULT '0',
   `services_left` varchar(45) NOT NULL DEFAULT 'TRUE',
   `invoice_number` varchar(45) DEFAULT NULL,
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID_UNIQUE` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -318,4 +282,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-01-13 16:45:36
+-- Dump completed on 2014-01-24 12:06:01
