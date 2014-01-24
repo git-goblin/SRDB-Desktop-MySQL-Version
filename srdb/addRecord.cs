@@ -194,27 +194,35 @@ namespace srdb
                 String invoice_total = txtInvoicetotal.Text;
                 String number_of_services = numberofServices.Text;
                 String commission_amount = txtCommissionAmount.Text;
+                String input_SRID = txtSRID.Text;
+                String SRID = "";
 
-                string query; // = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";
-
+                 //find something to do with this, needs to be empty
                 if (cbSRID.Checked)
                 {
-                    int var8 = val.validate_srid(txtSRID.Text);
-                    if (var8 != 1)
+                    int val8 = val.validate_srid(txtSRID.Text);
+                    if (val8 != 1)
                     {
                         return;
                     }
-                    query = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";
+                    else if (val8 == 1)
+                    {
+                        SRID = input_SRID;
+                    }
                 }
                 else
                 {
-                    query = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount)";
+                    Random rdn = new Random();
+                    SRID = Convert.ToString((rdn.Next(10000, 99999) * (100000 * rdn.Next(10000, 99999))) * rdn.Next(10000, 99999));
+                    String SRID_final = SRID.Substring(1, 5);
+                    SRID_final = "1" + SRID_final;
+                    SRID = SRID_final;
                 }
+
+                string query = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";  // = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, dbConnect.connection))
                 {
-                    if (cbSRID.Checked)
-                    {
                     cmd.Parameters.AddWithValue("@firstName", firstName);
                     cmd.Parameters.AddWithValue("@surName", surName);
                     cmd.Parameters.AddWithValue("@address1", address1);
@@ -232,28 +240,8 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@invoice_total", invoice_total);
                     cmd.Parameters.AddWithValue("@number_of_services", number_of_services);
                     cmd.Parameters.AddWithValue("@commission_amount", commission_amount);
-                    cmd.Parameters.AddWithValue("@SRID", txtSRID.Text);
-                    }
-                    else 
-                    {
-                        cmd.Parameters.AddWithValue("@firstName", firstName);
-                        cmd.Parameters.AddWithValue("@surName", surName);
-                        cmd.Parameters.AddWithValue("@address1", address1);
-                        cmd.Parameters.AddWithValue("@address2", address2);
-                        cmd.Parameters.AddWithValue("@postcode", postcode);
-                        cmd.Parameters.AddWithValue("@registration", registration);
-                        cmd.Parameters.AddWithValue("@model", model);
-                        cmd.Parameters.AddWithValue("@sold_by", sold_by);
-                        cmd.Parameters.AddWithValue("@date_sold", date_sold);
-                        cmd.Parameters.AddWithValue("@invoice_number", invoiceNumber);
-                        cmd.Parameters.AddWithValue("@sales_branch", sales_branch);
-                        cmd.Parameters.AddWithValue("@type", type);
-                        cmd.Parameters.AddWithValue("@payment_method", payment_method);
-                        cmd.Parameters.AddWithValue("@total", total);
-                        cmd.Parameters.AddWithValue("@invoice_total", invoice_total);
-                        cmd.Parameters.AddWithValue("@number_of_services", number_of_services);
-                        cmd.Parameters.AddWithValue("@commission_amount", commission_amount);
-                    }
+                    cmd.Parameters.AddWithValue("@SRID", SRID);
+                   
                     cmd.ExecuteNonQuery();
                     dbConnect.CloseConnection();
                 }
