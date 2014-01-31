@@ -34,10 +34,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblServerStatus = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblLatency = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -83,49 +79,11 @@
             this.txtPassword.Size = new System.Drawing.Size(109, 20);
             this.txtPassword.TabIndex = 4;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 72);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Server Status:";
-            // 
-            // lblServerStatus
-            // 
-            this.lblServerStatus.AutoSize = true;
-            this.lblServerStatus.Location = new System.Drawing.Point(83, 72);
-            this.lblServerStatus.Name = "lblServerStatus";
-            this.lblServerStatus.Size = new System.Drawing.Size(0, 13);
-            this.lblServerStatus.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 85);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Delay:";
-            // 
-            // lblLatency
-            // 
-            this.lblLatency.AutoSize = true;
-            this.lblLatency.Location = new System.Drawing.Point(55, 85);
-            this.lblLatency.Name = "lblLatency";
-            this.lblLatency.Size = new System.Drawing.Size(0, 13);
-            this.lblLatency.TabIndex = 8;
-            // 
             // login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(192, 107);
-            this.Controls.Add(this.lblLatency);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblServerStatus);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(192, 103);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label2);
@@ -149,9 +107,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblServerStatus;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblLatency;
     }
 }

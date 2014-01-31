@@ -60,58 +60,7 @@ namespace srdb
 
         private void login_Load(object sender, EventArgs e)
         {
-            try
-            {
-                int stat;
-                long lat;
-                dbConnect.ping_test(out stat, out lat);
-                lblLatency.Text = string.Empty;
-                lblServerStatus.Text = string.Empty;
-
-                //Display the server status
-                if (stat == 1)
-                {
-                    lblServerStatus.Text = "Up";
-                    lblServerStatus.ForeColor = Color.Green;
-                }
-                else if (stat != 1)
-                {
-                    lblServerStatus.Text = "Unreachable";
-                    lblServerStatus.ForeColor = Color.Red;
-                }
-
-                //Display the latency
-                if (lat <= 200)
-                {
-                    lblLatency.Text = lat + "ms";
-                    lblLatency.ForeColor = Color.Green;
-                }
-                else if (lat > 200 && lat <= 350)
-                {
-                    lblLatency.Text = lat + "ms";
-                    lblLatency.ForeColor = Color.Yellow;
-                }
-                else if (lat > 350 && lat <= 500)
-                {
-                    lblLatency.Text = lat + "ms";
-                    lblLatency.ForeColor = Color.Orange;
-                }
-                else if (lat > 500)
-                {
-                    lblLatency.Text = lat + "ms";
-                    lblLatency.ForeColor = Color.Red;
-                }
-                else if (lat >= 9999)
-                {
-                    lblLatency.Text = "Unreachable";
-                    lblLatency.ForeColor = Color.Red;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error getting server status " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+          
         }
     }
 }
