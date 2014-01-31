@@ -212,14 +212,21 @@ namespace srdb
                 }
                 else
                 {
-                    Random rdn = new Random();
-                    SRID = Convert.ToString((rdn.Next(10000, 99999) * (100000 * rdn.Next(10000, 99999))) * rdn.Next(10000, 99999));
-                    String SRID_final = SRID.Substring(1, 5);
-                    SRID_final = "1" + SRID_final;
-                    SRID = SRID_final;
+                    String select_last_row = "SELECT SRID FROM records ORDER BY ID DESC LIMIT 1";
+                    using (MySqlCommand gs = new MySqlCommand(select_last_row, dbConnect.connection))
+                    {
+                        using (MySqlDataReader read = gs.ExecuteReader())
+                        {
+                            while (read.Read())
+                            {
+                                SRID = read.GetString(read.GetOrdinal("SRID"));
+                            }
+                        }
+                    }
+                    SRID = Convert.ToString(Convert.ToInt32(SRID) + 1);
                 }
 
-                string query = "INSERT INTO records (title, firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID, comments) VALUES (@title, @firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID, @comments)";  // = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";
+                string query = "INSERT INTO records (title, firstName, surName ,address1, address2, address3, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID, comments) VALUES (@title, @firstName, @surName, @address1, @address2, @address3, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID, @comments)";  // = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, dbConnect.connection))
                 {
@@ -228,6 +235,7 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@surName", surName);
                     cmd.Parameters.AddWithValue("@address1", address1);
                     cmd.Parameters.AddWithValue("@address2", address2);
+                    cmd.Parameters.AddWithValue("@address3", txtAddress3.Text);
                     cmd.Parameters.AddWithValue("@postcode", postcode);
                     cmd.Parameters.AddWithValue("@registration", registration);
                     cmd.Parameters.AddWithValue("@model", model);
@@ -262,6 +270,7 @@ namespace srdb
             txtAddress1.Clear();
             txtAddress2.Clear();
             txtAddress2.Clear();
+            txtAddress3.Clear();
             txtRegistration.Clear();
             txtInvoicenumber.Clear();
             txtTotal.Clear();
@@ -277,7 +286,7 @@ namespace srdb
             dateSold.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             txtSRID.Clear();
             txtComments.Clear();
-            cbTitle.SelectedIndex = 0;
+            cbTitle.SelectedIndex = 0;   
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
