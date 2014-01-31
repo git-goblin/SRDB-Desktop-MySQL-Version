@@ -248,6 +248,42 @@
     <Compile Include="searchServiceRecordID.Designer.cs">
       <DependentUpon>searchServiceRecordID.cs</DependentUpon>
     </Compile>
+    <Compile Include="servicesSearchByDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="servicesSearchByDate.Designer.cs">
+      <DependentUpon>servicesSearchByDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="servicesSearchByInvoiceNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="servicesSearchByInvoiceNumber.Designer.cs">
+      <DependentUpon>servicesSearchByInvoiceNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="servicesSearchByName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="servicesSearchByName.Designer.cs">
+      <DependentUpon>servicesSearchByName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="servicesSearchByRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="servicesSearchByRegistration.Designer.cs">
+      <DependentUpon>servicesSearchByRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="servicesSearchBySRID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="servicesSearchBySRID.Designer.cs">
+      <DependentUpon>servicesSearchBySRID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="servicesSearchMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="servicesSearchMenu.Designer.cs">
+      <DependentUpon>servicesSearchMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="soldBySearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,6 +380,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="searchServiceRecordID.resx">
       <DependentUpon>searchServiceRecordID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="servicesSearchByDate.resx">
+      <DependentUpon>servicesSearchByDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="servicesSearchByInvoiceNumber.resx">
+      <DependentUpon>servicesSearchByInvoiceNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="servicesSearchByName.resx">
+      <DependentUpon>servicesSearchByName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="servicesSearchByRegistration.resx">
+      <DependentUpon>servicesSearchByRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="servicesSearchBySRID.resx">
+      <DependentUpon>servicesSearchBySRID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="servicesSearchMenu.resx">
+      <DependentUpon>servicesSearchMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="soldBySearch.resx">
       <DependentUpon>soldBySearch.cs</DependentUpon>
