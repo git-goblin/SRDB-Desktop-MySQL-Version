@@ -51,5 +51,12 @@ namespace srdb
             searchServiceRecordID ssrid = new searchServiceRecordID();
             ssrid.Show();
         }
+
+        private void btnMainMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            mainMenu mm = new mainMenu();
+            mm.Show();
+        }
     }
 }
