@@ -32,6 +32,7 @@ using MySql.Data.MySqlClient;
                 txtAddress1.Clear();
                 txtAddress2.Clear();
                 txtAddress2.Clear();
+                txtAddress3.Clear();
                 txtRegistration.Clear();
                 txtInvoicenumber.Clear();
                 txtTotal.Clear();
@@ -76,6 +77,7 @@ using MySql.Data.MySqlClient;
                         txtSurname.Text = read.GetString(read.GetOrdinal("surName"));
                         txtAddress1.Text = read.GetString(read.GetOrdinal("address1"));
                         txtAddress2.Text = read.GetString(read.GetOrdinal("address2"));
+                        txtAddress3.Text = read.GetString(read.GetOrdinal("address3"));
                         txtPostcode.Text = read.GetString(read.GetOrdinal("postcode"));
                         txtRegistration.Text = read.GetString(read.GetOrdinal("registration"));
                         carModel.Text = read.GetString(read.GetOrdinal("model"));
@@ -274,7 +276,7 @@ using MySql.Data.MySqlClient;
                     String invoice_total = txtInvoicetotal.Text;
                     String number_of_services = numberofServices.Text;
                     String commission_amount = txtCommissionAmount.Text;
-                    string ID = txtSelectID.Text;
+                    String ID = txtSelectID.Text;
                     String SRID = txtSRID.Text;
 
                         int var8 = val.validate_srid(txtSRID.Text);
@@ -283,7 +285,7 @@ using MySql.Data.MySqlClient;
                             return;
                         }
                     
-                    string query = "UPDATE records SET title=@title, firstName=@firstName, surName=@surName, address1=@address1, address2=@address2, postcode=@postcode, registration=@registration, model=@model, sold_by=@sold_by, date_sold=@date_sold, invoice_number=@invoice_number, sales_branch=@sales_branch, type=@type, payment_method=@payment_method, total=@total, invoice_total=@invoice_total, number_of_services=@number_of_services, commission_amount=@commission_amount, SRID=@SRID, comments=@comments WHERE ID=@ID";
+                    string query = "UPDATE records SET title=@title, firstName=@firstName, surName=@surName, address1=@address1, address2=@address2, address3=@address3 postcode=@postcode, registration=@registration, model=@model, sold_by=@sold_by, date_sold=@date_sold, invoice_number=@invoice_number, sales_branch=@sales_branch, type=@type, payment_method=@payment_method, total=@total, invoice_total=@invoice_total, number_of_services=@number_of_services, commission_amount=@commission_amount, SRID=@SRID, comments=@comments WHERE ID=@ID";
                    
                     dbConnect.Initialize();
                     dbConnect.OpenConnection();
@@ -297,6 +299,7 @@ using MySql.Data.MySqlClient;
                         cmd.Parameters.AddWithValue("@surName", surName);
                         cmd.Parameters.AddWithValue("@address1", address1);
                         cmd.Parameters.AddWithValue("@address2", address2);
+                        cmd.Parameters.AddWithValue("@address3", txtAddress3.Text);
                         cmd.Parameters.AddWithValue("@postcode", postcode);
                         cmd.Parameters.AddWithValue("@registration", registration);
                         cmd.Parameters.AddWithValue("@model", model);
