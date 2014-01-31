@@ -56,5 +56,12 @@ namespace srdb
             inputService inpts = new inputService();
             inpts.Show();
         }
+
+        private void btnSearchServices_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            servicesSearchMenu ssm = new servicesSearchMenu();
+            ssm.Show();
+        }
     }
 }

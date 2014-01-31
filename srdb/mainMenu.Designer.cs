@@ -35,6 +35,7 @@
             this.btnGeneratePDF = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnServices = new System.Windows.Forms.Button();
+            this.btnSearchServices = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddrecord
@@ -69,7 +70,7 @@
             // 
             // btnGeneratePDF
             // 
-            this.btnGeneratePDF.Location = new System.Drawing.Point(143, 44);
+            this.btnGeneratePDF.Location = new System.Drawing.Point(143, 77);
             this.btnGeneratePDF.Name = "btnGeneratePDF";
             this.btnGeneratePDF.Size = new System.Drawing.Size(110, 27);
             this.btnGeneratePDF.TabIndex = 3;
@@ -79,7 +80,7 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(178, 81);
+            this.btnLogout.Location = new System.Drawing.Point(178, 114);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(75, 23);
             this.btnLogout.TabIndex = 4;
@@ -97,11 +98,22 @@
             this.btnServices.UseVisualStyleBackColor = true;
             this.btnServices.Click += new System.EventHandler(this.btnServices_Click);
             // 
+            // btnSearchServices
+            // 
+            this.btnSearchServices.Location = new System.Drawing.Point(143, 45);
+            this.btnSearchServices.Name = "btnSearchServices";
+            this.btnSearchServices.Size = new System.Drawing.Size(110, 26);
+            this.btnSearchServices.TabIndex = 6;
+            this.btnSearchServices.Text = "Search Services";
+            this.btnSearchServices.UseVisualStyleBackColor = true;
+            this.btnSearchServices.Click += new System.EventHandler(this.btnSearchServices_Click);
+            // 
             // mainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 115);
+            this.ClientSize = new System.Drawing.Size(266, 146);
+            this.Controls.Add(this.btnSearchServices);
             this.Controls.Add(this.btnServices);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnGeneratePDF);
@@ -124,5 +136,6 @@
         private System.Windows.Forms.Button btnGeneratePDF;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Button btnServices;
+        private System.Windows.Forms.Button btnSearchServices;
     }
 }
