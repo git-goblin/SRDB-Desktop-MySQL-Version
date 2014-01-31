@@ -39,17 +39,22 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dataOfService = new System.Windows.Forms.DateTimePicker();
             this.Date = new System.Windows.Forms.Label();
-            this.cbPaymentmethod = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.btnClearForm = new System.Windows.Forms.Button();
             this.btnSearchMenu = new System.Windows.Forms.Button();
             this.txtRegistration = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnGetDetails = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtSurName = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnSaveService
             // 
-            this.btnSaveService.Location = new System.Drawing.Point(254, 66);
+            this.btnSaveService.Location = new System.Drawing.Point(457, 66);
             this.btnSaveService.Name = "btnSaveService";
             this.btnSaveService.Size = new System.Drawing.Size(84, 23);
             this.btnSaveService.TabIndex = 0;
@@ -59,7 +64,7 @@
             // 
             // btnMainMenu
             // 
-            this.btnMainMenu.Location = new System.Drawing.Point(254, 94);
+            this.btnMainMenu.Location = new System.Drawing.Point(457, 124);
             this.btnMainMenu.Name = "btnMainMenu";
             this.btnMainMenu.Size = new System.Drawing.Size(84, 23);
             this.btnMainMenu.TabIndex = 1;
@@ -131,27 +136,9 @@
             this.Date.TabIndex = 9;
             this.Date.Text = "Date:";
             // 
-            // cbPaymentmethod
-            // 
-            this.cbPaymentmethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPaymentmethod.FormattingEnabled = true;
-            this.cbPaymentmethod.Location = new System.Drawing.Point(103, 147);
-            this.cbPaymentmethod.Name = "cbPaymentmethod";
-            this.cbPaymentmethod.Size = new System.Drawing.Size(121, 21);
-            this.cbPaymentmethod.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 150);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Payment Method:";
-            // 
             // btnClearForm
             // 
-            this.btnClearForm.Location = new System.Drawing.Point(254, 38);
+            this.btnClearForm.Location = new System.Drawing.Point(457, 38);
             this.btnClearForm.Name = "btnClearForm";
             this.btnClearForm.Size = new System.Drawing.Size(84, 23);
             this.btnClearForm.TabIndex = 12;
@@ -161,7 +148,7 @@
             // 
             // btnSearchMenu
             // 
-            this.btnSearchMenu.Location = new System.Drawing.Point(254, 10);
+            this.btnSearchMenu.Location = new System.Drawing.Point(457, 10);
             this.btnSearchMenu.Name = "btnSearchMenu";
             this.btnSearchMenu.Size = new System.Drawing.Size(84, 23);
             this.btnSearchMenu.TabIndex = 13;
@@ -171,7 +158,7 @@
             // 
             // txtRegistration
             // 
-            this.txtRegistration.Location = new System.Drawing.Point(103, 120);
+            this.txtRegistration.Location = new System.Drawing.Point(333, 93);
             this.txtRegistration.Name = "txtRegistration";
             this.txtRegistration.Size = new System.Drawing.Size(100, 20);
             this.txtRegistration.TabIndex = 14;
@@ -179,23 +166,86 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 123);
+            this.label4.Location = new System.Drawing.Point(262, 96);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Registration:";
             // 
+            // btnGetDetails
+            // 
+            this.btnGetDetails.Location = new System.Drawing.Point(457, 95);
+            this.btnGetDetails.Name = "btnGetDetails";
+            this.btnGetDetails.Size = new System.Drawing.Size(84, 23);
+            this.btnGetDetails.TabIndex = 16;
+            this.btnGetDetails.Text = "Get Details";
+            this.btnGetDetails.UseVisualStyleBackColor = true;
+            this.btnGetDetails.Click += new System.EventHandler(this.btnGetDetails_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(297, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.TabIndex = 18;
+            this.label5.Text = "Title:";
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.Location = new System.Drawing.Point(333, 12);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(41, 20);
+            this.txtTitle.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(272, 42);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Firstname:";
+            // 
+            // txtFirstName
+            // 
+            this.txtFirstName.Location = new System.Drawing.Point(333, 39);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(100, 20);
+            this.txtFirstName.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(276, 69);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Surname:";
+            // 
+            // txtSurName
+            // 
+            this.txtSurName.Location = new System.Drawing.Point(333, 66);
+            this.txtSurName.Name = "txtSurName";
+            this.txtSurName.Size = new System.Drawing.Size(100, 20);
+            this.txtSurName.TabIndex = 21;
+            // 
             // inputService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 182);
+            this.ClientSize = new System.Drawing.Size(553, 159);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtSurName);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtFirstName);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtTitle);
+            this.Controls.Add(this.btnGetDetails);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtRegistration);
             this.Controls.Add(this.btnSearchMenu);
             this.Controls.Add(this.btnClearForm);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.cbPaymentmethod);
             this.Controls.Add(this.Date);
             this.Controls.Add(this.dataOfService);
             this.Controls.Add(this.txtAmount);
@@ -228,11 +278,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dataOfService;
         private System.Windows.Forms.Label Date;
-        private System.Windows.Forms.ComboBox cbPaymentmethod;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnClearForm;
         private System.Windows.Forms.Button btnSearchMenu;
         private System.Windows.Forms.TextBox txtRegistration;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnGetDetails;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtTitle;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtSurName;
     }
 }

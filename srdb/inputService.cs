@@ -16,7 +16,7 @@ namespace srdb
     {
         private DBConnect dbConnect;
         private validate val;
-        private String firstName, surName, number_of_services, services_left;
+        private String title, firstName, surName, reg, number_of_services, services_left;
         private String services_remaining, rowID;
         public inputService()
         {
@@ -29,8 +29,14 @@ namespace srdb
         private void inputService_Load(object sender, EventArgs e)
         {
             //Form load
-            loadPaymentMethodCB();
-            cbPaymentmethod.SelectedIndex = 0;
+            btnSaveService.Enabled = false;
+            txtInvoiceNumber.ReadOnly = true;
+            txtAmount.ReadOnly = true;
+            //these stay read only
+            txtTitle.ReadOnly = true;
+            txtFirstName.ReadOnly = true;
+            txtSurName.ReadOnly = true;
+            txtRegistration.ReadOnly = true;
         }
 
         private void btnSearchMenu_Click(object sender, EventArgs e)
@@ -44,7 +50,6 @@ namespace srdb
             txtAmount.Clear();
             txtInvoiceNumber.Clear();
             txtServiceRecordID.Clear();
-            cbPaymentmethod.SelectedIndex = 0;
             dataOfService.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
         }
 
@@ -63,8 +68,10 @@ namespace srdb
                     {
                         while (read.Read())
                         {
+                            title = read.GetString(read.GetOrdinal("title"));
                             firstName = read.GetString(read.GetOrdinal("firstName"));
                             surName = read.GetString(read.GetOrdinal("surName"));
+                            reg = read.GetString(read.GetOrdinal("registration"));
                             number_of_services = read.GetString(read.GetOrdinal("number_of_services"));
                         }
                     }
@@ -88,7 +95,6 @@ namespace srdb
                 gfq.Parameters.AddWithValue("@SL", "FALSE");
                 gfq.Parameters.AddWithValue("@SR", "0");
                 var check_false_var = gfq.ExecuteScalar();
-                MessageBox.Show("Check Var" + check_false_var);
                 if (check_false_var != null)// DBNull.Value)
                 {
                     MessageBox.Show("This person has no bookings left!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -126,7 +132,6 @@ namespace srdb
                     cs.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
                     cs.Parameters.AddWithValue("@SL", "TRUE");
                     var serv_rem = cs.ExecuteScalar();
-                    MessageBox.Show("Value of scaler: " + serv_rem);
                     if (serv_rem == DBNull.Value)
                     {
                         int n_o_s = Convert.ToInt32(number_of_services);
@@ -206,16 +211,21 @@ namespace srdb
         {
             try
             {
+                if (services_left == "")
+                {
+                    services_left = "TRUE";
+                }
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
-                string insert_new_service_query = "INSERT INTO services (SRID, date, firstName, surName, registration, amount, services_remaining, services_left, invoice_number) VALUES (@SRID, @date, @firstName, @surName, @registration, @amount, @services_remaining, @services_left, @invoice_number)";
+                string insert_new_service_query = "INSERT INTO services (SRID, date, title, firstName, surName, registration, amount, services_remaining, services_left, invoice_number) VALUES (@SRID, @date, @title, @firstName, @surName, @registration, @amount, @services_remaining, @services_left, @invoice_number)";
                 using (MySqlCommand cns = new MySqlCommand(insert_new_service_query, dbConnect.services_connection))
                 {
                     cns.Parameters.AddWithValue("@SRID", txtServiceRecordID.Text);
                     cns.Parameters.AddWithValue("@date", dataOfService.Text);
+                    cns.Parameters.AddWithValue("@title", title);
                     cns.Parameters.AddWithValue("@firstName", firstName);
                     cns.Parameters.AddWithValue("@surName", surName);
-                    cns.Parameters.AddWithValue("@registration", txtRegistration.Text);
+                    cns.Parameters.AddWithValue("@registration", reg);
                     cns.Parameters.AddWithValue("@amount", txtAmount.Text);
                     cns.Parameters.AddWithValue("@services_remaining", services_remaining);
                     cns.Parameters.AddWithValue("@services_left", services_left);
@@ -247,7 +257,6 @@ namespace srdb
 
             MessageBox.Show("This may take a while...", "Be patient", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             //get the values from the records table we need: firstname, surname and number of services
-            get_values_from_records();
             //check the number of services remaining and add in a new service into the DB or if not record is available, create a new one
             check_services();
             //check what to do based on the number of services remaining
@@ -259,30 +268,19 @@ namespace srdb
             mainMenu mm = new mainMenu();
             mm.Show();
         }
-        public void loadPaymentMethodCB()
-        {
-            try
-            {
-                dbConnect.combobox_initialise();
-                dbConnect.combobox_Open_Connection();
 
-                var query = "SELECT paymentMethod FROM paymentMethod";
-                using (var command = new MySqlCommand(query, dbConnect.cb_connection))
-                {
-                    using (var reader = command.ExecuteReader())
-                    {
-                        //Iterate through the rows and add it to the combobox's items
-                        while (reader.Read())
-                        {
-                            cbPaymentmethod.Items.Add(reader.GetString("paymentMethod"));
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loading model ComboBox " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        private void btnGetDetails_Click(object sender, EventArgs e)
+        {
+            get_values_from_records();
+            //set to writable 
+            txtInvoiceNumber.ReadOnly = false;
+            txtAmount.ReadOnly = false;
+            txtTitle.Text = title;
+            txtFirstName.Text = firstName;
+            txtSurName.Text = surName;
+            txtRegistration.Text = reg;
+            btnSaveService.Enabled = true;
         }
+      
     }
 }
