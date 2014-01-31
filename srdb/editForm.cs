@@ -26,6 +26,7 @@ using MySql.Data.MySqlClient;
 
             private void btnClearform_Click(object sender, EventArgs e)
             {
+                cbTitle.SelectedIndex = 0;
                 txtFirstname.Clear();
                 txtSurname.Clear();
                 txtAddress1.Clear();
@@ -45,6 +46,7 @@ using MySql.Data.MySqlClient;
                 numberofServices.SelectedIndex = 0;
                 dateSold.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
                 txtSRID.Clear();
+                txtComments.Clear();
             }
 
             private void btnSelectID_Click(object sender, EventArgs e)
@@ -69,6 +71,7 @@ using MySql.Data.MySqlClient;
                     {
                         while (read.Read())
                             //Gets the value by column name
+                        cbTitle.Text = read.GetString(read.GetOrdinal("title"));
                         txtFirstname.Text = read.GetString(read.GetOrdinal("firstName"));
                         txtSurname.Text = read.GetString(read.GetOrdinal("surName"));
                         txtAddress1.Text = read.GetString(read.GetOrdinal("address1"));
@@ -87,6 +90,7 @@ using MySql.Data.MySqlClient;
                         numberofServices.Text = read.GetString(read.GetOrdinal("number_of_services"));
                         txtCommissionAmount.Text = read.GetString(read.GetOrdinal("commission_amount"));
                         txtSRID.Text = read.GetString(read.GetOrdinal("SRID"));
+                        txtComments.Text = read.GetString(read.GetOrdinal("comments"));
                    //     cmd.ExecuteNonQuery();
                      //   dbConnect.CloseConnection();
                     }
@@ -279,7 +283,7 @@ using MySql.Data.MySqlClient;
                             return;
                         }
                     
-                    string query = "UPDATE records SET firstName=@firstName, surName=@surName, address1=@address1, address2=@address2, postcode=@postcode, registration=@registration, model=@model, sold_by=@sold_by, date_sold=@date_sold, invoice_number=@invoice_number, sales_branch=@sales_branch, type=@type, payment_method=@payment_method, total=@total, invoice_total=@invoice_total, number_of_services=@number_of_services, commission_amount=@commission_amount, SRID=@SRID WHERE ID=@ID";
+                    string query = "UPDATE records SET title=@title, firstName=@firstName, surName=@surName, address1=@address1, address2=@address2, postcode=@postcode, registration=@registration, model=@model, sold_by=@sold_by, date_sold=@date_sold, invoice_number=@invoice_number, sales_branch=@sales_branch, type=@type, payment_method=@payment_method, total=@total, invoice_total=@invoice_total, number_of_services=@number_of_services, commission_amount=@commission_amount, SRID=@SRID, comments=@comments WHERE ID=@ID";
                    
                     dbConnect.Initialize();
                     dbConnect.OpenConnection();
@@ -287,7 +291,8 @@ using MySql.Data.MySqlClient;
                     using (MySqlCommand cmd = new MySqlCommand(query, dbConnect.connection))
 
                     {
-                        cmd.Parameters.AddWithValue("@ID", ID); 
+                        cmd.Parameters.AddWithValue("@ID", ID);
+                        cmd.Parameters.AddWithValue("@title", cbTitle.Text);
                         cmd.Parameters.AddWithValue("@firstName", firstName);
                         cmd.Parameters.AddWithValue("@surName", surName);
                         cmd.Parameters.AddWithValue("@address1", address1);
@@ -306,6 +311,7 @@ using MySql.Data.MySqlClient;
                         cmd.Parameters.AddWithValue("@number_of_services", number_of_services);
                         cmd.Parameters.AddWithValue("@commission_amount", commission_amount);
                         cmd.Parameters.AddWithValue("@SRID", SRID);
+                        cmd.Parameters.AddWithValue("@comments", txtComments.Text);
                         cmd.ExecuteNonQuery();
                         dbConnect.CloseConnection();
                     }
@@ -337,6 +343,7 @@ using MySql.Data.MySqlClient;
                 carType.SelectedIndex = 0;
                 paymentMethod.SelectedIndex = 0;
                 numberofServices.SelectedIndex = 0;
+                cbTitle.SelectedIndex = 0;
             }
 
             private void txtTotal_TextChanged(object sender, EventArgs e)
