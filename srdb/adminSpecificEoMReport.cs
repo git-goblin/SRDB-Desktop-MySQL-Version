@@ -44,7 +44,7 @@ namespace srdb
             String month = cbDate.Text;
             String year = cbYear.Text;
             String like_value = month + " " + year;
-            String report_query = "SELECT SRID, date, firstName, surName, registration, amount, services_remaining, services_left, invoice_number FROM services WHERE date LIKE '%" + like_value + "%'";
+            String report_query = "SELECT SRID, date, title, firstName, surName, registration, amount, services_remaining, services_left, invoice_number FROM services WHERE date LIKE '%" + like_value + "%'";
 
             dbConnect.services_initialise();
             dbConnect.services_Open_Connection();
@@ -75,16 +75,18 @@ namespace srdb
 
                     var cell_SRID = ws.Cells[1, 1]; //declare the cells
                     var cell_date = ws.Cells[1, 2];
-                    var cell_firstName = ws.Cells[1, 3];
-                    var cell_surName = ws.Cells[1, 4];
-                    var cell_registration = ws.Cells[1, 5];
-                    var cell_amount = ws.Cells[1, 6];
-                    var cell_services_remaining = ws.Cells[1, 7];
-                    var cell_services_left = ws.Cells[1, 8];
-                    var cell_invoice_number = ws.Cells[1, 9];
+                    var cell_title = ws.Cells[1, 3];
+                    var cell_firstName = ws.Cells[1, 4];
+                    var cell_surName = ws.Cells[1, 5];
+                    var cell_registration = ws.Cells[1, 6];
+                    var cell_amount = ws.Cells[1, 7];
+                    var cell_services_remaining = ws.Cells[1, 8];
+                    var cell_services_left = ws.Cells[1, 9];
+                    var cell_invoice_number = ws.Cells[1, 10];
 
                     cell_SRID.Value = "SRID"; //sets a value to the cells
                     cell_date.Value = "Date";
+                    cell_title.Value = "Title";
                     cell_firstName.Value = "Firstname";
                     cell_surName.Value = "Surname";
                     cell_registration.Value = "Registration";
