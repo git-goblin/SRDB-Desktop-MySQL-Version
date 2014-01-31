@@ -47,6 +47,11 @@ namespace srdb
 
         private void btnClearForm_Click(object sender, EventArgs e)
         {
+            txtTitle.Clear();
+            txtFirstName.Clear();
+            txtSurName.Clear();
+            txtRegistration.Clear();
+
             txtAmount.Clear();
             txtInvoiceNumber.Clear();
             txtServiceRecordID.Clear();
