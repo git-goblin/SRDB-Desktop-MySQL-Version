@@ -88,8 +88,8 @@ namespace srdb
                 gfq.Parameters.AddWithValue("@SL", "FALSE");
                 gfq.Parameters.AddWithValue("@SR", "0");
                 var check_false_var = gfq.ExecuteScalar();
-
-                if (check_false_var != DBNull.Value)
+                MessageBox.Show("Check Var" + check_false_var);
+                if (check_false_var != null)// DBNull.Value)
                 {
                     MessageBox.Show("This person has no bookings left!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return 1;
@@ -105,17 +105,17 @@ namespace srdb
                 MessageBox.Show("Checking false values! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
-        }
+        } 
 
         private void check_services()
         {
             try
             {
-                int check_var = check_false_services();
-                if (check_var == 1)
-                {
-                    return;
-                }
+               int check_var = check_false_services();
+               if (check_var == 1)
+               {
+                   return;
+               }
 
                 dbConnect.services_initialise();
                 dbConnect.services_Open_Connection();
