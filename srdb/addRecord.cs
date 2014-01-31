@@ -219,10 +219,11 @@ namespace srdb
                     SRID = SRID_final;
                 }
 
-                string query = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";  // = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";
+                string query = "INSERT INTO records (title, firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID, comments) VALUES (@title, @firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID, @comments)";  // = "INSERT INTO records (firstName, surName ,address1, address2, postcode, registration,  model, sold_by,  date_sold,  invoice_number, sales_branch, type, payment_method, total, invoice_total, number_of_services, commission_amount, SRID) VALUES (@firstName, @surName, @address1, @address2, @postcode, @registration, @model, @sold_by, @date_sold, @invoice_number, @sales_branch, @type, @payment_method, @total, @invoice_total, @number_of_services, @commission_amount, @SRID)";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, dbConnect.connection))
                 {
+                    cmd.Parameters.AddWithValue("@title", cbTitle.Text);
                     cmd.Parameters.AddWithValue("@firstName", firstName);
                     cmd.Parameters.AddWithValue("@surName", surName);
                     cmd.Parameters.AddWithValue("@address1", address1);
@@ -241,6 +242,7 @@ namespace srdb
                     cmd.Parameters.AddWithValue("@number_of_services", number_of_services);
                     cmd.Parameters.AddWithValue("@commission_amount", commission_amount);
                     cmd.Parameters.AddWithValue("@SRID", SRID);
+                    cmd.Parameters.AddWithValue("@comments", txtComments.Text);
                    
                     cmd.ExecuteNonQuery();
                     dbConnect.CloseConnection();
@@ -274,6 +276,8 @@ namespace srdb
             numberofServices.SelectedIndex = 0;
             dateSold.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
             txtSRID.Clear();
+            txtComments.Clear();
+            cbTitle.SelectedIndex = 0;
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -296,6 +300,7 @@ namespace srdb
             carType.SelectedIndex = 0;
             paymentMethod.SelectedIndex = 0;
             numberofServices.SelectedIndex = 0;
+            cbTitle.SelectedIndex = 0;
         }
 
         private void txtTotal_TextChanged(object sender, EventArgs e)
