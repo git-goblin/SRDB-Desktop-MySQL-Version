@@ -276,6 +276,11 @@ namespace srdb
 
         private void btnGetDetails_Click(object sender, EventArgs e)
         {
+            int val1 = val.validate_srid(txtServiceRecordID.Text);
+            if (val1 != 1)
+            {
+                return;
+            }
             get_values_from_records();
             //set to writable 
             txtInvoiceNumber.ReadOnly = false;
