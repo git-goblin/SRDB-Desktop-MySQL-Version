@@ -236,6 +236,12 @@
     <Compile Include="searchInvoiceNumber.Designer.cs">
       <DependentUpon>searchInvoiceNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="searchMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="searchMenu.Designer.cs">
+      <DependentUpon>searchMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="searchRecordsMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="searchInvoiceNumber.resx">
       <DependentUpon>searchInvoiceNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="searchMenu.resx">
+      <DependentUpon>searchMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="searchRecordsMenu.resx">
       <DependentUpon>searchRecordsMenu.cs</DependentUpon>
