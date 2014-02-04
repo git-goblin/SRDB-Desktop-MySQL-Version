@@ -445,7 +445,7 @@
             // 
             // txtComments
             // 
-            this.txtComments.Location = new System.Drawing.Point(237, 221);
+            this.txtComments.Location = new System.Drawing.Point(237, 214);
             this.txtComments.Multiline = true;
             this.txtComments.Name = "txtComments";
             this.txtComments.Size = new System.Drawing.Size(367, 107);
@@ -454,7 +454,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(237, 200);
+            this.label19.Location = new System.Drawing.Point(237, 193);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(59, 13);
             this.label19.TabIndex = 84;
