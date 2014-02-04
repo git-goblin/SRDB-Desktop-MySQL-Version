@@ -41,8 +41,8 @@ namespace srdb
 
         private void btnSearchMenu_Click(object sender, EventArgs e)
         {
-            searchRecordsMenu srm = new searchRecordsMenu();
-            srm.Show();
+            searchMenu sm = new searchMenu();
+            sm.Show();
         }
 
         private void btnClearForm_Click(object sender, EventArgs e)
