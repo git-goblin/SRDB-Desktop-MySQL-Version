@@ -140,6 +140,11 @@ namespace srdb
                     if (serv_rem == DBNull.Value)
                     {
                         int n_o_s = Convert.ToInt32(number_of_services);
+                        if (n_o_s == 0)
+                        {
+                            MessageBox.Show("This person has no services on their plan!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         int sr;
                         sr = n_o_s - 1;
                         services_left = "TRUE";
