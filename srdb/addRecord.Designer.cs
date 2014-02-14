@@ -258,6 +258,7 @@
             this.carType.Name = "carType";
             this.carType.Size = new System.Drawing.Size(143, 21);
             this.carType.TabIndex = 23;
+            this.carType.SelectedIndexChanged += new System.EventHandler(this.carType_SelectedIndexChanged);
             // 
             // label12
             // 

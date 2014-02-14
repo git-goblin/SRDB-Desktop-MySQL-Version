@@ -325,5 +325,30 @@ namespace srdb
                 MessageBox.Show("Error auto-calculating VAT", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void carType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sr_type = carType.Text;
+            double c_a;
+            switch (sr_type)
+            {
+                case "New Basic":
+                    c_a = 15.00;
+                    break;
+                case "New Premium":
+                    c_a = 25.00;
+                    break;
+                case "Renewal Basic":
+                    c_a = 10.00;
+                    break;
+                case "Renewal Premium":
+                    c_a = 15.00;
+                    break;
+                default:
+                    c_a = 0;
+                    break;
+            }
+            txtCommissionAmount.Text = Convert.ToString(c_a);
+        }
     }
 }
