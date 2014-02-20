@@ -30,7 +30,7 @@ namespace srdb
             InitializeComponent();
         }
 
-        String Firstname, Surname, Address1, Address2, Postcode, Registration, carModel, dateSold, Invoicenumber, soldBy, salesBranch, carType, paymentMethod, Total, Invoicetotal, numberofServices, CommissionAmount;
+        String title, Firstname, Surname, Address1, Address2, Postcode, Registration, carModel, dateSold, Invoicenumber, soldBy, salesBranch, carType, paymentMethod, Total, Invoicetotal, numberofServices, CommissionAmount;
         private void PDFGenerator_Load(object sender, EventArgs e)
         {
             //form on load
@@ -42,12 +42,12 @@ namespace srdb
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
                 String ID = txtSRID.Text;
-                if (val.validate_id(ID) != 1)
+                if (val.validate_srid(ID) != 1)
                 {
                     return;
                 }
 
-                string selectID = "SELECT * FROM records WHERE ID=@ID";
+                string selectID = "SELECT * FROM records WHERE SRID=@ID";
                 using (MySqlCommand cmd = new MySqlCommand(selectID, dbConnect.connection))
                 {
                     cmd.Parameters.AddWithValue("@ID", ID);
@@ -56,6 +56,7 @@ namespace srdb
                         while (read.Read())
                         //Gets the value by column name
                         {
+                            title = read.GetString(read.GetOrdinal("title"));
                             Firstname = read.GetString(read.GetOrdinal("firstName"));
                             Surname = read.GetString(read.GetOrdinal("surName"));
                             Address1 = read.GetString(read.GetOrdinal("address1"));
@@ -87,26 +88,42 @@ namespace srdb
         {
             try
             {
+                DateTime datetoday = DateTime.Today;
+                String today = datetoday.ToString("dd/MM/yyyy");
                 String ID = txtSRID.Text;
-                string file_name = "Invoice - " + Invoicenumber + " From Service Record ID - " + ID;
+                string file_name = title + " " + Firstname + " " + Surname + " - Service Record ID - "  + ID;
                 FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
                 fbd.ShowDialog();
                 string u_path = fbd.SelectedPath;
+                var boldFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12);
                 var document = new Document();
                 PdfWriter.GetInstance(document, new FileStream(u_path + "/"+file_name+".pdf", FileMode.Create));
                 document.Open();
-                document.Add(new Paragraph("My First PDF"));
-                document.Add(new Paragraph());
-                document.Add(new Paragraph());
-                document.Add(new Paragraph("Dear " + Firstname + " " + Surname));
-                document.Add(new Paragraph());
-                document.Add(new Paragraph());
-                document.Add(new Paragraph("Main Body text goes here --> --> --> values can be added using concatination"));
-                document.Add(new Paragraph());
-                document.Add(new Paragraph());
-                document.Add(new Paragraph("Ending to the letter goes here --> --> -->"));
-                document.Add(new Paragraph());
-                document.Add(new Paragraph());
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(today));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph("Dear "+ title + " " + Firstname + " " + Surname));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph("Currie Motors Service Plan No:" + txtSRID.Text, boldFont));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph("Thank you for choosing to purchase a " + carType + " Plan, which covers " + numberofServices + " services with Currie Motors."));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph("Please keep this letter in a safe place, we suggest with your service book in the car. It details your plan number, which would be helpful when you book in for a service."));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph("If you have any further queries regarding your service please do not hesitate to contact me."));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph("Assuring you of our continued interest in your motoring requirements."));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph("Yours sincerely, "));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph("Lyn Cutting"));
+                document.Add(new Paragraph("Group After Sales Administrator"));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(" "));
 
                 document.Close();
                 MessageBox.Show("PDF Successfully created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -118,45 +135,14 @@ namespace srdb
             
         }
 
-        private void invoice_PDF()
-        {
-            try
-            {
-                String ID = txtSRID.Text;
-                string file_name = "Invoice - " + Invoicenumber + " From Service Record ID - " + ID;
-                FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
-                fbd.ShowDialog();
-                Font arial = FontFactory.GetFont("Arial", 12, BaseColor.GRAY);
-                string u_path = fbd.SelectedPath;
-                var document = new Document();
-                PdfWriter.GetInstance(document, new FileStream(u_path + "/" + file_name + ".pdf", FileMode.Create)); //File path
-                document.Open();
-                PdfPTable inv_table = new PdfPTable(2);
-                inv_table.HorizontalAlignment = 0;
-                inv_table.SpacingBefore = 10;
-                inv_table.SpacingAfter = 10;
-                inv_table.DefaultCell.Border = 0;
-                inv_table.SetWidths(new int[] { 1, 4 }); // Creates a 2x2 table, filled from top left to bottom right
-
-                inv_table.AddCell(new Phrase("Invoice Number: ", arial));
-                inv_table.AddCell(new Phrase(Invoicenumber, arial));
-                inv_table.AddCell(new Phrase("Name: ", arial));
-                inv_table.AddCell(new Phrase(Firstname + " " + Surname, arial));
-
-                document.Add(inv_table);
-
-                document.Close();
-                MessageBox.Show("PDF Successfully created!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error creating PDF! " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void btnCreatePDF_Click(object sender, EventArgs e)
         {
             pull_from_db();
+            if (Invoicenumber == "") //cheap validation check
+            {
+                MessageBox.Show("Sorry, there was no records found with that Services Record ID", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             create_PDF();
         }
 
