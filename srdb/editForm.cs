@@ -99,9 +99,9 @@ using MySql.Data.MySqlClient;
                 } 
                    
                 }
-               catch (Exception ex)
+               catch (Exception)
                {
-                   MessageBox.Show("Error with editing this record!" + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   MessageBox.Show("Record could not be found, make sure you have the right ID", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                }
             }
 
