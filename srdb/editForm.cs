@@ -101,7 +101,7 @@ using MySql.Data.MySqlClient;
                 }
                catch (Exception)
                {
-                   MessageBox.Show("Record could not be found, make sure you have the right ID", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   MessageBox.Show("Record could not be found, make sure you have the right ID" , "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                }
             }
 

@@ -106,7 +106,7 @@ namespace srdb
                 document.Add(new Paragraph(" "));
                 document.Add(new Paragraph("Dear "+ title + " " + Firstname + " " + Surname));
                 document.Add(new Paragraph(" "));
-                document.Add(new Paragraph("Currie Motors Service Plan No:" + txtSRID.Text, boldFont));
+                document.Add(new Paragraph("Currie Motors Service Plan No: " + txtSRID.Text, boldFont));
                 document.Add(new Paragraph(" "));
                 document.Add(new Paragraph("Thank you for choosing to purchase a " + carType + " Plan, which covers " + numberofServices + " services with Currie Motors."));
                 document.Add(new Paragraph(" "));
