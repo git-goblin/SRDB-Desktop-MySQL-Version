@@ -287,6 +287,12 @@ namespace srdb
                 return;
             }
             get_values_from_records();
+            if (title == null) //cheap trick validation
+            {
+                MessageBox.Show("No service record can be found with that ID, please check it again", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
             //set to writable 
             txtInvoiceNumber.ReadOnly = false;
             txtAmount.ReadOnly = false;
