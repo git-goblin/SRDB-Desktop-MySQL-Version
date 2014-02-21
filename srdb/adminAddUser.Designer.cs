@@ -43,6 +43,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnCheckUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddUser
@@ -57,7 +60,7 @@
             // 
             // btnClearForm
             // 
-            this.btnClearForm.Location = new System.Drawing.Point(225, 50);
+            this.btnClearForm.Location = new System.Drawing.Point(225, 79);
             this.btnClearForm.Name = "btnClearForm";
             this.btnClearForm.Size = new System.Drawing.Size(75, 23);
             this.btnClearForm.TabIndex = 1;
@@ -67,7 +70,7 @@
             // 
             // btnMainMenu
             // 
-            this.btnMainMenu.Location = new System.Drawing.Point(225, 79);
+            this.btnMainMenu.Location = new System.Drawing.Point(225, 108);
             this.btnMainMenu.Name = "btnMainMenu";
             this.btnMainMenu.Size = new System.Drawing.Size(75, 23);
             this.btnMainMenu.TabIndex = 2;
@@ -126,7 +129,7 @@
             // rbAdministrator
             // 
             this.rbAdministrator.AutoSize = true;
-            this.rbAdministrator.Location = new System.Drawing.Point(75, 156);
+            this.rbAdministrator.Location = new System.Drawing.Point(75, 183);
             this.rbAdministrator.Name = "rbAdministrator";
             this.rbAdministrator.Size = new System.Drawing.Size(85, 17);
             this.rbAdministrator.TabIndex = 9;
@@ -137,7 +140,7 @@
             // rbStandardUser
             // 
             this.rbStandardUser.AutoSize = true;
-            this.rbStandardUser.Location = new System.Drawing.Point(75, 133);
+            this.rbStandardUser.Location = new System.Drawing.Point(75, 160);
             this.rbStandardUser.Name = "rbStandardUser";
             this.rbStandardUser.Size = new System.Drawing.Size(93, 17);
             this.rbStandardUser.TabIndex = 10;
@@ -148,7 +151,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 134);
+            this.label4.Location = new System.Drawing.Point(8, 161);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 11;
@@ -170,11 +173,40 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Password:";
             // 
+            // txtUserName
+            // 
+            this.txtUserName.Location = new System.Drawing.Point(64, 127);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(155, 20);
+            this.txtUserName.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(8, 130);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Username:";
+            // 
+            // btnCheckUser
+            // 
+            this.btnCheckUser.Location = new System.Drawing.Point(225, 50);
+            this.btnCheckUser.Name = "btnCheckUser";
+            this.btnCheckUser.Size = new System.Drawing.Size(75, 23);
+            this.btnCheckUser.TabIndex = 16;
+            this.btnCheckUser.Text = "Check User";
+            this.btnCheckUser.UseVisualStyleBackColor = true;
+            this.btnCheckUser.Click += new System.EventHandler(this.btnCheckUser_Click);
+            // 
             // adminAddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 185);
+            this.ClientSize = new System.Drawing.Size(313, 213);
+            this.Controls.Add(this.btnCheckUser);
+            this.Controls.Add(this.txtUserName);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -215,5 +247,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnCheckUser;
     }
 }
