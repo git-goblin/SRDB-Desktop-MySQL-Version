@@ -59,6 +59,12 @@ namespace srdb
             //--> Main Button here, all code goes here!
             try
             {
+                fill_table();
+                if (sr_table.Rows.Count == 0)
+                {
+                    MessageBox.Show("There are is no data for this search", "Information!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
                 fbd.ShowDialog();
                 string u_path = fbd.SelectedPath;
@@ -95,12 +101,11 @@ namespace srdb
                     cell_services_left.Value = "Services Left";
                     cell_invoice_number.Value = "Invoice Number";
 
-                    fill_table();
-
                     ws.Cells["A3"].LoadFromDataTable(sr_table, false);
 
                     Byte[] bin = excelpkg.GetAsByteArray();
                     File.WriteAllBytes(u_path + "/" + file_name + ".xlsx", bin); //writes to the file, needs to be XLSX format
+                    sr_table.Clear();
                 }
                 MessageBox.Show("Report created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }

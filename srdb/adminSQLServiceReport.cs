@@ -48,6 +48,12 @@ namespace srdb
                     MessageBox.Show("Invalid SQL query! ", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                fill_table();
+                if (sr_table.Rows.Count == 0)
+                {
+                    MessageBox.Show("There are is no data for that search", "Information!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
                 FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
                 fbd.ShowDialog();
@@ -64,12 +70,12 @@ namespace srdb
                     ExcelWorksheet ws = excelpkg.Workbook.Worksheets[1]; //postion of the worksheet
                     ws.Name = "EoM Report";
 
-                    fill_table();
 
                     ws.Cells["A3"].LoadFromDataTable(sr_table, true); //by setting to TRUE, it used the table column names as the headers
 
                     Byte[] bin = excelpkg.GetAsByteArray();
                     File.WriteAllBytes(u_path + "/" + file_name + ".xlsx", bin); //writes to the file, needs to be XLSX format
+                    sr_table.Clear();
                 }
                 MessageBox.Show("Report created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }

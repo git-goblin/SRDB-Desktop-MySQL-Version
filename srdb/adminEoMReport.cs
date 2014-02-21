@@ -34,7 +34,7 @@ namespace srdb
             String month = cbDate.Text;
             String year = Convert.ToString(DateTime.Now.Year);
             String like_value = month + " " + year;
-            String report_query = "SELECT SRID, date, firstName, surName, registration, amount, services_remaining, services_left, invoice_number FROM services WHERE date LIKE '%" + like_value + "%'";
+            String report_query = "SELECT SRID, date, title, firstName, surName, registration, amount, services_remaining, services_left, invoice_number FROM services WHERE date LIKE '%" + like_value + "%'";
      
             dbConnect.services_initialise();
             dbConnect.services_Open_Connection();
@@ -48,6 +48,12 @@ namespace srdb
         {
             try
             {
+                fill_table();
+                if (sr_table.Rows.Count == 0)
+                {
+                    MessageBox.Show("There are is no data for that month", "Information!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
                 fbd.ShowDialog();
                 string u_path = fbd.SelectedPath;
@@ -84,14 +90,13 @@ namespace srdb
                     cell_services_left.Value = "Services Left";
                     cell_invoice_number.Value = "Invoice Number";
 
-                    fill_table();
-
                     ws.Cells["A3"].LoadFromDataTable(sr_table, false);
 
                     Byte[] bin = excelpkg.GetAsByteArray();
                     File.WriteAllBytes(u_path + "/" + file_name + ".xlsx", bin); //writes to the file, needs to be XLSX format
                 }
                 MessageBox.Show("Report created!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                sr_table.Clear();
             }
             catch (Exception ex)
             {
