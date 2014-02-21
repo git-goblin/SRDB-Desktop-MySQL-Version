@@ -84,12 +84,47 @@ namespace srdb
             }
         }
 
+        private static string Ordinal(DateTime date)
+        {
+            int dayvalue = Convert.ToInt32(date.Day);
+            string strNum = dayvalue.ToString();
+            string ordinal = string.Empty;
+            if (strNum.EndsWith("0") ||
+            strNum.EndsWith("4") ||
+            strNum.EndsWith("5") ||
+            strNum.EndsWith("6") ||
+            strNum.EndsWith("7") ||
+            strNum.EndsWith("8") ||
+            strNum.EndsWith("9"))
+            {
+                ordinal = "th";
+            }
+            else if (strNum.EndsWith("1"))
+            {
+                ordinal = "st";
+            }
+            else if (strNum.EndsWith("2"))
+            {
+                ordinal = "nd";
+            }
+            else
+            {
+                ordinal = "rd";
+            }
+
+            string str = date.ToString(" MMMMM yyyy");
+            return ordinal + str;
+        }
+
+
         private void create_PDF()
         {
             try
             {
                 DateTime datetoday = DateTime.Today;
-                String today = datetoday.ToString("dd/MM/yyyy");
+                String today = Ordinal(datetoday);
+                int day = DateTime.Today.Day;
+                today = day.ToString() + today;
                 String ID = txtSRID.Text;
                 string file_name = title + " " + Firstname + " " + Surname + " - Service Record ID - "  + ID;
                 FolderBrowserDialog fbd = new FolderBrowserDialog(); //Asks the user to choose a file where the PDF will be saved
@@ -99,6 +134,12 @@ namespace srdb
                 var document = new Document();
                 PdfWriter.GetInstance(document, new FileStream(u_path + "/"+file_name+".pdf", FileMode.Create));
                 document.Open();
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph(" "));
                 document.Add(new Paragraph(" "));
                 document.Add(new Paragraph(today));
                 document.Add(new Paragraph(" "));
@@ -138,7 +179,7 @@ namespace srdb
         private void btnCreatePDF_Click(object sender, EventArgs e)
         {
             pull_from_db();
-            if (Invoicenumber == "") //cheap validation check
+            if (Invoicenumber == null) //cheap validation check
             {
                 MessageBox.Show("Sorry, there was no records found with that Services Record ID", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
