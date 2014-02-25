@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient; //required for MySQL Connections
 using System.Security.Cryptography; //required for generating SHA1 values
 using System.Net.NetworkInformation; //Ping;
+using System.Configuration; //Allows config file to be read
 
 
 
@@ -29,48 +30,27 @@ namespace srdb
         private string uid;
         private string password;
 
+        private crypto crytp;
+
         //Constructor
         public DBConnect()
         {
+            crytp = new crypto();
             Initialize();
         }
         //Initialize values
         public void Initialize()
         {
-            server = "localhost";
-            database = "srdb";
-            uid = "root";
-            password = "MySQuireL321!";
+            server = ConfigurationManager.AppSettings["server"]; 
+            database = ConfigurationManager.AppSettings["database"]; 
+            uid = ConfigurationManager.AppSettings["username"]; 
+            password = ConfigurationManager.AppSettings["pass"]; 
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new MySqlConnection(connectionString);
         }
 
-        public void ping_test(out int con_stat, out long latency) //Will output multiple values
-        {
-            con_stat = 0; //Must be assigned a value before being 'output'
-            latency = 0; //Declare at top of class as private values
-            try
-            {
-                Ping ping = new Ping();
-                PingReply pingreply = ping.Send(server);
-                if (pingreply.Status == IPStatus.Success)
-                {
-                    con_stat = 1;
-                    latency = pingreply.RoundtripTime;
-                }
-                else
-                {
-                    con_stat = 0;
-                    latency = 10000;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-        }
         //open connection to database
         public bool OpenConnection()
         {
@@ -143,10 +123,10 @@ namespace srdb
         }
         public void login_initialise()
         {
-            server = "localhost";
-            database = "srdb";
-            uid = "root";
-            password = "MySQuireL321!";
+            server = ConfigurationManager.AppSettings["l_server"]; 
+            database = ConfigurationManager.AppSettings["l_database"]; 
+            uid = ConfigurationManager.AppSettings["l_username"]; 
+            password = ConfigurationManager.AppSettings["l_pass"]; 
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
@@ -201,10 +181,10 @@ namespace srdb
         }
         public void combobox_initialise()
         {
-            server = "localhost";
-            database = "combobox";
-            uid = "root";
-            password = "MySQuireL321!";
+            server = ConfigurationManager.AppSettings["cb_server"]; 
+            database = ConfigurationManager.AppSettings["cb_database"]; 
+            uid = ConfigurationManager.AppSettings["cb_username"];
+            password = ConfigurationManager.AppSettings["cb_pass"];
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
@@ -253,10 +233,10 @@ namespace srdb
         }
         public void services_initialise()
         {
-            server = "localhost";
-            database = "srdb";
-            uid = "root";
-            password = "MySQuireL321!";
+            server = ConfigurationManager.AppSettings["s_server"]; 
+            database = ConfigurationManager.AppSettings["s_database"]; 
+            uid = ConfigurationManager.AppSettings["s_username"]; 
+            password = ConfigurationManager.AppSettings["s_pass"]; 
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
