@@ -58,11 +58,20 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtSPassword = new System.Windows.Forms.TextBox();
+            this.txtSUser = new System.Windows.Forms.TextBox();
+            this.txtSDB = new System.Windows.Forms.TextBox();
+            this.txtSServer = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtSave
             // 
-            this.txtSave.Location = new System.Drawing.Point(538, 79);
+            this.txtSave.Location = new System.Drawing.Point(734, 79);
             this.txtSave.Name = "txtSave";
             this.txtSave.Size = new System.Drawing.Size(75, 23);
             this.txtSave.TabIndex = 0;
@@ -72,12 +81,13 @@
             // 
             // txtMainMenu
             // 
-            this.txtMainMenu.Location = new System.Drawing.Point(538, 108);
+            this.txtMainMenu.Location = new System.Drawing.Point(734, 108);
             this.txtMainMenu.Name = "txtMainMenu";
             this.txtMainMenu.Size = new System.Drawing.Size(75, 23);
             this.txtMainMenu.TabIndex = 1;
             this.txtMainMenu.Text = "Main Menu";
             this.txtMainMenu.UseVisualStyleBackColor = true;
+            this.txtMainMenu.Click += new System.EventHandler(this.txtMainMenu_Click);
             // 
             // label1
             // 
@@ -298,11 +308,93 @@
             this.label12.TabIndex = 33;
             this.label12.Text = "Server:";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(553, 114);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 13);
+            this.label16.TabIndex = 45;
+            this.label16.Text = "Password:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(553, 88);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(58, 13);
+            this.label17.TabIndex = 44;
+            this.label17.Text = "Username:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(552, 62);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(56, 13);
+            this.label18.TabIndex = 43;
+            this.label18.Text = "Database:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(567, 36);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(41, 13);
+            this.label19.TabIndex = 42;
+            this.label19.Text = "Server:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(634, 9);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(48, 13);
+            this.label20.TabIndex = 41;
+            this.label20.Text = "Services";
+            // 
+            // txtSPassword
+            // 
+            this.txtSPassword.Location = new System.Drawing.Point(614, 111);
+            this.txtSPassword.Name = "txtSPassword";
+            this.txtSPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtSPassword.TabIndex = 40;
+            // 
+            // txtSUser
+            // 
+            this.txtSUser.Location = new System.Drawing.Point(614, 85);
+            this.txtSUser.Name = "txtSUser";
+            this.txtSUser.Size = new System.Drawing.Size(100, 20);
+            this.txtSUser.TabIndex = 39;
+            // 
+            // txtSDB
+            // 
+            this.txtSDB.Location = new System.Drawing.Point(614, 59);
+            this.txtSDB.Name = "txtSDB";
+            this.txtSDB.Size = new System.Drawing.Size(100, 20);
+            this.txtSDB.TabIndex = 38;
+            // 
+            // txtSServer
+            // 
+            this.txtSServer.Location = new System.Drawing.Point(614, 33);
+            this.txtSServer.Name = "txtSServer";
+            this.txtSServer.Size = new System.Drawing.Size(100, 20);
+            this.txtSServer.TabIndex = 37;
+            // 
             // adminServerConnections
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 143);
+            this.ClientSize = new System.Drawing.Size(825, 143);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.txtSPassword);
+            this.Controls.Add(this.txtSUser);
+            this.Controls.Add(this.txtSDB);
+            this.Controls.Add(this.txtSServer);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
@@ -373,5 +465,14 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtSPassword;
+        private System.Windows.Forms.TextBox txtSUser;
+        private System.Windows.Forms.TextBox txtSDB;
+        private System.Windows.Forms.TextBox txtSServer;
     }
 }
