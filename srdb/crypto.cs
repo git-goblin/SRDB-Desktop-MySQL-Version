@@ -12,7 +12,7 @@ namespace srdb
     {
         public string Encrypt(string clearText)
         {
-            string EncryptionKey = "L337HaXorzDon'tEvenStandAChance!@gaintthisL33333373nC4y97I()N";
+      /*      string EncryptionKey = "L337HaXorzDon'tEvenStandAChance!@gaintthisL33333373nC4y97I()N";
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
             using (Aes encryptor = Aes.Create())
             {
@@ -30,11 +30,25 @@ namespace srdb
                 }
             }
             return clearText;
+       */
+            string strKey = "L337HaXorzDon'tEvenStandAChance!@gaintthisL33333373nC4y97I()N";
+            TripleDESCryptoServiceProvider objDESCrypto =
+        new TripleDESCryptoServiceProvider();
+            MD5CryptoServiceProvider objHashMD5 = new MD5CryptoServiceProvider();
+            byte[] byteHash, byteBuff;
+            string strTempKey = strKey;
+            byteHash = objHashMD5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(strTempKey));
+            objHashMD5 = null;
+            objDESCrypto.Key = byteHash;
+            objDESCrypto.Mode = CipherMode.ECB; //CBC, CFB
+            byteBuff = ASCIIEncoding.ASCII.GetBytes(clearText);
+            return Convert.ToBase64String(objDESCrypto.CreateEncryptor().
+                TransformFinalBlock(byteBuff, 0, byteBuff.Length));
         }
 
-        private string Decrypt(string cipherText)
+        public string Decrypt(string cipherText)
         {
-            string EncryptionKey = "L337HaXorzDon'tEvenStandAChance!@gaintthisL33333373nC4y97I()N";
+           /* string EncryptionKey = "L337HaXorzDon'tEvenStandAChance!@gaintthisL33333373nC4y97I()N";
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
             using (Aes encryptor = Aes.Create())
             {
@@ -52,6 +66,23 @@ namespace srdb
                 }
             }
             return cipherText;
+            */
+            string strKey = "L337HaXorzDon'tEvenStandAChance!@gaintthisL33333373nC4y97I()N";
+            TripleDESCryptoServiceProvider objDESCrypto =
+           new TripleDESCryptoServiceProvider();
+            MD5CryptoServiceProvider objHashMD5 = new MD5CryptoServiceProvider();
+            byte[] byteHash, byteBuff;
+            string strTempKey = strKey;
+            byteHash = objHashMD5.ComputeHash(ASCIIEncoding.ASCII.GetBytes(strTempKey));
+            objHashMD5 = null;
+            objDESCrypto.Key = byteHash;
+            objDESCrypto.Mode = CipherMode.ECB; //CBC, CFB
+            byteBuff = Convert.FromBase64String(cipherText);
+            string strDecrypted = ASCIIEncoding.ASCII.GetString
+            (objDESCrypto.CreateDecryptor().TransformFinalBlock
+            (byteBuff, 0, byteBuff.Length));
+            objDESCrypto = null;
+            return strDecrypted;
         }
     }
 }
