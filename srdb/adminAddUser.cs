@@ -26,8 +26,8 @@ namespace srdb
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            try
-            { 
+         try
+            {
                 if (rbStandardUser.Checked)
                 {
                     user_level = "user";
@@ -37,7 +37,7 @@ namespace srdb
                     user_level = "Admin";
                 }
                 string username = txtUserName.Text;
-                
+
                 dbConnect.Initialize();
                 dbConnect.OpenConnection();
                 string query = "INSERT INTO auth (username, pass, email, firstName, surName, user_level) VALUES (@username, @password, @email, @firstName, @surname, @user_level)"; //(`username`, `pass`, `email`, `firstName`, `surName`, `user_level`)
@@ -52,8 +52,8 @@ namespace srdb
                     cmd.ExecuteNonQuery();
                 }
                 dbConnect.CloseConnection();
-                MessageBox.Show("User added successfully!\nTheir username is: " + username, "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information); 
-            } 
+                MessageBox.Show("User added successfully!", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Error Adding User " + ex, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
