@@ -152,6 +152,12 @@
     <Compile Include="adminSearchQuery.Designer.cs">
       <DependentUpon>adminSearchQuery.cs</DependentUpon>
     </Compile>
+    <Compile Include="adminServerConnections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="adminServerConnections.Designer.cs">
+      <DependentUpon>adminServerConnections.cs</DependentUpon>
+    </Compile>
     <Compile Include="adminServicesReports.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,7 @@
     <Compile Include="adminViewAllUsers.Designer.cs">
       <DependentUpon>adminViewAllUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="crypto.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="deleteRow.cs">
       <SubType>Form</SubType>
@@ -333,6 +340,9 @@
     <EmbeddedResource Include="adminSearchQuery.resx">
       <DependentUpon>adminSearchQuery.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="adminServerConnections.resx">
+      <DependentUpon>adminServerConnections.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="adminServicesReports.resx">
       <DependentUpon>adminServicesReports.cs</DependentUpon>
     </EmbeddedResource>
@@ -425,7 +435,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
