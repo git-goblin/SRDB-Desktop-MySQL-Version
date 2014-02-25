@@ -79,5 +79,12 @@ namespace srdb
             adminServicesReports asr = new adminServicesReports();
             asr.Show();
         }
+
+        private void btnConnection_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            adminServerConnections asc = new adminServerConnections();
+            asc.Show();
+        }
     }
 }

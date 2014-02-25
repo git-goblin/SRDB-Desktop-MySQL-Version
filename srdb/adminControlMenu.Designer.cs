@@ -38,6 +38,7 @@
             this.btnEditRecord = new System.Windows.Forms.Button();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnServicesReports = new System.Windows.Forms.Button();
+            this.btnConnection = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDeleteRecord
@@ -130,11 +131,22 @@
             this.btnServicesReports.UseVisualStyleBackColor = true;
             this.btnServicesReports.Click += new System.EventHandler(this.btnServicesReports_Click);
             // 
+            // btnConnection
+            // 
+            this.btnConnection.Location = new System.Drawing.Point(12, 142);
+            this.btnConnection.Name = "btnConnection";
+            this.btnConnection.Size = new System.Drawing.Size(121, 23);
+            this.btnConnection.TabIndex = 9;
+            this.btnConnection.Text = "Connection";
+            this.btnConnection.UseVisualStyleBackColor = true;
+            this.btnConnection.Click += new System.EventHandler(this.btnConnection_Click);
+            // 
             // adminControlMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(300, 175);
+            this.Controls.Add(this.btnConnection);
             this.Controls.Add(this.btnServicesReports);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.btnEditRecord);
@@ -163,5 +175,6 @@
         private System.Windows.Forms.Button btnEditRecord;
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Button btnServicesReports;
+        private System.Windows.Forms.Button btnConnection;
     }
 }
