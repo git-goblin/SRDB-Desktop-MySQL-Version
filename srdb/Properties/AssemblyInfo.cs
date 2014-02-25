@@ -7,10 +7,10 @@ using System.Resources;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Service Record Database System")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Program used to interect with database system for services")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("srdb")]
+[assembly: AssemblyProduct("Service Record Database")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
